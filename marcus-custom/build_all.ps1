@@ -1,10 +1,10 @@
 param ([switch]$skipIoBuild)
 
-$iodir = join-path $PSScriptRoot "..\Iosevka"
+$iodir = join-path $PSScriptRoot ".."
 Push-Location $iodir
 trap { pop-location }
 
-$plans = Get-Item "private-build-plans_*.toml"
+$plans = Get-Item (join-path $PSScriptRoot "private-build-plans_*.toml")
 
 if ($plans.Count -eq 0) {
     throw "no plans found in $iodir"
@@ -15,6 +15,11 @@ if (-not (get-command "fontforge" -ErrorAction SilentlyContinue)) {
 }
 if (-not (get-command "python" -ErrorAction SilentlyContinue)) {
     throw "cannot find python"
+}
+
+if (-not (get-command "ttfautohint" -ErrorAction SilentlyContinue)) {
+    #https://freetype.org/ttfautohint/
+    throw "cannot find ttfautohint"
 }
 
 write-host "Building plans...";
@@ -39,7 +44,7 @@ foreach($p in $plans) {
         throw "could not get family"
     }
 
-    copy-item -Path $p -Destination (Join-Path $PSScriptRoot "..\Iosevka\private-build-plans.toml") -Force;
+    copy-item -Path $p -Destination (Join-Path $PSScriptRoot "..\private-build-plans.toml") -Force;
 
     $family = ($matches[1]).Trim().Trim('"');
 
@@ -51,22 +56,22 @@ foreach($p in $plans) {
     if (-not $skipIoBuild) {
         write-host "Building plan $name ($family)"
 
-        push-location (join-path $PSScriptRoot "..\Iosevka")
-       npm run build -- ttf::$name
+        push-location (join-path $PSScriptRoot "..\")
+        npm run build -- ttf::$name
     }
 
     write-host "Patching with Nerd font"
 
-    $fontfiles = get-item (join-path $PSScriptRoot "..\Iosevka\dist\$name\ttf\*.ttf");
+    $fontfiles = get-item (join-path $PSScriptRoot "..\dist\$name\ttf\*.ttf");
     if ($fontfiles.Count -eq 0) {
         throw "could not find any font files"
     }
 
-    $patchdir = join-path $PSScriptRoot "..\Iosevka\dist\$name\ttf.patched";
+    $patchdir = join-path $PSScriptRoot "..\dist\$name\ttf.patched";
     Remove-Item -Path $patchdir -Recurse -force -ErrorAction SilentlyContinue;
     New-Item -Path $patchdir -ItemType Directory -ErrorAction SilentlyContinue | out-null;
 
-    Push-Location (join-path $PSScriptRoot "..\nerd-fonts\FontPatcher")
+    Push-Location (join-path $PSScriptRoot "nerd-fonts")
     foreach($ff in $fontfiles) {
 
         $part = (get-item $ff).BaseName
@@ -78,7 +83,7 @@ foreach($p in $plans) {
         $part = $matches[1]
 
         $currentName = $newName;
-        while($part -match "extra|semibold|bold|italic|oblique|light|heavy|medium|regular|thin") {
+        while($part -match "extra|semibold|bold|italic|oblique|normal|light|heavy|medium|regular|thin") {
             $currentName += " " + (cap $matches[0])
             $part = $part.Substring($matches[0].Length);
         }
@@ -90,7 +95,7 @@ foreach($p in $plans) {
         write-host "Name to use is $currentName"
 
         # note: absolute -out causes error
-        fontforge -script font-patcher --name $currentName --complete --quiet $ff -out ..\..\Iosevka\dist\$name\ttf.patched | out-null;
+        fontforge -script font-patcher --name $currentName --complete --quiet $ff -out ..\..\dist\$name\ttf.patched | out-null;
     }
 }
 

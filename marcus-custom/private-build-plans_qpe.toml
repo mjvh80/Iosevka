@@ -2,7 +2,7 @@
 family = "Iosevka Marcus QPE"
 spacing = "quasi-proportional"
 serifs = "sans"
-no-cv-ss = true
+noCvSs = true
 export-glyph-names = false
 
 [buildPlans.iosevka-marcus-qpe.variants.design]
@@ -28,7 +28,7 @@ capital-t = "serifless"
 capital-u = "toothless-rounded-serifless"
 capital-v = "curly-serifless"
 capital-w = "straight-vertical-sides-motion-serifed"
-capital-x = "straight-motion-serifed"
+capital-x = "curly-unilateral-motion-serifed"
 capital-y = "curly-serifless"
 capital-z = "curly-serifless"
 a = "double-storey-toothless-rounded"
@@ -62,10 +62,10 @@ lower-tau = "flat-tailed"
 cyrl-capital-u = "straight-serifless"
 zero = "slashed"
 one = "no-base"
-two = "curly-neck"
-three = "flat-top"
-four = "semi-open-non-crossing"
-five = "oblique-arched"
+two = "curly-neck-serifless"
+three = "flat-top-serifless"
+four = "semi-open-non-crossing-serifless"
+five = "oblique-arched-serifless"
 six = "open-contour"
 seven = "bend-serifless-crossbar"
 eight = "crossing-asymmetric"
