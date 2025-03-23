@@ -1,4 +1,4 @@
-param ([switch]$skipIoBuild)
+param ([switch]$skipIoBuild, $nameFilter)
 
 $iodir = join-path $PSScriptRoot ".."
 Push-Location $iodir
@@ -50,7 +50,14 @@ foreach($p in $plans) {
 
     $newName = "Iosemka";
     if ($family -match "Iosevka Marcus (.+)") {
-        $newName += (" " + $matches[1]);
+        # We need to remove the space here so that NerdFonts does not consider it 
+        # part of the subfamily. It appears to then correctly insert a space anyway.
+        $newName += $matches[1];
+    }
+
+    if ($nameFilter -and ($newName -notmatch $nameFilter)) {
+        write-host "Skipping $name → $newName ($family)"
+        continue;
     }
 
     if (-not $skipIoBuild) {
@@ -82,14 +89,26 @@ foreach($p in $plans) {
 
         $part = $matches[1]
 
-        $currentName = $newName;
-        while($part -match "extra|semibold|bold|italic|oblique|normal|light|heavy|medium|regular|thin") {
-            $currentName += " " + (cap $matches[0])
-            $part = $part.Substring($matches[0].Length);
+        if (!$part.StartsWith("normal")) {
+            throw "expected part to end with 'normal'";
         }
 
-        if ($part.Length -ne 0) {
-            throw "part remaning: $part"
+        $part = $part.Substring("normal".Length)
+
+        $currentName = $newName;
+
+        if ($part.Length) {
+            
+            $m = [regex]::Matches($part, "[A-Z][a-z]+");
+
+            if ($m.Count -eq 0) {
+                throw "expected subfamily matches"
+            }
+
+            $currentName += " " + ($m -join " ")
+        } else {
+            # nerdfont needs this, or it may see "Condensed" as a subfamily
+            $currentName += " Regular"
         }
 
         write-host "Name to use is $currentName"
