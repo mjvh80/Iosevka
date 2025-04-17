@@ -10,7 +10,7 @@ script_font_dir = R"D:\git\Iosevka\marcus-custom\monaspace" if use_monaspace els
 # note: nerd font has issues at the moment with naming which does not work with VS
 # so we don't support a nerd patch here atm
 target_font_dir = R"D:\git\Iosevka\dist\iosevka-marcus-cond\ttf.patched"
-output_font_dir = R"D:\git\Iosevka\dist\iosemka-script" if use_monaspace else R"D:\git\Iosevka\dist\iosemka-script-cascadia"
+output_font_dir = R"D:\git\Iosevka\dist\iosemka-script" if use_monaspace else R"D:\git\Iosevka\dist\iosemka-script-cascadia-new"
 
 
 # create output dir if not found
@@ -70,12 +70,19 @@ for root, dirs, files in os.walk(target_font_dir):
         #     ('English (US)', 'UniqueID', 'Iosemka Script 42')
         # ]
 
-        if font != source_font:               
+        should_change_em = True
+
+        if font != source_font and should_change_em:               
 
             font.em = source_font.em
-           
+
             # cleanup
             font.selection.all()
+
+            # todo: we need to fix clipping
+            font.transform(psMat.scale(1.1))
+            #print("box before = " + str(box) + " after = " + str(font.boundingBox()))
+
             font.removeOverlap()
             font.round()
             font.addExtrema()
