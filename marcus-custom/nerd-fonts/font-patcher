@@ -312,6 +312,9 @@ def create_filename(fonts):
     sfnt = { k: v for l, k, v in fonts[0].sfnt_names if l == 'English (US)' }
     sfnt_pfam = sfnt.get('Preferred Family', sfnt['Family'])
     sfnt_psubfam = sfnt.get('Preferred Styles', sfnt['SubFamily'])
+
+    print("got subfam: " + sfnt_psubfam + " for font name " + fonts[0].fullname)
+
     if len(fonts) > 1:
         return sfnt_pfam
     if len(sfnt_psubfam) > 0:
@@ -655,6 +658,7 @@ class font_patcher:
             subFamily = fallbackStyle
 
         if len(subFamily) == 0:
+            print ("FALLBACK")
             subFamily = "Regular"
 
         familyname += " " + projectNameSingular + variant_full
@@ -2193,6 +2197,7 @@ def main():
           print("\n")
           logger.info("Processing %s (%d/%d)", subfont, i + 1, len(all_fonts))
         try:
+            print("font = " + args.font + " subfont = " + subfont)
             sourceFonts.append(fontforge.open("{}({})".format(args.font, subfont), 1)) # 1 = ("fstypepermitted",))
         except Exception:
             logger.critical("Can not open font '%s', try to open with fontforge interactively to get more information",
