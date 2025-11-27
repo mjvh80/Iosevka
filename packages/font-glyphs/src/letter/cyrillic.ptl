@@ -21,6 +21,7 @@ export : define [apply] : begin
 	run-glyph-module "./cyrillic/nje.mjs"
 	run-glyph-module "./cyrillic/omega.mjs"
 	run-glyph-module "./cyrillic/sha.mjs"
+	run-glyph-module "./cyrillic/shha.mjs"
 	run-glyph-module "./cyrillic/small-yus.mjs"
 	run-glyph-module "./cyrillic/te-comb.mjs"
 	run-glyph-module "./cyrillic/te-midhook.mjs"
@@ -31,6 +32,7 @@ export : define [apply] : begin
 	run-glyph-module "./cyrillic/yat.mjs"
 	run-glyph-module "./cyrillic/yeri.mjs"
 	run-glyph-module "./cyrillic/yu.mjs"
+	run-glyph-module "./cyrillic/ze.mjs"
 	run-glyph-module "./cyrillic/zhe.mjs"
 
 	run-glyph-module "./cyrillic/orthography.mjs"

@@ -80,7 +80,7 @@ onumZeroHeightRatio = 1.145
 # Diversed advance width scale factors, used in quasi-proportional families
 advanceScaleMM = 1 # Extra-wide letters
 advanceScaleM  = 1 # M-like letters
-advanceScaleT  = 1 # T-like letters
+advanceScaleT  = 1 # T-like letters (with serifs)
 advanceScaleF  = 1 # f-like letters
 advanceScaleI  = 1 # i-like letters (with serifs/tails)
 advanceScaleII = 1 # Extra-narrow letters (like i without serifs/tails)

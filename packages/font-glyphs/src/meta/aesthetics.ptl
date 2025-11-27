@@ -1,4 +1,4 @@
-import [Point] from "@iosevka/geometry/point"
+import [Vec2 Point] from "@iosevka/geometry/point"
 import [Transform] from "@iosevka/geometry/transform"
 import [Anchor] from "@iosevka/geometry/anchor"
 import [mix linreg clamp fallback] from "@iosevka/util"
@@ -39,9 +39,9 @@ export : define [calculateMetrics para] : begin
 
 	# Transform constructors
 	define [Italify angle shift] : begin
-		local slope : Math.tan ([fallback angle para.slopeAngle] / 180 * Math.PI)
+		local slope : Math.tan : [fallback angle para.slopeAngle] / 180 * Math.PI
 		return : new Transform 1 slope 0 1 [fallback shift : (-slope) * SymbolMid] 0
-	define [Upright angle shift] [Italify angle shift :.inverse]
+	define [Upright angle shift] [Italify angle shift].inverse
 	define [Scale sx sy] : new Transform sx 0 0 [fallback sy sx] 0 0
 	define [Translate x y] : new Transform 1 0 0 1 x y
 	define [ApparentTranslate x y] : Translate (x + TanSlope * y) y
@@ -49,17 +49,17 @@ export : define [calculateMetrics para] : begin
 
 	define GlobalTransform : Italify para.slopeAngle
 	define TanSlope   GlobalTransform.xy
-	define SinSlope : Math.sin (para.slopeAngle / 180 * Math.PI)
-	define CosSlope : Math.cos (para.slopeAngle / 180 * Math.PI)
+	define SinSlope : Math.sin : para.slopeAngle / 180 * Math.PI
+	define CosSlope : Math.cos : para.slopeAngle / 180 * Math.PI
 	define HVContrast : Contrast * CosSlope + SinSlope * TanSlope
 	define [HSwToV sw] : sw * HVContrast
 	define [VSwToH sw] : sw / HVContrast
 
 	# Orient parameters
-	define Upward    : new Point Point.Type.Corner (-HVContrast)  0
-	define Downward  : new Point Point.Type.Corner   HVContrast   0
-	define Rightward : new Point Point.Type.Corner   0            1
-	define Leftward  : new Point Point.Type.Corner   0          (-1)
+	define Upward    : new Vec2 (-HVContrast)  0
+	define Downward  : new Vec2 (+HVContrast)  0
+	define Rightward : new Vec2   0          (+1)
+	define Leftward  : new Vec2   0          (-1)
 
 	# Style parameters
 	define O para.overshoot
@@ -77,7 +77,7 @@ export : define [calculateMetrics para] : begin
 	define SmallArchDepth para.smallArchDepth
 
 	# Weight Control
-	define BaseFillRate : Math.min 0.95 : 2 * HVContrast * para.stroke / (Width - SB * 2)
+	define BaseFillRate : Math.min 0.95 : [HSwToV : 2 * para.stroke] / (Width - SB * 2)
 	define WeightControlFactor : [Math.atanh BaseFillRate] / BaseFillRate
 	define [StrokeWeightControlSigmoid x] : Math.tanh : WeightControlFactor * x
 
@@ -103,31 +103,33 @@ export : define [calculateMetrics para] : begin
 	define PeriodSize : fallback para.periodSize DotSize
 	define HBarPos : DesignParameters.hBarPos - 0.09 * Stroke / CAP
 	define OverlayPos DesignParameters.overlayPos
+	define OverlayStroke : AdviceStroke 3.75
 	define Jut para.jut
 	define LongJut para.longjut
-	define VJut para.vjut
-	define LongVJut : fallback para.longvjut LongJut
 	define MidJutSide   : Math.max Jut : mix [HSwToV HalfStroke] LongJut 0.5
 	define MidJutCenter : Math.max Jut : mix [HSwToV HalfStroke] LongJut 0.6
+	define VJut para.vjut
+	define LongVJut : fallback para.longvjut LongJut
+	define VJutStroke : AdviceStroke 3.5
 	define AccentStackOffset para.accentStackOffset
 	define AccentWidth       para.accentWidth
 	define AccentClearance   para.accentClearance
-	define AccentHeight para.accentHeight
+	define AccentHeight      para.accentHeight
 
-	define CThin : fallback para.cthin 0.75
-	define CThinB : fallback para.cthinb 0.5
+	define CThin  : fallback para.cthin  0.75
+	define CThinB : fallback para.cthinb 0.50
 
 	define SLAB para.slab
 
 	define [IBalance  df] : df.adws * df.adws * [fallback para.ibalance (LongJut * 0.04)] # Serifed
-	define [IBalance2 df] : df.adws * [fallback para.ibalance2 (LongJut * 0.14)]         # Hooky, Tailed
-	define JBalance  : fallback para.jbalance 0
-	define JBalance2 : fallback para.jbalance2 (QuarterStroke + LongJut * 0.04)
-	define TBalance  : fallback para.tbalance JBalance
+	define [IBalance2 df] : df.adws * [fallback para.ibalance2 (LongJut * 0.14)]          # Hooky, Tailed
+	define JBalance  : fallback para.jbalance  0
+	define JBalance2 : fallback para.jbalance2 (LongJut * 0.04 + QuarterStroke)
+	define TBalance  : fallback para.tbalance  JBalance
 	define TBalance2 : fallback para.tbalance2 TBalance
 	define RBalance  : fallback para.rbalance (JBalance * 0.3)
 	define RBalance2 : fallback para.rbalance2 0
-	define FBalance  : fallback para.fbalance 0
+	define FBalance  : fallback para.fbalance  0
 	define OneBalance : fallback para.onebalance 0
 
 	# derived metrics
@@ -148,17 +150,25 @@ export : define [calculateMetrics para] : begin
 	define DotRadius : DotSize / 2
 	define PeriodRadius : PeriodSize / 2
 	define SideJut : Jut - [HSwToV HalfStroke]
-	define VJutStroke : AdviceStroke 3.5
 
-	define DToothlessRise : Hook * 0.25 + Stroke / 16
+	define DToothlessRise : Hook / 4 + Stroke / 16
 	define DMBlend          0.80
+
+	define ShoulderFine : Math.min (Stroke * para.shoulderFineMin) : AdviceStroke 24
+	define DefaultTightBendInnerDiameter : Math.max (XH / 16) : AdviceStroke2 24 32 XH
+	define DefaultTightBendInnerRadius   : DefaultTightBendInnerDiameter / 2
 
 	define [StrokeWidthBlend min max sw] : linreg para.canonicalStrokeWidthMin min para.canonicalStrokeWidthMax max [fallback sw Stroke]
 
 	define SmoothAdjust : StrokeWidthBlend 80 144
-	define [ArchDepthAOf archDepth width] : archDepth - TanSlope * SmoothAdjust / Width * width
-	define [ArchDepthBOf archDepth width] : archDepth + TanSlope * SmoothAdjust / Width * width
+	define ArchDepthA : ArchDepth - TanSlope * SmoothAdjust
+	define ArchDepthB : ArchDepth + TanSlope * SmoothAdjust
+	define SmallArchDepthA : SmallArchDepth - TanSlope * SmoothAdjust
+	define SmallArchDepthB : SmallArchDepth + TanSlope * SmoothAdjust
+	define [ArchDepthAOf archDepth width] : archDepth - TanSlope * SmoothAdjust * ([fallback width Width] / Width)
+	define [ArchDepthBOf archDepth width] : archDepth + TanSlope * SmoothAdjust * ([fallback width Width] / Width)
 	define [YSmoothMidR top bot _ada _adb] : begin
+		if (bot > top) : throw : new Error "YSmoothMidR: bot > top"
 		local ada : fallback _ada ArchDepthA
 		local adb : fallback _adb ArchDepthB
 		local delta : (adb - ada) / 2
@@ -168,6 +178,7 @@ export : define [calculateMetrics para] : begin
 		return : yNotAdjusted - delta * [Math.min 1 : (top - bot) / (ada + adb)]
 	set YSmoothMidR.cr : function [c r _ada _adb] : YSmoothMidR (c + r) (c - r) _ada _adb
 	define [YSmoothMidL top bot _ada _adb] : begin
+		if (bot > top) : throw : new Error "YSmoothMidL: bot > top"
 		local ada : fallback _ada ArchDepthA
 		local adb : fallback _adb ArchDepthB
 		local delta : (adb - ada) / 2
@@ -177,21 +188,19 @@ export : define [calculateMetrics para] : begin
 		return : yNotAdjusted + delta * [Math.min 1 : (top - bot) / (ada + adb)]
 	set YSmoothMidL.cr : function [c r _ada _adb] : YSmoothMidL (c + r) (c - r) _ada _adb
 
-	define ArchDepthA : ArchDepth - TanSlope * SmoothAdjust
-	define ArchDepthB : ArchDepth + TanSlope * SmoothAdjust
-	define SmallArchDepthA : SmallArchDepth - TanSlope * SmoothAdjust
-	define SmallArchDepthB : SmallArchDepth + TanSlope * SmoothAdjust
-
 	define CorrectionOMidX : TanSlope * 0.9 * [StrokeWidthBlend 1.3 0.9]
 	define CorrectionOMidS : Stroke * CorrectionOMidX
 
-	define OverlayStroke  : AdviceStroke 3.75
 	define OperatorStroke : AdviceStroke 2.75
 	define GeometryStroke : AdviceStroke 4
-	define ShoulderFine : Math.min (Stroke * para.shoulderFineMin) : AdviceStroke 24
 
-	define [AdviceGlottalStopArchDepth y sign] : begin
-		return : ((y - Stroke) * 0.24 + Stroke * 0.625) + sign * TanSlope * SmoothAdjust
+	define [UnicodeWeightGrade n _adws _swRef] : begin
+		local adws : fallback _adws 1
+		local kw : 10 - adws - n / 200
+		define [mulPow s] : (0.25 + s / 8) * [StrokeWidthBlend 2 1]
+		local kMul : [Math.pow (n / 100) : mulPow adws] / [Math.pow 4 : mulPow 2]
+		local kAdj : [fallback _swRef Stroke] / [AdviceStroke 6]
+		return : kMul * kAdj * [AdviceStroke kw]
 
 	define VERY-FAR : UPM * 16
 	define TINY     :  1 / 128
@@ -202,16 +211,16 @@ export : define [calculateMetrics para] : begin
 		BgTkTop BgTkBot Italify Upright Scale Translate ApparentTranslate Rotate GlobalTransform
 		TanSlope HVContrast Upward Downward Rightward Leftward O OX OXHook Hook AHook SHook RHook
 		JHook HookX TailX TailY ArchDepth SmallArchDepth Stroke HalfStroke QuarterStroke DotSize
-		PeriodSize HBarPos OverlayPos Jut VJut LongJut LongVJut VJutStroke AccentStackOffset
+		PeriodSize HBarPos OverlayPos Jut LongJut VJut LongVJut VJutStroke AccentStackOffset
 		AccentWidth AccentClearance AccentHeight CThin CThinB SLAB IBalance IBalance2 JBalance
 		JBalance2 TBalance TBalance2 RBalance RBalance2 FBalance OneBalance WideWidth0 WideWidth1
 		WideWidth2 WideWidth3 WideWidth4 EssUpper EssLower EssQuestion RightSB Middle DotRadius
 		PeriodRadius ArchDepthA ArchDepthB SmallArchDepthA SmallArchDepthB CorrectionOMidX
 		CorrectionOMidS compositeBaseAnchors AdviceStroke AdviceStroke2 AdviceStrokeInSpace
-		OverlayStroke OperatorStroke GeometryStroke ShoulderFine AdviceGlottalStopArchDepth
-		StrokeWidthBlend ArchDepthAOf ArchDepthBOf SmoothAdjust SideJut MidJutSide MidJutCenter
-		YSmoothMidR YSmoothMidL DToothlessRise DMBlend HSwToV VSwToH NarrowUnicodeT WideUnicodeT
-		VERY-FAR TINY]
+		OverlayStroke OperatorStroke GeometryStroke UnicodeWeightGrade StrokeWidthBlend ArchDepthAOf
+		ArchDepthBOf SmoothAdjust SideJut MidJutSide MidJutCenter YSmoothMidR YSmoothMidL
+		DToothlessRise DMBlend ShoulderFine DefaultTightBendInnerRadius HSwToV VSwToH NarrowUnicodeT
+		WideUnicodeT VERY-FAR TINY]
 
 export : define [setFontMetrics para metrics fm] : begin
 	define [object CAP Descender XH Width SymbolMid] metrics
@@ -376,7 +385,7 @@ export : define DesignParameters : object
 	#
 	equal_wideness             0.075
 	logic_narrow_shrink        0.75
-	GeometricLargeX            : lambda [mw uw] : (mw + uw / 2) / mw
+	GeometricLargeX            [lambda [mw uw] : (mw + uw / 2) / mw]
 	geometric_tiny_x           (1    / 7)
 	geometric_very_small_x     (2.5  / 7)
 	geometric_slightly_small_x (3.25 / 7)
@@ -402,8 +411,9 @@ export : define DesignParameters : object
 	braceCurlyM2               0.45
 	braceOvershoot             0.02
 	# Bar position
+	aBarPos                    0.5304
 	hBarPos                    0.525
-	eBarPos                    0.5
+	eBarPos                    0.50
 	fiveBarPos                 0.64
 	overlayPos                 0.52
 	fBarPosToXH                0.875

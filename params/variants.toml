@@ -709,9 +709,10 @@ tagKind = "letter"
 rank = 1
 description = "Serifless `C`"
 selector.C = "serifless"
-selector."C/descBase" = "serifless"
 selector."C/sansSerif" = "serifless"
+selector."C/descBase" = "serifless"
 selector.CHookTop = "unilateralSerifed"
+selector.OOpen = "serifless"
 selector.CTopSerifOnly = "serifless"
 selector.CBottomSerifOnly = "serifless"
 
@@ -719,9 +720,10 @@ selector.CBottomSerifOnly = "serifless"
 rank = 2
 description = "`C` with serif at top"
 selector.C = "unilateralSerifed"
-selector."C/descBase" = "bilateralSerifed"
 selector."C/sansSerif" = "serifless"
+selector."C/descBase" = "bilateralSerifed"
 selector.CHookTop = "unilateralSerifed"
+selector.OOpen = "bottomSerifed"
 selector.CTopSerifOnly = "unilateralSerifed"
 selector.CBottomSerifOnly = "serifless"
 
@@ -729,9 +731,10 @@ selector.CBottomSerifOnly = "serifless"
 rank = 3
 description = "`C` with serifs at both top and bottom"
 selector.C = "bilateralSerifed"
-selector."C/descBase" = "bilateralSerifed"
 selector."C/sansSerif" = "serifless"
+selector."C/descBase" = "bilateralSerifed"
 selector.CHookTop = "bilateralSerifed"
+selector.OOpen = "bilateralSerifed"
 selector.CTopSerifOnly = "unilateralSerifed"
 selector.CBottomSerifOnly = "bottomSerifed"
 
@@ -739,9 +742,10 @@ selector.CBottomSerifOnly = "bottomSerifed"
 rank = 4
 description = "`C` with inward serif at top"
 selector.C = "unilateralInwardSerifed"
-selector."C/descBase" = "hybridSerifed1"
 selector."C/sansSerif" = "serifless"
+selector."C/descBase" = "hybridSerifed1"
 selector.CHookTop = "unilateralInwardSerifed"
+selector.OOpen = "bottomInwardSerifed"
 selector.CTopSerifOnly = "unilateralInwardSerifed"
 selector.CBottomSerifOnly = "serifless"
 
@@ -749,9 +753,10 @@ selector.CBottomSerifOnly = "serifless"
 rank = 5
 description = "`C` with inward serif at both top and bottom"
 selector.C = "bilateralInwardSerifed"
-selector."C/descBase" = "bilateralInwardSerifed"
 selector."C/sansSerif" = "serifless"
+selector."C/descBase" = "bilateralInwardSerifed"
 selector.CHookTop = "bilateralInwardSerifed"
+selector.OOpen = "bilateralInwardSerifed"
 selector.CTopSerifOnly = "unilateralInwardSerifed"
 selector.CBottomSerifOnly = "bottomInwardSerifed"
 
@@ -934,7 +939,7 @@ rank = 3
 descriptionAffix = "inward top serif"
 selectorAffix.G = "inwardSerifed"
 selectorAffix."G/sansSerif" = "serifless"
-selectorAffix.GHookTop = "serifed"
+selectorAffix.GHookTop = "inwardSerifed"
 
 [prime.capital-g.variants-buildup.stages.hook.hookless]
 rank = 1
@@ -973,6 +978,7 @@ selector."H/descBase" = "serifless"
 selector.leftHalfH = "serifless"
 selector.rightHalfH = "serifless"
 selector.Hwair = "serifless"
+selector.HHookLeft = "serifless"
 selector.HHookTop = "serifless"
 
 [prime.capital-h.variants.top-left-serifed]
@@ -984,6 +990,7 @@ selector."H/descBase" = "topLeftSerifed"
 selector.leftHalfH = "topLeftSerifed"
 selector.rightHalfH = "serifless"
 selector.Hwair = "topLeftSerifed"
+selector.HHookLeft = "serifless"
 selector.HHookTop = "serifless"
 
 [prime.capital-h.variants.top-left-bottom-right-serifed]
@@ -995,6 +1002,7 @@ selector."H/descBase" = "topLeftSerifed"
 selector.leftHalfH = "topLeftSerifed"
 selector.rightHalfH = "topLeftBottomRightSerifed"
 selector.Hwair = "topLeftSerifed"
+selector.HHookLeft = "topLeftBottomRightSerifed"
 selector.HHookTop = "topLeftBottomRightSerifed"
 
 [prime.capital-h.variants.serifed]
@@ -1006,6 +1014,7 @@ selector."H/descBase" = "serifed"
 selector.leftHalfH = "serifed"
 selector.rightHalfH = "serifed"
 selector.Hwair = "serifedExceptBottomRight"
+selector.HHookLeft = "serifed"
 selector.HHookTop = "serifed"
 
 
@@ -1049,16 +1058,16 @@ next = "hook"
 rank = 1
 keyAffix = ""
 selectorAffix.J = ""
-selectorAffix."J/noDescend" = ""
 selectorAffix."J/sansSerif" = ""
+selectorAffix."J/noDescend" = ""
 selectorAffix.JCurlyTail = ""
 
 [prime.capital-j.variants-buildup.stages.height.descending]
 rank = 2
 descriptionAffix = "descending height"
 selectorAffix.J = "descending"
-selectorAffix."J/noDescend" = ""
 selectorAffix."J/sansSerif" = "descending"
+selectorAffix."J/noDescend" = ""
 selectorAffix.JCurlyTail = "descending"
 
 [prime.capital-j.variants-buildup.stages.hook."*"]
@@ -1068,16 +1077,16 @@ next = "serifs"
 rank = 1
 keyAffix = ""
 selectorAffix.J = "bentHook"
-selectorAffix."J/noDescend" = "bentHook"
 selectorAffix."J/sansSerif" = "bentHook"
+selectorAffix."J/noDescend" = "bentHook"
 selectorAffix.JCurlyTail = "bentHook"
 
 [prime.capital-j.variants-buildup.stages.hook.flat-hook]
 rank = 2
 descriptionAffix = "flat hook"
 selectorAffix.J = "flatHook"
-selectorAffix."J/noDescend" = "flatHook"
 selectorAffix."J/sansSerif" = "flatHook"
+selectorAffix."J/noDescend" = "flatHook"
 selectorAffix.JCurlyTail = "bentHook"
 
 [prime.capital-j.variants-buildup.stages.serifs.serifless]
@@ -1085,16 +1094,16 @@ rank = 1
 descriptionAffix = "serifs"
 descriptionJoiner = "without"
 selectorAffix.J = "serifless"
-selectorAffix."J/noDescend" = "serifless"
 selectorAffix."J/sansSerif" = "serifless"
+selectorAffix."J/noDescend" = "serifless"
 selectorAffix.JCurlyTail = "serifless"
 
 [prime.capital-j.variants-buildup.stages.serifs.serifed]
 rank = 2
 descriptionAffix = "serifs"
 selectorAffix.J = "serifed"
-selectorAffix."J/noDescend" = "serifed"
 selectorAffix."J/sansSerif" = "serifless"
+selectorAffix."J/noDescend" = "serifed"
 selectorAffix.JCurlyTail = "serifed"
 
 [prime.capital-j.variants-buildup.stages.serifs.serifed-both-sides]
@@ -1102,8 +1111,8 @@ rank = 3
 disableIf = [{ height = "descending", hook = "flat-hook" }]
 descriptionAffix = "serifs at both sides (asymmetric)"
 selectorAffix.J = "serifedBothSides"
-selectorAffix."J/noDescend" = "serifedBothSides"
 selectorAffix."J/sansSerif" = "serifless"
+selectorAffix."J/noDescend" = "serifedBothSides"
 selectorAffix.JCurlyTail = "serifedBothSides"
 
 [prime.capital-j.variants-buildup.stages.serifs.serifed-symmetric]
@@ -1111,8 +1120,8 @@ rank = 4
 disableIf = [{ height = "descending", hook = "flat-hook" }]
 descriptionAffix = "serifs at both sides (symmetric)"
 selectorAffix.J = "serifedSymmetric"
-selectorAffix."J/noDescend" = "serifedSymmetric"
 selectorAffix."J/sansSerif" = "serifless"
+selectorAffix."J/noDescend" = "serifedSymmetric"
 selectorAffix.JCurlyTail = "serifedSymmetric"
 
 
@@ -1133,6 +1142,7 @@ rank = 1
 descriptionAffix = "straight shape"
 selectorAffix.K = "straight"
 selectorAffix."K/sansSerif" = "straight"
+selectorAffix.KHookTop = "straight"
 selectorAffix.KDescender = "straight"
 
 [prime.capital-k.variants-buildup.stages.body.curly]
@@ -1140,6 +1150,7 @@ rank = 2
 descriptionAffix = "curly shape"
 selectorAffix.K = "curly"
 selectorAffix."K/sansSerif" = "curly"
+selectorAffix.KHookTop = "curly"
 selectorAffix.KDescender = "curly"
 
 [prime.capital-k.variants-buildup.stages.body.symmetric-touching]
@@ -1147,6 +1158,7 @@ rank = 3
 descriptionAffix = "symmetric legs touching the vertical bar"
 selectorAffix.K = "symmetricTouching"
 selectorAffix."K/sansSerif" = "symmetricTouching"
+selectorAffix.KHookTop = "symmetricTouching"
 selectorAffix.KDescender = "symmetricTouching"
 
 [prime.capital-k.variants-buildup.stages.body.symmetric-connected]
@@ -1154,6 +1166,7 @@ rank = 4
 descriptionAffix = "symmetric legs connected to the vertical bar"
 selectorAffix.K = "symmetricConnected"
 selectorAffix."K/sansSerif" = "symmetricConnected"
+selectorAffix.KHookTop = "symmetricConnected"
 selectorAffix.KDescender = "symmetricConnected"
 
 [prime.capital-k.variants-buildup.stages.serifs.serifless]
@@ -1162,6 +1175,7 @@ descriptionAffix = "serifs"
 descriptionJoiner = "without"
 selectorAffix.K = "serifless"
 selectorAffix."K/sansSerif" = "serifless"
+selectorAffix.KHookTop = "serifless"
 selectorAffix.KDescender = "serifless"
 
 [prime.capital-k.variants-buildup.stages.serifs.top-left-serifed]
@@ -1169,6 +1183,7 @@ rank = 2
 descriptionAffix = "serifs at top left"
 selectorAffix.K = "topLeftSerifed"
 selectorAffix."K/sansSerif" = "serifless"
+selectorAffix.KHookTop = "topLeftSerifed"
 selectorAffix.KDescender = "topLeftSerifed"
 
 [prime.capital-k.variants-buildup.stages.serifs.bottom-right-serifed]
@@ -1176,6 +1191,7 @@ rank = 3
 descriptionAffix = "serifs at bottom right"
 selectorAffix.K = "bottomRightSerifed"
 selectorAffix."K/sansSerif" = "serifless"
+selectorAffix.KHookTop = "bottomRightSerifed"
 selectorAffix.KDescender = "serifless"
 
 [prime.capital-k.variants-buildup.stages.serifs.top-left-and-bottom-right-serifed]
@@ -1183,14 +1199,43 @@ rank = 4
 descriptionAffix = "serifs at top left and bottom right"
 selectorAffix.K = "topLeftAndBottomRightSerifed"
 selectorAffix."K/sansSerif" = "serifless"
+selectorAffix.KHookTop = "topLeftAndBottomRightSerifed"
 selectorAffix.KDescender = "topLeftSerifed"
 
-[prime.capital-k.variants-buildup.stages.serifs.serifed]
+[prime.capital-k.variants-buildup.stages.serifs.top-right-serifed]
 rank = 5
+nonBreakingVariantAdditionPriority = 100
+descriptionAffix = "serifs at top right"
+selectorAffix.K = "topRightSerifed"
+selectorAffix."K/sansSerif" = "serifless"
+selectorAffix.KHookTop = "serifless"
+selectorAffix.KDescender = "topRightSerifed"
+
+[prime.capital-k.variants-buildup.stages.serifs.tri-serifed]
+rank = 6
+nonBreakingVariantAdditionPriority = 100
+descriptionAffix = "serifs at top left and both legs"
+selectorAffix.K = "triSerifed"
+selectorAffix."K/sansSerif" = "serifless"
+selectorAffix.KHookTop = "topLeftAndBottomRightSerifed"
+selectorAffix.KDescender = "topLeftAndTopRightSerifed"
+
+[prime.capital-k.variants-buildup.stages.serifs.serifed]
+rank = 7
 descriptionAffix = "serifs"
 selectorAffix.K = "serifed"
 selectorAffix."K/sansSerif" = "serifless"
+selectorAffix.KHookTop = "serifed"
 selectorAffix.KDescender = "serifed"
+
+[prime.capital-k.variants-buildup.stages.serifs.full-serifed]
+rank = 8
+nonBreakingVariantAdditionPriority = 100
+descriptionAffix = "full serifs at legs"
+selectorAffix.K = "fullSerifed"
+selectorAffix."K/sansSerif" = "serifless"
+selectorAffix.KHookTop = "fullSerifed"
+selectorAffix.KDescender = "fullSerifed"
 
 
 
@@ -1440,6 +1485,12 @@ groupRank = 2
 description = "`Q` with open contour and swash-y shape"
 selector.Q = "openSwash"
 
+[prime.capital-q.variants.closed-swash]
+rank = 11
+groupRank = 2
+description = "`Q` with a swashy tail"
+selector.Q = "closedSwash"
+
 
 
 [prime.capital-r]
@@ -1610,10 +1661,6 @@ description = "Serifless T"
 selector.T = "serifless"
 selector."T/sansSerif" = "serifless"
 selector."T/rtailBase" = "serifless"
-selector."cyrl/Tje/leftHalf" = "serifless"
-selector."cyrl/Tje/leftHalf/reduced" = "serifless"
-selector."cyrl/tje.upright/leftHalf" = "serifless"
-selector."cyrl/tje.upright/leftHalf/reduced" = "serifless"
 
 [prime.capital-t.variants.motion-serifed]
 rank = 2
@@ -1621,10 +1668,6 @@ description = "Motion-Serifed T"
 selector.T = "motionSerifed"
 selector."T/sansSerif" = "serifless"
 selector."T/rtailBase" = "motionSerifed"
-selector."cyrl/Tje/leftHalf" = "motionSerifed"
-selector."cyrl/Tje/leftHalf/reduced" = "motionSerifed"
-selector."cyrl/tje.upright/leftHalf" = "motionSerifed"
-selector."cyrl/tje.upright/leftHalf/reduced" = "motionSerifed"
 
 [prime.capital-t.variants.serifed]
 rank = 3
@@ -1632,10 +1675,6 @@ description = "Serifed T"
 selector.T = "serifed"
 selector."T/sansSerif" = "serifless"
 selector."T/rtailBase" = "motionSerifed"
-selector."cyrl/Tje/leftHalf" = "serifed"
-selector."cyrl/Tje/leftHalf/reduced" = "motionSerifed"
-selector."cyrl/tje.upright/leftHalf" = "serifed"
-selector."cyrl/tje.upright/leftHalf/reduced" = "motionSerifed"
 
 
 
@@ -1743,16 +1782,14 @@ rank = 1
 descriptionAffix = "straight shape"
 selectorAffix.V = "straight"
 selectorAffix."V/sansSerif" = "straight"
-selectorAffix.VHookTop = ""
-selectorAffix.VHookRight = "straight"
+selectorAffix.VScript = "rounded"
 
 [prime.capital-v.variants-buildup.stages.body.curly]
 rank = 2
 descriptionAffix = "curly shape"
 selectorAffix.V = "curly"
 selectorAffix."V/sansSerif" = "curly"
-selectorAffix.VHookTop = ""
-selectorAffix.VHookRight = "curly"
+selectorAffix.VScript = "rounded"
 
 [prime.capital-v.variants-buildup.stages.serifs.serifless]
 rank = 1
@@ -1760,24 +1797,21 @@ descriptionAffix = "serifs"
 descriptionJoiner = "without"
 selectorAffix.V = "serifless"
 selectorAffix."V/sansSerif" = "serifless"
-selectorAffix.VHookTop = "serifless"
-selectorAffix.VHookRight = "serifless"
+selectorAffix.VScript = "serifless"
 
 [prime.capital-v.variants-buildup.stages.serifs.motion-serifed]
 rank = 2
 descriptionAffix = "motion serifs"
 selectorAffix.V = "motionSerifed"
 selectorAffix."V/sansSerif" = "serifless"
-selectorAffix.VHookTop = "serifed"
-selectorAffix.VHookRight = "motionSerifed"
+selectorAffix.VScript = "motionSerifed"
 
 [prime.capital-v.variants-buildup.stages.serifs.serifed]
 rank = 3
 descriptionAffix = "serifs"
 selectorAffix.V = "serifed"
 selectorAffix."V/sansSerif" = "serifless"
-selectorAffix.VHookTop = "serifed"
-selectorAffix.VHookRight = "serifed"
+selectorAffix.VScript = "serifed"
 
 
 
@@ -1798,23 +1832,23 @@ groupRank = 1
 descriptionAffix = "standard, straight body"
 selectorAffix.W = "straight"
 selectorAffix."W/sansSerif" = "straight"
-selectorAffix.WHookTop = "straight"
+selectorAffix.WHookRight = "straight"
 
 [prime.capital-w.variants-buildup.stages.body.straight-almost-flat-top]
 rank = 2
 groupRank = 1
-descriptionAffix = "straight body shape that the middle is forced to be aligned the top"
+descriptionAffix = "straight body shape that the middle is almost aligned to the top"
 selectorAffix.W = "straightAlmostFlatTop"
-selectorAffix."W/sansSerif" = "straightAlmostFlatTop"
-selectorAffix.WHookTop = "straightAlmostFlatTop"
+selectorAffix."W/sansSerif" = "straightFlatTop"
+selectorAffix.WHookRight = "straightAlmostFlatTop"
 
 [prime.capital-w.variants-buildup.stages.body.straight-flat-top]
 rank = 3
 groupRank = 1
-descriptionAffix = "straight body shape that the middle is forced to be aligned the top"
+descriptionAffix = "straight body shape that the middle is forced to be aligned to the top"
 selectorAffix.W = "straightFlatTop"
 selectorAffix."W/sansSerif" = "straightFlatTop"
-selectorAffix.WHookTop = "straightFlatTop"
+selectorAffix.WHookRight = "straightFlatTop"
 
 [prime.capital-w.variants-buildup.stages.body.straight-double-v]
 rank = 4
@@ -1822,7 +1856,7 @@ groupRank = 2
 descriptionAffix = "body shape like double V"
 selectorAffix.W = "straightDoubleV"
 selectorAffix."W/sansSerif" = "straightDoubleV"
-selectorAffix.WHookTop = "straightDoubleV"
+selectorAffix.WHookRight = "straightDoubleV"
 
 [prime.capital-w.variants-buildup.stages.body.straight-asymmetric]
 rank = 5
@@ -1830,8 +1864,7 @@ groupRank = 2
 descriptionAffix = "asymmetric shape"
 selectorAffix.W = "straightAsymmetric"
 selectorAffix."W/sansSerif" = "straightAsymmetric"
-selectorAffix.WHookTop = "straightAsymmetric"
-
+selectorAffix.WHookRight = "straightAsymmetric"
 
 [prime.capital-w.variants-buildup.stages.body.straight-vertical-sides]
 rank = 6
@@ -1839,23 +1872,59 @@ groupRank = 3
 descriptionAffix = "straight body shape with vertical sides"
 selectorAffix.W = "straightVerticalSides"
 selectorAffix."W/sansSerif" = "straightVerticalSides"
-selectorAffix.WHookTop = "straightVerticalSides"
+selectorAffix.WHookRight = "straightVerticalSides"
+
+[prime.capital-w.variants-buildup.stages.body.straight-vertical-sides-flat-top]
+rank = 7
+groupRank = 3
+nonBreakingVariantAdditionPriority = 100
+descriptionAffix = "straight body shape with vertical sides, and a middle stem aligned to the top"
+selectorAffix.W = "straightVerticalSidesFlatTop"
+selectorAffix."W/sansSerif" = "straightVerticalSidesFlatTop"
+selectorAffix.WHookRight = "straightVerticalSidesFlatTop"
 
 [prime.capital-w.variants-buildup.stages.body.rounded-vertical-sides]
-rank = 7
+rank = 8
 groupRank = 3
 descriptionAffix = "rounded body shape with vertical sides"
 selectorAffix.W = "roundedVerticalSides"
 selectorAffix."W/sansSerif" = "roundedVerticalSides"
-selectorAffix.WHookTop = "roundedVerticalSides"
+selectorAffix.WHookRight = "roundedVerticalSides"
+
+[prime.capital-w.variants-buildup.stages.body.rounded-vertical-sides-flat-top]
+rank = 9
+groupRank = 3
+nonBreakingVariantAdditionPriority = 100
+descriptionAffix = "rounded body shape with vertical sides, and a middle stem aligned to the top"
+selectorAffix.W = "roundedVerticalSidesFlatTop"
+selectorAffix."W/sansSerif" = "roundedVerticalSidesFlatTop"
+selectorAffix.WHookRight = "roundedVerticalSidesFlatTop"
 
 [prime.capital-w.variants-buildup.stages.body.curly]
-rank = 8
+rank = 10
 groupRank = 3
 descriptionAffix = "curly body"
 selectorAffix.W = "curly"
 selectorAffix."W/sansSerif" = "curly"
-selectorAffix.WHookTop = "curly"
+selectorAffix.WHookRight = "curly"
+
+[prime.capital-w.variants-buildup.stages.body.curly-almost-flat-top]
+rank = 11
+groupRank = 3
+nonBreakingVariantAdditionPriority = 100
+descriptionAffix = "curly body with a middle stem almost aligned to the top"
+selectorAffix.W = "curlyAlmostFlatTop"
+selectorAffix."W/sansSerif" = "curlyFlatTop"
+selectorAffix.WHookRight = "curlyAlmostFlatTop"
+
+[prime.capital-w.variants-buildup.stages.body.curly-flat-top]
+rank = 12
+groupRank = 3
+nonBreakingVariantAdditionPriority = 100
+descriptionAffix = "curly body with a middle stem aligned to the top"
+selectorAffix.W = "curlyFlatTop"
+selectorAffix."W/sansSerif" = "curlyFlatTop"
+selectorAffix.WHookRight = "curlyFlatTop"
 
 [prime.capital-w.variants-buildup.stages.serifs.serifless]
 rank = 1
@@ -1863,21 +1932,21 @@ descriptionAffix = "serifs"
 descriptionJoiner = "without"
 selectorAffix.W = "serifless"
 selectorAffix."W/sansSerif" = "serifless"
-selectorAffix.WHookTop = "serifless"
+selectorAffix.WHookRight = "serifless"
 
 [prime.capital-w.variants-buildup.stages.serifs.motion-serifed]
 rank = 2
 descriptionAffix = "motion serifs"
 selectorAffix.W = "motionSerifed"
 selectorAffix."W/sansSerif" = "serifless"
-selectorAffix.WHookTop = "motionSerifed"
+selectorAffix.WHookRight = "motionSerifed"
 
 [prime.capital-w.variants-buildup.stages.serifs.serifed]
 rank = 3
 descriptionAffix = "serifs"
 selectorAffix.W = "serifed"
 selectorAffix."W/sansSerif" = "serifless"
-selectorAffix.WHookTop = "serifed"
+selectorAffix.WHookRight = { if = [{ body = "straight-double-v" }, { body = "straight-asymmetric" }], then = "motionSerifed", else = "serifed" }
 
 
 
@@ -1960,7 +2029,7 @@ descriptionAffix = "straight shape"
 selectorAffix.Y = "straight"
 selectorAffix."Y/sansSerif" = "straight"
 selectorAffix.YLoop = "straightLoop"
-selectorAffix."grek/UpsilonHookTop" = "straight"
+selectorAffix."grek/UpsilonHookSymbol" = "straight"
 
 [prime.capital-y.variants-buildup.stages.body.curly]
 rank = 2
@@ -1968,7 +2037,7 @@ descriptionAffix = "curly shape"
 selectorAffix.Y = "curly"
 selectorAffix."Y/sansSerif" = "curly"
 selectorAffix.YLoop = "curlyLoop"
-selectorAffix."grek/UpsilonHookTop" = "straight"
+selectorAffix."grek/UpsilonHookSymbol" = "straight"
 
 [prime.capital-y.variants-buildup.stages.serifs.serifless]
 rank = 1
@@ -1977,7 +2046,7 @@ descriptionJoiner = "without"
 selectorAffix.Y = "serifless"
 selectorAffix."Y/sansSerif" = "serifless"
 selectorAffix.YLoop = "serifless"
-selectorAffix."grek/UpsilonHookTop" = "serifless"
+selectorAffix."grek/UpsilonHookSymbol" = "serifless"
 
 [prime.capital-y.variants-buildup.stages.serifs.base-serifed]
 rank = 2
@@ -1985,7 +2054,7 @@ descriptionAffix = "serifs at bottom"
 selectorAffix.Y = "baseSerifed"
 selectorAffix."Y/sansSerif" = "serifless"
 selectorAffix.YLoop = "serifless"
-selectorAffix."grek/UpsilonHookTop" = "BaseSerifed"
+selectorAffix."grek/UpsilonHookSymbol" = "BaseSerifed"
 
 [prime.capital-y.variants-buildup.stages.serifs.motion-serifed]
 rank = 3
@@ -1993,7 +2062,7 @@ descriptionAffix = "motion serifs"
 selectorAffix.Y = "motionSerifed"
 selectorAffix."Y/sansSerif" = "serifless"
 selectorAffix.YLoop = "motionSerifed"
-selectorAffix."grek/UpsilonHookTop" = "serifless"
+selectorAffix."grek/UpsilonHookSymbol" = "serifless"
 
 [prime.capital-y.variants-buildup.stages.serifs.serifed]
 rank = 4
@@ -2001,7 +2070,7 @@ descriptionAffix = "serifs"
 selectorAffix.Y = "serifed"
 selectorAffix."Y/sansSerif" = "serifless"
 selectorAffix.YLoop = "serifed"
-selectorAffix."grek/UpsilonHookTop" = "BaseSerifed"
+selectorAffix."grek/UpsilonHookSymbol" = "BaseSerifed"
 
 
 
@@ -2146,28 +2215,30 @@ rank = 1
 next = "double-storey-hook"
 descriptionAffix = "double-storey body"
 selectorAffix.a = "doubleStorey"
-selectorAffix."ae/a" = "doubleStorey"
 selectorAffix."a/sansSerif" = "doubleStorey"
 selectorAffix."aRetroflexHook" = "doubleStorey"
 selectorAffix."a/doubleStorey" = "doubleStorey"
+selectorAffix."aRetroflexHook/doubleStorey" = "doubleStorey"
 selectorAffix."a/singleStorey/autoSerifed/slab" = "singleStorey"
 selectorAffix."a/singleStorey/autoSerifed/sans" = "singleStorey"
 selectorAffix."aRetroflexHook/singleStorey/autoSerifed/slab" = "singleStorey"
 selectorAffix."aRetroflexHook/singleStorey/autoSerifed/sans" = "singleStorey"
+selectorAffix."ae/a" = "doubleStorey"
 
 [prime.a.variants-buildup.stages.storey.single-storey]
 rank = 2
 next = "ear"
 descriptionAffix = "single-storey body"
 selectorAffix.a = "singleStorey"
-selectorAffix."ae/a" = "doubleStorey"
 selectorAffix."a/sansSerif" = "singleStorey"
 selectorAffix."aRetroflexHook" = "singleStorey"
 selectorAffix."a/doubleStorey" = "doubleStorey"
+selectorAffix."aRetroflexHook/doubleStorey" = "doubleStorey"
 selectorAffix."a/singleStorey/autoSerifed/slab" = "singleStorey"
 selectorAffix."a/singleStorey/autoSerifed/sans" = "singleStorey"
 selectorAffix."aRetroflexHook/singleStorey/autoSerifed/slab" = "singleStorey"
 selectorAffix."aRetroflexHook/singleStorey/autoSerifed/sans" = "singleStorey"
+selectorAffix."ae/a" = "doubleStorey"
 
 [prime.a.variants-buildup.stages.double-storey-hook."*"]
 next = "bar"
@@ -2177,28 +2248,30 @@ rank = 1
 keyAffix = ""
 descriptionAffix = "serifless hook"
 selectorAffix.a = ""
-selectorAffix."ae/a" = ""
 selectorAffix."a/sansSerif" = ""
 selectorAffix."aRetroflexHook" = ""
 selectorAffix."a/doubleStorey" = ""
+selectorAffix."aRetroflexHook/doubleStorey" = ""
 selectorAffix."a/singleStorey/autoSerifed/slab" = ""
 selectorAffix."a/singleStorey/autoSerifed/sans" = ""
 selectorAffix."aRetroflexHook/singleStorey/autoSerifed/slab" = ""
 selectorAffix."aRetroflexHook/singleStorey/autoSerifed/sans" = ""
+selectorAffix."ae/a" = ""
 
 [prime.a.variants-buildup.stages.double-storey-hook.hook-serifed]
 rank = 2
 keyAffix = "hook-inward-serifed"
 descriptionAffix = "serifed hook"
 selectorAffix.a = "hookInwardSerifed"
-selectorAffix."ae/a" = "hookInwardSerifed"
 selectorAffix."a/sansSerif" = ""
 selectorAffix."aRetroflexHook" = "hookInwardSerifed"
 selectorAffix."a/doubleStorey" = "hookInwardSerifed"
+selectorAffix."aRetroflexHook/doubleStorey" = "hookInwardSerifed"
 selectorAffix."a/singleStorey/autoSerifed/slab" = ""
 selectorAffix."a/singleStorey/autoSerifed/sans" = ""
 selectorAffix."aRetroflexHook/singleStorey/autoSerifed/slab" = ""
 selectorAffix."aRetroflexHook/singleStorey/autoSerifed/sans" = ""
+selectorAffix."ae/a" = "hookInwardSerifed"
 
 [prime.a.variants-buildup.stages.ear."*"]
 next = "bar"
@@ -2207,149 +2280,160 @@ next = "bar"
 rank = 1
 keyAffix = ""
 selectorAffix.a = ""
-selectorAffix."ae/a" = ""
 selectorAffix."a/sansSerif" = ""
 selectorAffix."aRetroflexHook" = ""
 selectorAffix."a/doubleStorey" = ""
+selectorAffix."aRetroflexHook/doubleStorey" = ""
 selectorAffix."a/singleStorey/autoSerifed/slab" = ""
 selectorAffix."a/singleStorey/autoSerifed/sans" = ""
 selectorAffix."aRetroflexHook/singleStorey/autoSerifed/slab" = ""
 selectorAffix."aRetroflexHook/singleStorey/autoSerifed/sans" = ""
+selectorAffix."ae/a" = ""
 
 [prime.a.variants-buildup.stages.ear.top-cut]
 rank = 2
 descriptionAffix = "a diagonal cut at top"
 selectorAffix.a = "topCut"
-selectorAffix."ae/a" = ""
 selectorAffix."a/sansSerif" = "topCut"
 selectorAffix."aRetroflexHook" = "topCut"
 selectorAffix."a/doubleStorey" = ""
+selectorAffix."aRetroflexHook/doubleStorey" = ""
 selectorAffix."a/singleStorey/autoSerifed/slab" = "topCut"
 selectorAffix."a/singleStorey/autoSerifed/sans" = "topCut"
 selectorAffix."aRetroflexHook/singleStorey/autoSerifed/slab" = "topCut"
 selectorAffix."aRetroflexHook/singleStorey/autoSerifed/sans" = "topCut"
+selectorAffix."ae/a" = ""
 
 [prime.a.variants-buildup.stages.ear.earless-corner]
 rank = 3
 descriptionAffix = "earless (cornered top-right)"
 selectorAffix.a = "earlessCorner"
-selectorAffix."ae/a" = ""
 selectorAffix."a/sansSerif" = "earlessCorner"
 selectorAffix."aRetroflexHook" = "earlessCorner"
 selectorAffix."a/doubleStorey" = ""
+selectorAffix."aRetroflexHook/doubleStorey" = ""
 selectorAffix."a/singleStorey/autoSerifed/slab" = "earlessCorner"
 selectorAffix."a/singleStorey/autoSerifed/sans" = "earlessCorner"
 selectorAffix."aRetroflexHook/singleStorey/autoSerifed/slab" = "earlessCorner"
 selectorAffix."aRetroflexHook/singleStorey/autoSerifed/sans" = "earlessCorner"
+selectorAffix."ae/a" = ""
 
 [prime.a.variants-buildup.stages.ear.earless-rounded]
 rank = 4
 descriptionAffix = "earless (rounded top-right)"
 selectorAffix.a = "earlessRounded"
-selectorAffix."ae/a" = ""
 selectorAffix."a/sansSerif" = "earlessRounded"
 selectorAffix."aRetroflexHook" = "earlessRounded"
 selectorAffix."a/doubleStorey" = ""
+selectorAffix."aRetroflexHook/doubleStorey" = ""
 selectorAffix."a/singleStorey/autoSerifed/slab" = "earlessRounded"
 selectorAffix."a/singleStorey/autoSerifed/sans" = "earlessRounded"
 selectorAffix."aRetroflexHook/singleStorey/autoSerifed/slab" = "earlessRounded"
 selectorAffix."aRetroflexHook/singleStorey/autoSerifed/sans" = "earlessRounded"
+selectorAffix."ae/a" = ""
 
 [prime.a.variants-buildup.stages.bar.serifless]
 rank = 1
 descriptionAffix = "serif at terminal"
 descriptionJoiner = "without"
 selectorAffix.a = "serifless"
-selectorAffix."ae/a" = "serifless"
 selectorAffix."a/sansSerif" = "serifless"
 selectorAffix."aRetroflexHook" = "serifless"
 selectorAffix."a/doubleStorey" = "serifless"
+selectorAffix."aRetroflexHook/doubleStorey" = "serifless"
 selectorAffix."a/singleStorey/autoSerifed/slab" = "serifless"
 selectorAffix."a/singleStorey/autoSerifed/sans" = "serifless"
 selectorAffix."aRetroflexHook/singleStorey/autoSerifed/slab" = "serifless"
 selectorAffix."aRetroflexHook/singleStorey/autoSerifed/sans" = "serifless"
+selectorAffix."ae/a" = "serifless"
 
 [prime.a.variants-buildup.stages.bar.serifed]
 rank = 2
 descriptionAffix = "serif at terminal"
 selectorAffix.a = "serifed"
-selectorAffix."ae/a" = "serifless"
 selectorAffix."a/sansSerif" = "serifless"
 selectorAffix."aRetroflexHook" = "serifless"
 selectorAffix."a/doubleStorey" = "serifed"
+selectorAffix."aRetroflexHook/doubleStorey" = "serifless"
 selectorAffix."a/singleStorey/autoSerifed/slab" = { if = [{ storey = "double-storey" }], then = "doubleSerifed", else = "serifed" }
 selectorAffix."a/singleStorey/autoSerifed/sans" = "serifed"
 selectorAffix."aRetroflexHook/singleStorey/autoSerifed/slab" = { if = [{ storey = "double-storey" }], then = "topSerifed", else = "serifless" }
 selectorAffix."aRetroflexHook/singleStorey/autoSerifed/sans" = "serifless"
+selectorAffix."ae/a" = "serifless"
 
 [prime.a.variants-buildup.stages.bar.double-serifed]
 rank = 3
 disableIf = [{ storey = "double-storey" }, { ear = "NOT eared" }]
 descriptionAffix = "serifs at top and bottom"
 selectorAffix.a = "doubleSerifed"
-selectorAffix."ae/a" = "serifless"
 selectorAffix."a/sansSerif" = "serifless"
 selectorAffix."aRetroflexHook" = "topSerifed"
 selectorAffix."a/doubleStorey" = "serifed"
+selectorAffix."aRetroflexHook/doubleStorey" = "serifless"
 selectorAffix."a/singleStorey/autoSerifed/slab" = "doubleSerifed"
 selectorAffix."a/singleStorey/autoSerifed/sans" = "doubleSerifed"
 selectorAffix."aRetroflexHook/singleStorey/autoSerifed/slab" = "topSerifed"
 selectorAffix."aRetroflexHook/singleStorey/autoSerifed/sans" = "topSerifed"
+selectorAffix."ae/a" = "serifless"
 
 [prime.a.variants-buildup.stages.bar.tailed]
 rank = 4
 descriptionAffix = "curly tail"
 selectorAffix.a = "tailed"
-selectorAffix."ae/a" = "serifless"
 selectorAffix."a/sansSerif" = "tailed"
 selectorAffix."aRetroflexHook" = "serifless"
 selectorAffix."a/doubleStorey" = "tailed"
+selectorAffix."aRetroflexHook/doubleStorey" = "serifless"
 selectorAffix."a/singleStorey/autoSerifed/slab" = { if = [{ storey = "double-storey" }], then = "tailedSerifed", else = "tailed" }
 selectorAffix."a/singleStorey/autoSerifed/sans" = "tailed"
 selectorAffix."aRetroflexHook/singleStorey/autoSerifed/slab" = { if = [{ storey = "double-storey" }], then = "topSerifed", else = "serifless" }
 selectorAffix."aRetroflexHook/singleStorey/autoSerifed/sans" = "serifless"
+selectorAffix."ae/a" = "serifless"
 
 [prime.a.variants-buildup.stages.bar.tailed-serifed]
 rank = 5
 disableIf = [{ storey = "double-storey" }, { ear = "NOT eared" }]
 descriptionAffix = "curly tail; with serifs at top and bottom"
 selectorAffix.a = "tailedSerifed"
-selectorAffix."ae/a" = "serifless"
 selectorAffix."a/sansSerif" = "tailed"
 selectorAffix."aRetroflexHook" = "topSerifed"
 selectorAffix."a/doubleStorey" = "tailed"
+selectorAffix."aRetroflexHook/doubleStorey" = "serifless"
 selectorAffix."a/singleStorey/autoSerifed/slab" = "tailedSerifed"
 selectorAffix."a/singleStorey/autoSerifed/sans" = "tailedSerifed"
 selectorAffix."aRetroflexHook/singleStorey/autoSerifed/slab" = "topSerifed"
 selectorAffix."aRetroflexHook/singleStorey/autoSerifed/sans" = "topSerifed"
+selectorAffix."ae/a" = "serifless"
 
 [prime.a.variants-buildup.stages.bar.toothless-corner]
 rank = 6
 disableIf = [{ storey = "single-storey" }]
 descriptionAffix = "toothless (cornered bottom-right)"
 selectorAffix.a = "toothlessCorner"
-selectorAffix."ae/a" = "serifless"
 selectorAffix."a/sansSerif" = "toothlessCorner"
 selectorAffix."aRetroflexHook" = "serifless"
 selectorAffix."a/doubleStorey" = "toothlessCorner"
+selectorAffix."aRetroflexHook/doubleStorey" = "serifless"
 selectorAffix."a/singleStorey/autoSerifed/slab" = "doubleSerifed"
 selectorAffix."a/singleStorey/autoSerifed/sans" = "serifless"
 selectorAffix."aRetroflexHook/singleStorey/autoSerifed/slab" = "topSerifed"
 selectorAffix."aRetroflexHook/singleStorey/autoSerifed/sans" = "serifless"
+selectorAffix."ae/a" = "serifless"
 
 [prime.a.variants-buildup.stages.bar.toothless-rounded]
 rank = 7
 disableIf = [{ storey = "single-storey" }]
 descriptionAffix = "toothless (rounded bottom-right)"
 selectorAffix.a = "toothlessRounded"
-selectorAffix."ae/a" = "serifless"
 selectorAffix."a/sansSerif" = "toothlessRounded"
 selectorAffix."aRetroflexHook" = "serifless"
 selectorAffix."a/doubleStorey" = "toothlessRounded"
+selectorAffix."aRetroflexHook/doubleStorey" = "serifless"
 selectorAffix."a/singleStorey/autoSerifed/slab" = "doubleSerifed"
 selectorAffix."a/singleStorey/autoSerifed/sans" = "serifless"
 selectorAffix."aRetroflexHook/singleStorey/autoSerifed/slab" = "topSerifed"
 selectorAffix."aRetroflexHook/singleStorey/autoSerifed/sans" = "serifless"
+selectorAffix."ae/a" = "serifless"
 
 
 
@@ -2440,6 +2524,8 @@ selector."c/sansSerif" = "serifless"
 selector."c/descBase" = "serifless"
 selector.cCurlyTail = "serifless"
 selector.cHookTop = "unilateralSerifed"
+selector.oOpen = "serifless"
+selector."oOpen/descBase" = "bottomSerifed"
 selector.cTopSerifOnly = "serifless"
 selector.cBottomSerifOnly = "serifless"
 
@@ -2451,6 +2537,8 @@ selector."c/sansSerif" = "serifless"
 selector."c/descBase" = "bilateralSerifed"
 selector.cCurlyTail = "unilateralSerifed"
 selector.cHookTop = "unilateralSerifed"
+selector.oOpen = "bottomSerifed"
+selector."oOpen/descBase" = "bottomSerifed"
 selector.cTopSerifOnly = "unilateralSerifed"
 selector.cBottomSerifOnly = "serifless"
 
@@ -2462,6 +2550,8 @@ selector."c/sansSerif" = "serifless"
 selector."c/descBase" = "bilateralSerifed"
 selector.cCurlyTail = "unilateralSerifed"
 selector.cHookTop = "bilateralSerifed"
+selector.oOpen = "bilateralSerifed"
+selector."oOpen/descBase" = "bilateralSerifed"
 selector.cTopSerifOnly = "unilateralSerifed"
 selector.cBottomSerifOnly = "bottomSerifed"
 
@@ -2473,6 +2563,8 @@ selector."c/sansSerif" = "serifless"
 selector."c/descBase" = "hybridSerifed1"
 selector.cCurlyTail = "unilateralInwardSerifed"
 selector.cHookTop = "unilateralInwardSerifed"
+selector.oOpen = "bottomInwardSerifed"
+selector."oOpen/descBase" = "bottomInwardSerifed"
 selector.cTopSerifOnly = "unilateralInwardSerifed"
 selector.cBottomSerifOnly = "serifless"
 
@@ -2484,6 +2576,8 @@ selector."c/sansSerif" = "serifless"
 selector."c/descBase" = "bilateralInwardSerifed"
 selector.cCurlyTail = "unilateralInwardSerifed"
 selector.cHookTop = "bilateralInwardSerifed"
+selector.oOpen = "bilateralInwardSerifed"
+selector."oOpen/descBase" = "bilateralInwardSerifed"
 selector.cTopSerifOnly = "unilateralInwardSerifed"
 selector.cBottomSerifOnly = "bottomInwardSerifed"
 
@@ -2634,19 +2728,13 @@ tagKind = "letter"
 rank = 1
 description = "`e` with flat crossbar"
 selector.e = "flatCrossbar"
-selector.Schwa = "flatCrossbar"
-selector.schwa = "flatCrossbar"
-selector."cyrl/abk/Che" = "flatCrossbar"
-selector."cyrl/abk/che" = "flatCrossbar"
+selector.eCap = "flatCrossbar"
 
 [prime.e.variants.rounded]
 rank = 2
 description = "`e` with more rounded shape"
 selector.e = "rounded"
-selector.Schwa = "flatCrossbar"
-selector.schwa = "rounded"
-selector."cyrl/abk/Che" = "flatCrossbar"
-selector."cyrl/abk/che" = "rounded"
+selector.eCap = "flatCrossbar"
 
 
 
@@ -2669,6 +2757,7 @@ selectorAffix."f/sansSerif" = ""
 selectorAffix."f/compLigLeft1" = "flatHookCLC1"
 selectorAffix."f/compLigLeft2" = "flatHookCLC2"
 selectorAffix."f/compLigLeft3" = "flatHookCLC3"
+selectorAffix."f/compLigLeft4" = "flatHookCLC4"
 selectorAffix."f/phoneticLeft" = ""
 selectorAffix."f/tailless" = ""
 selectorAffix.fLenis = ""
@@ -2682,6 +2771,7 @@ selectorAffix."f/sansSerif" = "flatHook"
 selectorAffix."f/compLigLeft1" = "flatHookCLC1"
 selectorAffix."f/compLigLeft2" = "flatHookCLC2"
 selectorAffix."f/compLigLeft3" = "flatHookCLC3"
+selectorAffix."f/compLigLeft4" = "flatHookCLC4"
 selectorAffix."f/phoneticLeft" = "flatHook"
 selectorAffix."f/tailless" = "flatHook"
 selectorAffix.fLenis = "flatHook"
@@ -2699,6 +2789,7 @@ selectorAffix."f/sansSerif" = "serifless"
 selectorAffix."f/compLigLeft1" = "serifless"
 selectorAffix."f/compLigLeft2" = "serifless"
 selectorAffix."f/compLigLeft3" = "serifless"
+selectorAffix."f/compLigLeft4" = "serifless"
 selectorAffix."f/phoneticLeft" = "serifless"
 selectorAffix."f/tailless" = "serifless"
 selectorAffix.fLenis = "serifless"
@@ -2712,6 +2803,7 @@ selectorAffix."f/sansSerif" = "serifless"
 selectorAffix."f/compLigLeft1" = "serifed"
 selectorAffix."f/compLigLeft2" = "serifed"
 selectorAffix."f/compLigLeft3" = "serifed"
+selectorAffix."f/compLigLeft4" = "serifed"
 selectorAffix."f/phoneticLeft" = "serifed"
 selectorAffix."f/tailless" = "serifed"
 selectorAffix.fLenis = "serifless"
@@ -2725,6 +2817,7 @@ selectorAffix."f/sansSerif" = "extended"
 selectorAffix."f/compLigLeft1" = "extended"
 selectorAffix."f/compLigLeft2" = "extended"
 selectorAffix."f/compLigLeft3" = "extended"
+selectorAffix."f/compLigLeft4" = "extended"
 selectorAffix."f/phoneticLeft" = "extended"
 selectorAffix."f/tailless" = "serifless"
 selectorAffix.fLenis = "serifless"
@@ -2738,6 +2831,7 @@ selectorAffix."f/sansSerif" = "tailed"
 selectorAffix."f/compLigLeft1" = "tailed"
 selectorAffix."f/compLigLeft2" = "tailed"
 selectorAffix."f/compLigLeft3" = "tailed"
+selectorAffix."f/compLigLeft4" = "tailed"
 selectorAffix."f/phoneticLeft" = "tailed"
 selectorAffix."f/tailless" = "serifless"
 selectorAffix.fLenis = "serifless"
@@ -2751,6 +2845,7 @@ selectorAffix."f/sansSerif" = "diagonalTailed"
 selectorAffix."f/compLigLeft1" = "diagonalTailed"
 selectorAffix."f/compLigLeft2" = "diagonalTailed"
 selectorAffix."f/compLigLeft3" = "diagonalTailed"
+selectorAffix."f/compLigLeft4" = "diagonalTailed"
 selectorAffix."f/phoneticLeft" = "diagonalTailed"
 selectorAffix."f/tailless" = "serifless"
 selectorAffix.fLenis = "serifless"
@@ -2762,8 +2857,9 @@ keyAffix = ""
 selectorAffix.f = ""
 selectorAffix."f/sansSerif" = ""
 selectorAffix."f/compLigLeft1" = "crossbarAtXHeight"
-selectorAffix."f/compLigLeft2" = ""
+selectorAffix."f/compLigLeft2" = "crossbarAtXHeight"
 selectorAffix."f/compLigLeft3" = ""
+selectorAffix."f/compLigLeft4" = ""
 selectorAffix."f/phoneticLeft" = "crossbarAtXHeight"
 selectorAffix."f/tailless" = ""
 selectorAffix.fLenis = ""
@@ -2775,8 +2871,9 @@ descriptionAffix = "crossbar at X-height"
 selectorAffix.f = "crossbarAtXHeight"
 selectorAffix."f/sansSerif" = "crossbarAtXHeight"
 selectorAffix."f/compLigLeft1" = "crossbarAtXHeight"
-selectorAffix."f/compLigLeft2" = ""
-selectorAffix."f/compLigLeft3" = ""
+selectorAffix."f/compLigLeft2" = "crossbarAtXHeight"
+selectorAffix."f/compLigLeft3" = "crossbarAtXHeight"
+selectorAffix."f/compLigLeft4" = "crossbarAtXHeight"
 selectorAffix."f/phoneticLeft" = "crossbarAtXHeight"
 selectorAffix."f/tailless" = "crossbarAtXHeight"
 selectorAffix.fLenis = "crossbarAtXHeight"
@@ -2799,6 +2896,7 @@ descriptionAffix = "double-storey shape"
 selectorAffix.g = "doubleStorey"
 selectorAffix."g/sansSerif" = "doubleStorey"
 selectorAffix."g/hookTopBase" = "singleStoreyBentHookSerifless"
+selectorAffix."g/doubleStorey" = "doubleStorey"
 selectorAffix."g/singleStorey/autoSerifed/slab" = "singleStoreyBentHookSerifed"
 selectorAffix."g/singleStorey/autoSerifed/sans" = "singleStoreyBentHookSerifless"
 selectorAffix."g/singleStoreyBentHook/autoSerifed/slab" = "singleStoreyBentHookSerifed"
@@ -2813,6 +2911,7 @@ keyAffix = ""
 selectorAffix.g = "closed"
 selectorAffix."g/sansSerif" = "closed"
 selectorAffix."g/hookTopBase" = ""
+selectorAffix."g/doubleStorey" = "closed"
 selectorAffix."g/singleStorey/autoSerifed/slab" = ""
 selectorAffix."g/singleStorey/autoSerifed/sans" = ""
 selectorAffix."g/singleStoreyBentHook/autoSerifed/slab" = ""
@@ -2824,6 +2923,7 @@ descriptionAffix = "open contour"
 selectorAffix.g = "open"
 selectorAffix."g/sansSerif" = "open"
 selectorAffix."g/hookTopBase" = ""
+selectorAffix."g/doubleStorey" = "open"
 selectorAffix."g/singleStorey/autoSerifed/slab" = ""
 selectorAffix."g/singleStorey/autoSerifed/sans" = ""
 selectorAffix."g/singleStoreyBentHook/autoSerifed/slab" = ""
@@ -2836,6 +2936,7 @@ descriptionAffix = "single-storey shape"
 selectorAffix.g = "singleStorey"
 selectorAffix."g/sansSerif" = "singleStorey"
 selectorAffix."g/hookTopBase" = "singleStorey"
+selectorAffix."g/doubleStorey" = "doubleStoreyClosed"
 selectorAffix."g/singleStorey/autoSerifed/slab" = "singleStorey"
 selectorAffix."g/singleStorey/autoSerifed/sans" = "singleStorey"
 selectorAffix."g/singleStoreyBentHook/autoSerifed/slab" = "singleStorey"
@@ -2850,6 +2951,7 @@ keyAffix = ""
 selectorAffix.g = "bentHook"
 selectorAffix."g/sansSerif" = "bentHook"
 selectorAffix."g/hookTopBase" = "bentHook"
+selectorAffix."g/doubleStorey" = ""
 selectorAffix."g/singleStorey/autoSerifed/slab" = "bentHook"
 selectorAffix."g/singleStorey/autoSerifed/sans" = "bentHook"
 selectorAffix."g/singleStoreyBentHook/autoSerifed/slab" = "bentHook"
@@ -2861,6 +2963,7 @@ descriptionAffix = "flat bottom hook"
 selectorAffix.g = "flatHook"
 selectorAffix."g/sansSerif" = "flatHook"
 selectorAffix."g/hookTopBase" = "flatHook"
+selectorAffix."g/doubleStorey" = ""
 selectorAffix."g/singleStorey/autoSerifed/slab" = "flatHook"
 selectorAffix."g/singleStorey/autoSerifed/sans" = "flatHook"
 selectorAffix."g/singleStoreyBentHook/autoSerifed/slab" = "bentHook"
@@ -2871,6 +2974,7 @@ rank = 1
 selectorAffix.g = "serifless"
 selectorAffix."g/sansSerif" = "serifless"
 selectorAffix."g/hookTopBase" = "serifless"
+selectorAffix."g/doubleStorey" = ""
 selectorAffix."g/singleStorey/autoSerifed/slab" = "serifless"
 selectorAffix."g/singleStorey/autoSerifed/sans" = "serifless"
 selectorAffix."g/singleStoreyBentHook/autoSerifed/slab" = "serifless"
@@ -2882,6 +2986,7 @@ descriptionAffix = "top-right serif"
 selectorAffix.g = "serifed"
 selectorAffix."g/sansSerif" = "serifless"
 selectorAffix."g/hookTopBase" = "serifless"
+selectorAffix."g/doubleStorey" = ""
 selectorAffix."g/singleStorey/autoSerifed/slab" = "serifed"
 selectorAffix."g/singleStorey/autoSerifed/sans" = "serifed"
 selectorAffix."g/singleStoreyBentHook/autoSerifed/slab" = "serifed"
@@ -2893,6 +2998,7 @@ descriptionAffix = "a diagonal cut at top"
 selectorAffix.g = "topCut"
 selectorAffix."g/sansSerif" = "topCut"
 selectorAffix."g/hookTopBase" = "serifless"
+selectorAffix."g/doubleStorey" = ""
 selectorAffix."g/singleStorey/autoSerifed/slab" = "topCut"
 selectorAffix."g/singleStorey/autoSerifed/sans" = "topCut"
 selectorAffix."g/singleStoreyBentHook/autoSerifed/slab" = "topCut"
@@ -2904,6 +3010,7 @@ descriptionAffix = "earless (cornered top-right)"
 selectorAffix.g = "earlessCorner"
 selectorAffix."g/sansSerif" = "earlessCorner"
 selectorAffix."g/hookTopBase" = "earlessCornerHTB"
+selectorAffix."g/doubleStorey" = ""
 selectorAffix."g/singleStorey/autoSerifed/slab" = "earlessCorner"
 selectorAffix."g/singleStorey/autoSerifed/sans" = "earlessCorner"
 selectorAffix."g/singleStoreyBentHook/autoSerifed/slab" = "earlessCorner"
@@ -2915,6 +3022,7 @@ descriptionAffix = "earless (rounded top-right)"
 selectorAffix.g = "earlessRounded"
 selectorAffix."g/sansSerif" = "earlessRounded"
 selectorAffix."g/hookTopBase" = "serifless"
+selectorAffix."g/doubleStorey" = ""
 selectorAffix."g/singleStorey/autoSerifed/slab" = "earlessRounded"
 selectorAffix."g/singleStorey/autoSerifed/sans" = "earlessRounded"
 selectorAffix."g/singleStoreyBentHook/autoSerifed/slab" = "earlessRounded"
@@ -3218,8 +3326,6 @@ selectorAffix."k/sansSerif" = "straight"
 selectorAffix."latn/kappa" = "straight"
 selectorAffix.kHookTop = "straight"
 selectorAffix.kDescender = "straight"
-selectorAffix."grek/kappa" = "straight"
-selectorAffix."grek/kappa/sansSerif" = "straight"
 
 [prime.k.variants-buildup.stages.body.curly]
 rank = 2
@@ -3229,8 +3335,6 @@ selectorAffix."k/sansSerif" = "curly"
 selectorAffix."latn/kappa" = "curly"
 selectorAffix.kHookTop = "curly"
 selectorAffix.kDescender = "curly"
-selectorAffix."grek/kappa" = "curly"
-selectorAffix."grek/kappa/sansSerif" = "curly"
 
 [prime.k.variants-buildup.stages.body.symmetric-touching]
 rank = 3
@@ -3240,8 +3344,6 @@ selectorAffix."k/sansSerif" = "symmetricTouching"
 selectorAffix."latn/kappa" = "symmetricTouching"
 selectorAffix.kHookTop = "symmetricTouching"
 selectorAffix.kDescender = "symmetricTouching"
-selectorAffix."grek/kappa" = "symmetricTouching"
-selectorAffix."grek/kappa/sansSerif" = "symmetricTouching"
 
 [prime.k.variants-buildup.stages.body.symmetric-connected]
 rank = 4
@@ -3251,8 +3353,6 @@ selectorAffix."k/sansSerif" = "symmetricConnected"
 selectorAffix."latn/kappa" = "symmetricConnected"
 selectorAffix.kHookTop = "symmetricConnected"
 selectorAffix.kDescender = "symmetricConnected"
-selectorAffix."grek/kappa" = "symmetricConnected"
-selectorAffix."grek/kappa/sansSerif" = "symmetricConnected"
 
 [prime.k.variants-buildup.stages.body.cursive]
 rank = 5
@@ -3262,8 +3362,6 @@ selectorAffix."k/sansSerif" = "cursive"
 selectorAffix."latn/kappa" = "straight"
 selectorAffix.kHookTop = "cursive"
 selectorAffix.kDescender = "cursive"
-selectorAffix."grek/kappa" = "straight"
-selectorAffix."grek/kappa/sansSerif" = "straight"
 
 [prime.k.variants-buildup.stages.body.diagonal-tailed-cursive]
 rank = 6
@@ -3273,8 +3371,6 @@ selectorAffix."k/sansSerif" = "cursiveTailed"
 selectorAffix."latn/kappa" = "straight"
 selectorAffix.kHookTop = "cursiveTailed"
 selectorAffix.kDescender = "cursive"
-selectorAffix."grek/kappa" = "straight"
-selectorAffix."grek/kappa/sansSerif" = "straight"
 
 [prime.k.variants-buildup.stages.serifs.serifless]
 rank = 1
@@ -3285,8 +3381,6 @@ selectorAffix."k/sansSerif" = "serifless"
 selectorAffix."latn/kappa" = "serifless"
 selectorAffix.kHookTop = "serifless"
 selectorAffix.kDescender = "serifless"
-selectorAffix."grek/kappa" = "serifless"
-selectorAffix."grek/kappa/sansSerif" = "serifless"
 
 [prime.k.variants-buildup.stages.serifs.top-left-serifed]
 rank = 2
@@ -3296,8 +3390,6 @@ selectorAffix."k/sansSerif" = "serifless"
 selectorAffix."latn/kappa" = "topLeftSerifed"
 selectorAffix.kHookTop = "serifless"
 selectorAffix.kDescender = "topLeftSerifed"
-selectorAffix."grek/kappa" = "topLeftSerifed"
-selectorAffix."grek/kappa/sansSerif" = "serifless"
 
 [prime.k.variants-buildup.stages.serifs.bottom-right-serifed]
 rank = 3
@@ -3308,8 +3400,6 @@ selectorAffix."k/sansSerif" = "serifless"
 selectorAffix."latn/kappa" = "bottomRightSerifed"
 selectorAffix.kHookTop = "bottomRightSerifed"
 selectorAffix.kDescender = "serifless"
-selectorAffix."grek/kappa" = "bottomRightSerifed"
-selectorAffix."grek/kappa/sansSerif" = "serifless"
 
 [prime.k.variants-buildup.stages.serifs.top-left-and-bottom-right-serifed]
 rank = 4
@@ -3320,20 +3410,49 @@ selectorAffix."k/sansSerif" = "serifless"
 selectorAffix."latn/kappa" = "topLeftAndBottomRightSerifed"
 selectorAffix.kHookTop = "bottomRightSerifed"
 selectorAffix.kDescender = "topLeftSerifed"
-selectorAffix."grek/kappa" = "topLeftAndBottomRightSerifed"
-selectorAffix."grek/kappa/sansSerif" = "serifless"
+
+[prime.k.variants-buildup.stages.serifs.top-right-serifed]
+rank = 5
+nonBreakingVariantAdditionPriority = 100
+disableIf = [ { body = "cursive" }, { body = "diagonal-tailed-cursive" } ]
+descriptionAffix = "serifs at top right"
+selectorAffix.k = "topRightSerifed"
+selectorAffix."k/sansSerif" = "serifless"
+selectorAffix."latn/kappa" = "topRightSerifed"
+selectorAffix.kHookTop = "topRightSerifed"
+selectorAffix.kDescender = "topRightSerifed"
+
+[prime.k.variants-buildup.stages.serifs.tri-serifed]
+rank = 6
+nonBreakingVariantAdditionPriority = 100
+disableIf = [ { body = "cursive" }, { body = "diagonal-tailed-cursive" } ]
+descriptionAffix = "serifs at top left and both legs"
+selectorAffix.k = "triSerifed"
+selectorAffix."k/sansSerif" = "serifless"
+selectorAffix."latn/kappa" = "triSerifed"
+selectorAffix.kHookTop = "topRightAndBottomRightSerifed"
+selectorAffix.kDescender = "topLeftAndTopRightSerifed"
 
 [prime.k.variants-buildup.stages.serifs.serifed]
-rank = 5
+rank = 7
 disableIf = [ { body = "diagonal-tailed-cursive" } ]
 descriptionAffix = "serifs"
 selectorAffix.k = "serifed"
 selectorAffix."k/sansSerif" = "serifless"
-selectorAffix."latn/kappa" = "serifedKra"
+selectorAffix."latn/kappa" = "serifedKappa"
 selectorAffix.kHookTop = "serifed"
 selectorAffix.kDescender = "serifed"
-selectorAffix."grek/kappa" = "serifedKappa"
-selectorAffix."grek/kappa/sansSerif" = "serifless"
+
+[prime.k.variants-buildup.stages.serifs.full-serifed]
+rank = 8
+nonBreakingVariantAdditionPriority = 100
+disableIf = [ { body = "diagonal-tailed-cursive" } ]
+descriptionAffix = "full serifs at legs"
+selectorAffix.k = "fullSerifed"
+selectorAffix."k/sansSerif" = "serifless"
+selectorAffix."latn/kappa" = "fullSerifed"
+selectorAffix.kHookTop = "fullSerifed"
+selectorAffix.kDescender = "fullSerifed"
 
 
 
@@ -3349,8 +3468,8 @@ selector.l = "serifless"
 selector."l/sansSerif" = "serifless"
 selector."l/compLigRight" = "hooky"
 selector."l/reduced/decompress" = "seriflessDec"
-selector."l/reduced/rtail" = "seriflessRTail"
-selector."l/reduced/rtailDec" = "seriflessRTailDec"
+selector.lRTail = "seriflessRTail"
+selector."lRTail/reduced/decompress" = "seriflessRTailDec"
 selector."l/phoneticLeft" = "seriflessPL"
 selector.lCurlyTail = "serifless"
 selector.lyogh = "serifless"
@@ -3363,8 +3482,8 @@ selector.l = "hooky"
 selector."l/sansSerif" = "serifless"
 selector."l/compLigRight" = "hooky"
 selector."l/reduced/decompress" = "hookyDec"
-selector."l/reduced/rtail" = "hookyRTail"
-selector."l/reduced/rtailDec" = "hookyRTailDec"
+selector.lRTail = "hookyRTail"
+selector."lRTail/reduced/decompress" = "hookyRTailDec"
 selector."l/phoneticLeft" = "hookyPL"
 selector.lCurlyTail = "hooky"
 selector.lyogh = "hooky"
@@ -3377,8 +3496,8 @@ selector.l = "hookyBottom"
 selector."l/sansSerif" = "serifless"
 selector."l/compLigRight" = "zshaped"
 selector."l/reduced/decompress" = "hookyBottomDec"
-selector."l/reduced/rtail" = "seriflessRTail"
-selector."l/reduced/rtailDec" = "seriflessRTailDec"
+selector.lRTail = "seriflessRTail"
+selector."lRTail/reduced/decompress" = "seriflessRTailDec"
 selector."l/phoneticLeft" = "seriflessPL"
 selector.lCurlyTail = "serifless"
 selector.lyogh = "serifless"
@@ -3391,8 +3510,8 @@ selector.l = "zshaped"
 selector."l/sansSerif" = "serifless"
 selector."l/compLigRight" = "zshaped"
 selector."l/reduced/decompress" = "zshaped"
-selector."l/reduced/rtail" = "hookyRTail"
-selector."l/reduced/rtailDec" = "hookyRTailDec"
+selector.lRTail = "hookyRTail"
+selector."lRTail/reduced/decompress" = "hookyRTailDec"
 selector."l/phoneticLeft" = "hookyPL"
 selector.lCurlyTail = "hooky"
 selector.lyogh = "hooky"
@@ -3405,8 +3524,8 @@ selector.l = "serifed"
 selector."l/sansSerif" = "serifless"
 selector."l/compLigRight" = "serifed"
 selector."l/reduced/decompress" = "serifed"
-selector."l/reduced/rtail" = "hookyRTail"
-selector."l/reduced/rtailDec" = "hookyRTailDec"
+selector.lRTail = "hookyRTail"
+selector."lRTail/reduced/decompress" = "hookyRTailDec"
 selector."l/phoneticLeft" = "hookyPL"
 selector.lCurlyTail = "hooky"
 selector.lyogh = "hooky"
@@ -3419,8 +3538,8 @@ selector.l = "serifedAsymmetric"
 selector."l/sansSerif" = "serifless"
 selector."l/compLigRight" = "serifed"
 selector."l/reduced/decompress" = "serifedAsymmetric"
-selector."l/reduced/rtail" = "hookyRTail"
-selector."l/reduced/rtailDec" = "hookyRTailDec"
+selector.lRTail = "hookyRTail"
+selector."lRTail/reduced/decompress" = "hookyRTailDec"
 selector."l/phoneticLeft" = "hookyPL"
 selector.lCurlyTail = "hooky"
 selector.lyogh = "hooky"
@@ -3433,8 +3552,8 @@ selector.l = "tailed"
 selector."l/sansSerif" = "tailed"
 selector."l/compLigRight" = "tailedSerifed"
 selector."l/reduced/decompress" = "tailedDec"
-selector."l/reduced/rtail" = "seriflessRTail"
-selector."l/reduced/rtailDec" = "seriflessRTailDec"
+selector.lRTail = "seriflessRTail"
+selector."lRTail/reduced/decompress" = "seriflessRTailDec"
 selector."l/phoneticLeft" = "seriflessPL"
 selector.lCurlyTail = "serifless"
 selector.lyogh = "serifless"
@@ -3447,8 +3566,8 @@ selector.l = "tailedSerifed"
 selector."l/sansSerif" = "tailed"
 selector."l/compLigRight" = "tailedSerifed"
 selector."l/reduced/decompress" = "tailedSerifed"
-selector."l/reduced/rtail" = "hookyRTail"
-selector."l/reduced/rtailDec" = "hookyRTailDec"
+selector.lRTail = "hookyRTail"
+selector."lRTail/reduced/decompress" = "hookyRTailDec"
 selector."l/phoneticLeft" = "hookyPL"
 selector.lCurlyTail = "hooky"
 selector.lyogh = "hooky"
@@ -3461,8 +3580,8 @@ selector.l = "flatTailed"
 selector."l/sansSerif" = "flatTailed"
 selector."l/compLigRight" = "serifedFlatTailed"
 selector."l/reduced/decompress" = "flatTailedDec"
-selector."l/reduced/rtail" = "seriflessRTail"
-selector."l/reduced/rtailDec" = "seriflessRTailDec"
+selector.lRTail = "seriflessRTail"
+selector."lRTail/reduced/decompress" = "seriflessRTailDec"
 selector."l/phoneticLeft" = "seriflessPL"
 selector.lCurlyTail = "serifless"
 selector.lyogh = "serifless"
@@ -3475,8 +3594,8 @@ selector.l = "serifedFlatTailed"
 selector."l/sansSerif" = "flatTailed"
 selector."l/compLigRight" = "serifedFlatTailed"
 selector."l/reduced/decompress" = "serifedFlatTailed"
-selector."l/reduced/rtail" = "hookyRTail"
-selector."l/reduced/rtailDec" = "hookyRTailDec"
+selector.lRTail = "hookyRTail"
+selector."lRTail/reduced/decompress" = "hookyRTailDec"
 selector."l/phoneticLeft" = "hookyPL"
 selector.lCurlyTail = "hooky"
 selector.lyogh = "hooky"
@@ -3489,8 +3608,8 @@ selector.l = "diagonalTailed"
 selector."l/sansSerif" = "diagonalTailed"
 selector."l/compLigRight" = "serifedDiagonalTailed"
 selector."l/reduced/decompress" = "diagonalTailedDec"
-selector."l/reduced/rtail" = "seriflessRTail"
-selector."l/reduced/rtailDec" = "seriflessRTailDec"
+selector.lRTail = "seriflessRTail"
+selector."lRTail/reduced/decompress" = "seriflessRTailDec"
 selector."l/phoneticLeft" = "seriflessPL"
 selector.lCurlyTail = "serifless"
 selector.lyogh = "serifless"
@@ -3503,8 +3622,8 @@ selector.l = "serifedDiagonalTailed"
 selector."l/sansSerif" = "diagonalTailed"
 selector."l/compLigRight" = "serifedDiagonalTailed"
 selector."l/reduced/decompress" = "serifedDiagonalTailed"
-selector."l/reduced/rtail" = "hookyRTail"
-selector."l/reduced/rtailDec" = "hookyRTailDec"
+selector.lRTail = "hookyRTail"
+selector."lRTail/reduced/decompress" = "hookyRTailDec"
 selector."l/phoneticLeft" = "hookyPL"
 selector.lCurlyTail = "hooky"
 selector.lyogh = "hooky"
@@ -3517,8 +3636,8 @@ selector.l = "semiTailed"
 selector."l/sansSerif" = "semiTailed"
 selector."l/compLigRight" = "serifedSemiTailed"
 selector."l/reduced/decompress" = "semiTailedDec"
-selector."l/reduced/rtail" = "seriflessRTail"
-selector."l/reduced/rtailDec" = "seriflessRTailDec"
+selector.lRTail = "seriflessRTail"
+selector."lRTail/reduced/decompress" = "seriflessRTailDec"
 selector."l/phoneticLeft" = "seriflessPL"
 selector.lCurlyTail = "serifless"
 selector.lyogh = "serifless"
@@ -3531,8 +3650,8 @@ selector.l = "serifedSemiTailed"
 selector."l/sansSerif" = "semiTailed"
 selector."l/compLigRight" = "serifedSemiTailed"
 selector."l/reduced/decompress" = "serifedSemiTailed"
-selector."l/reduced/rtail" = "hookyRTail"
-selector."l/reduced/rtailDec" = "hookyRTailDec"
+selector.lRTail = "hookyRTail"
+selector."lRTail/reduced/decompress" = "hookyRTailDec"
 selector."l/phoneticLeft" = "hookyPL"
 selector.lCurlyTail = "hooky"
 selector.lyogh = "hooky"
@@ -3556,8 +3675,8 @@ groupRank = 10
 keyAffix = ""
 descriptionAffix = "eared body shape"
 selectorAffix.m = ""
-selectorAffix."m/descBase" = ""
 selectorAffix."m/sansSerif" = ""
+selectorAffix."m/descBase" = ""
 selectorAffix."cyrl/te.italic" = ""
 selectorAffix."cyrl/este.italic/right" = ""
 selectorAffix."cyrl/tjeKomi.italic" = ""
@@ -3570,8 +3689,8 @@ rank = 2
 groupRank = 20
 descriptionAffix = "earless (corner top-left) double-arch body shape"
 selectorAffix.m = "earlessCornerDoubleArch"
-selectorAffix."m/descBase" = "earlessCornerDoubleArch"
 selectorAffix."m/sansSerif" = "earlessCornerDoubleArch"
+selectorAffix."m/descBase" = "earlessCornerDoubleArch"
 selectorAffix."cyrl/te.italic" = ""
 selectorAffix."cyrl/este.italic/right" = ""
 selectorAffix."cyrl/tjeKomi.italic" = ""
@@ -3584,8 +3703,8 @@ rank = 3
 groupRank = 30
 descriptionAffix = "earless (rounded top-left) double-arch body shape"
 selectorAffix.m = "earlessRoundedDoubleArch"
-selectorAffix."m/descBase" = "earlessRoundedDoubleArch"
 selectorAffix."m/sansSerif" = "earlessRoundedDoubleArch"
+selectorAffix."m/descBase" = "earlessRoundedDoubleArch"
 selectorAffix."cyrl/te.italic" = ""
 selectorAffix."cyrl/este.italic/right" = ""
 selectorAffix."cyrl/tjeKomi.italic" = ""
@@ -3598,8 +3717,8 @@ rank = 4
 groupRank = 40
 descriptionAffix = "earless (corner top-left) body shape"
 selectorAffix.m = "earlessSingleArch"
-selectorAffix."m/descBase" = "earlessSingleArch"
 selectorAffix."m/sansSerif" = "earlessSingleArch"
+selectorAffix."m/descBase" = "earlessSingleArch"
 selectorAffix."cyrl/te.italic" = ""
 selectorAffix."cyrl/este.italic/right" = ""
 selectorAffix."cyrl/tjeKomi.italic" = ""
@@ -3616,8 +3735,8 @@ groupRank = 1
 keyAffix = ""
 descriptionAffix = "normal middle leg"
 selectorAffix.m = ""
-selectorAffix."m/descBase" = ""
 selectorAffix."m/sansSerif" = ""
+selectorAffix."m/descBase" = ""
 selectorAffix."cyrl/te.italic" = ""
 selectorAffix."cyrl/este.italic/right" = ""
 selectorAffix."cyrl/te.italic/descBase" = ""
@@ -3631,8 +3750,8 @@ rank = 2
 groupRank = {if = [{body = "eared"}], then = 2, else = 1}
 descriptionAffix = "shorter middle leg (like Ubuntu Mono)"
 selectorAffix.m = "shortLeg"
-selectorAffix."m/descBase" = "shortLeg"
 selectorAffix."m/sansSerif" = "shortLeg"
+selectorAffix."m/descBase" = "shortLeg"
 selectorAffix."cyrl/te.italic" = ""
 selectorAffix."cyrl/este.italic/right" = ""
 selectorAffix."cyrl/te.italic/descBase" = ""
@@ -3648,8 +3767,8 @@ next = "serifs"
 rank = 1
 keyAffix = ""
 selectorAffix.m = ""
-selectorAffix."m/descBase" = ""
 selectorAffix."m/sansSerif" = ""
+selectorAffix."m/descBase" = ""
 selectorAffix."cyrl/te.italic" = ""
 selectorAffix."cyrl/este.italic/right" = ""
 selectorAffix."cyrl/te.italic/descBase" = ""
@@ -3662,8 +3781,8 @@ selectorAffix.meng = ""
 rank = 2
 descriptionAffix = "tail"
 selectorAffix.m = "tailed"
-selectorAffix."m/descBase" = ""
 selectorAffix."m/sansSerif" = "tailed"
+selectorAffix."m/descBase" = ""
 selectorAffix."cyrl/te.italic" = "tailed"
 selectorAffix."cyrl/este.italic/right" = "tailed"
 selectorAffix."cyrl/te.italic/descBase" = ""
@@ -3677,8 +3796,8 @@ rank = 1
 descriptionJoiner = "without"
 descriptionAffix = "serifs"
 selectorAffix.m = "serifless"
-selectorAffix."m/descBase" = "serifless"
 selectorAffix."m/sansSerif" = "serifless"
+selectorAffix."m/descBase" = "serifless"
 selectorAffix."cyrl/te.italic" = "serifless"
 selectorAffix."cyrl/este.italic/right" = "serifless"
 selectorAffix."cyrl/te.italic/descBase" = "serifless"
@@ -3692,8 +3811,8 @@ rank = 2
 descriptionAffix = "serif at top left"
 disableIf = [ { body = "NOT eared" } ]
 selectorAffix.m = "topLeftSerifed"
-selectorAffix."m/descBase" = "topLeftSerifed"
 selectorAffix."m/sansSerif" = "serifless"
+selectorAffix."m/descBase" = "topLeftSerifed"
 selectorAffix."cyrl/te.italic" = "topLeftSerifed"
 selectorAffix."cyrl/este.italic/right" = "serifless"
 selectorAffix."cyrl/te.italic/descBase" = "topLeftSerifed"
@@ -3707,8 +3826,8 @@ rank = 3
 descriptionAffix = "serifs at top left and bottom right"
 disableIf = [ { body = "NOT eared" }, { tail = "tailed" } ]
 selectorAffix.m = "topLeftAndBottomRightSerifed"
-selectorAffix."m/descBase" = "topLeftSerifed"
 selectorAffix."m/sansSerif" = "serifless"
+selectorAffix."m/descBase" = "topLeftSerifed"
 selectorAffix."cyrl/te.italic" = "topLeftAndBottomRightSerifed"
 selectorAffix."cyrl/este.italic/right" = "bottomRightSerifed"
 selectorAffix."cyrl/te.italic/descBase" = "topLeftSerifed"
@@ -3722,8 +3841,8 @@ rank = 3
 descriptionAffix = "serifs at bottom right"
 disableIf = [ { body = "eared" }, { tail = "tailed" } ]
 selectorAffix.m = "bottomRightSerifed"
-selectorAffix."m/descBase" = "serifless"
 selectorAffix."m/sansSerif" = "serifless"
+selectorAffix."m/descBase" = "serifless"
 selectorAffix."cyrl/te.italic" = "topLeftAndBottomRightSerifed"
 selectorAffix."cyrl/este.italic/right" = "bottomRightSerifed"
 selectorAffix."cyrl/te.italic/descBase" = "topLeftSerifed"
@@ -3736,8 +3855,8 @@ selectorAffix.meng = "serifless"
 rank = 4
 descriptionAffix = "serifs"
 selectorAffix.m = "serifed"
-selectorAffix."m/descBase" = "serifed"
 selectorAffix."m/sansSerif" = "serifless"
+selectorAffix."m/descBase" = "serifed"
 selectorAffix."cyrl/te.italic" = "serifed"
 selectorAffix."cyrl/este.italic/right" = "serifed"
 selectorAffix."cyrl/te.italic/descBase" = "serifed"
@@ -3769,8 +3888,6 @@ selectorAffix.nHookLeft = ""
 selectorAffix.eng = ""
 selectorAffix."eng/phoneticRight" = ""
 selectorAffix.engHookLeft = ""
-selectorAffix."grek/eta" = ""
-selectorAffix."grek/eta/sansSerif" = ""
 selectorAffix."cyrl/pe.italic" = ""
 selectorAffix."cyrl/pe.italic/descBase" = ""
 selectorAffix."cyrl/yat.italic/base/corner" =  ""
@@ -3786,8 +3903,6 @@ selectorAffix.nHookLeft = "earlessCorner"
 selectorAffix.eng = "earlessCorner"
 selectorAffix."eng/phoneticRight" = "earlessCornerHTB"
 selectorAffix.engHookLeft = "earlessCorner"
-selectorAffix."grek/eta" = "earlessCorner"
-selectorAffix."grek/eta/sansSerif" = "earlessCorner"
 selectorAffix."cyrl/pe.italic" = ""
 selectorAffix."cyrl/pe.italic/descBase" = ""
 selectorAffix."cyrl/yat.italic/base/corner" = ""
@@ -3803,8 +3918,6 @@ selectorAffix.nHookLeft = "earlessRounded"
 selectorAffix.eng = "earlessRounded"
 selectorAffix."eng/phoneticRight" = "earlessRoundedHTB"
 selectorAffix.engHookLeft = "earlessRounded"
-selectorAffix."grek/eta" = "earlessRounded"
-selectorAffix."grek/eta/sansSerif" = "earlessRounded"
 selectorAffix."cyrl/pe.italic" = ""
 selectorAffix."cyrl/pe.italic/descBase" = ""
 selectorAffix."cyrl/yat.italic/base/corner" = ""
@@ -3823,8 +3936,6 @@ selectorAffix.nHookLeft = "straight"
 selectorAffix.eng = "straight"
 selectorAffix."eng/phoneticRight" = "straight"
 selectorAffix.engHookLeft = "straight"
-selectorAffix."grek/eta" = "straight"
-selectorAffix."grek/eta/sansSerif" = "straight"
 selectorAffix."cyrl/pe.italic" = "straight"
 selectorAffix."cyrl/pe.italic/descBase" = "straight"
 selectorAffix."cyrl/yat.italic/base/corner" = "straight"
@@ -3840,8 +3951,6 @@ selectorAffix.nHookLeft = "tailed"
 selectorAffix.eng = "straight"
 selectorAffix."eng/phoneticRight" = "straight"
 selectorAffix.engHookLeft = "straight"
-selectorAffix."grek/eta" = "straight"
-selectorAffix."grek/eta/sansSerif" = "straight"
 selectorAffix."cyrl/pe.italic" = "tailed"
 selectorAffix."cyrl/pe.italic/descBase" = "straight"
 selectorAffix."cyrl/yat.italic/base/corner" = "straight"
@@ -3858,8 +3967,6 @@ selectorAffix.nHookLeft = "serifless"
 selectorAffix.eng = "serifless"
 selectorAffix."eng/phoneticRight" = "topLeftSerifed"
 selectorAffix.engHookLeft = "serifless"
-selectorAffix."grek/eta" = "serifless"
-selectorAffix."grek/eta/sansSerif" = "serifless"
 selectorAffix."cyrl/pe.italic" = "serifless"
 selectorAffix."cyrl/pe.italic/descBase" = "serifless"
 selectorAffix."cyrl/yat.italic/base/corner" = "serifless"
@@ -3876,8 +3983,6 @@ selectorAffix.nHookLeft = "topLeftSerifed"
 selectorAffix.eng = "topLeftSerifed"
 selectorAffix."eng/phoneticRight" = "topLeftSerifed"
 selectorAffix.engHookLeft = "topLeftSerifed"
-selectorAffix."grek/eta" = "topLeftSerifed"
-selectorAffix."grek/eta/sansSerif" = "serifless"
 selectorAffix."cyrl/pe.italic" = "topLeftSerifed"
 selectorAffix."cyrl/pe.italic/descBase" = "topLeftSerifed"
 selectorAffix."cyrl/yat.italic/base/corner" = "topLeftSerifed"
@@ -3894,8 +3999,6 @@ selectorAffix.nHookLeft = { if = [{ terminal = "straight" }], then = "motionSeri
 selectorAffix.eng = { if = [{ body = "eared" }], then = "topLeftSerifed", else = "serifless" }
 selectorAffix."eng/phoneticRight" = "topLeftSerifed"
 selectorAffix.engHookLeft = { if = [{ body = "eared" }], then = "topLeftSerifed", else = "serifless" }
-selectorAffix."grek/eta" = { if = [{ body = "eared" }], then = "topLeftSerifed", else = "serifless" }
-selectorAffix."grek/eta/sansSerif" = "serifless"
 selectorAffix."cyrl/pe.italic" = "motionSerifed"
 selectorAffix."cyrl/pe.italic/descBase" = "topLeftSerifed"
 selectorAffix."cyrl/yat.italic/base/corner" = "topLeftSerifed"
@@ -3911,8 +4014,6 @@ selectorAffix.nHookLeft = { if = [{ terminal = "straight" }], then = "serifed", 
 selectorAffix.eng = "serifed"
 selectorAffix."eng/phoneticRight" = "serifed"
 selectorAffix.engHookLeft = { if = [{ body = "eared" }], then = "topLeftSerifed", else = "serifless" }
-selectorAffix."grek/eta" = { if = [{ body = "eared" }], then = "topLeftSerifed", else = "serifless" }
-selectorAffix."grek/eta/sansSerif" = "serifless"
 selectorAffix."cyrl/pe.italic" = "serifed"
 selectorAffix."cyrl/pe.italic/descBase" = "serifed"
 selectorAffix."cyrl/yat.italic/base/corner" = "serifedItalicYatCorner"
@@ -4137,7 +4238,7 @@ descriptionAffix = "normal body shape"
 selectorAffix.r = ""
 selectorAffix."r/sansSerif" = ""
 selectorAffix.rRTail = ""
-selectorAffix."rTurnRTail" = ""
+selectorAffix."r/ascBase" = ""
 selectorAffix."rFlap" = "earlessRounded"
 
 [prime.r.variants-buildup.stages.body.earless-corner]
@@ -4147,7 +4248,7 @@ descriptionAffix = "earless (corner top-left) body shape"
 selectorAffix.r = "earlessCorner"
 selectorAffix."r/sansSerif" = "earlessCorner"
 selectorAffix.rRTail = "earlessCorner"
-selectorAffix."rTurnRTail" = ""
+selectorAffix."r/ascBase" = ""
 selectorAffix."rFlap" = "earlessRounded"
 
 [prime.r.variants-buildup.stages.body.earless-rounded]
@@ -4157,7 +4258,7 @@ descriptionAffix = "earless (rounded top-left) body shape"
 selectorAffix.r = "earlessRounded"
 selectorAffix."r/sansSerif" = "earlessRounded"
 selectorAffix.rRTail = "earlessRounded"
-selectorAffix."rTurnRTail" = ""
+selectorAffix."r/ascBase" = ""
 selectorAffix."rFlap" = "earlessRounded"
 
 [prime.r.variants-buildup.stages.body.hookless]
@@ -4166,7 +4267,7 @@ descriptionAffix = "hookless body shape"
 selectorAffix.r = "hookless"
 selectorAffix."r/sansSerif" = "hookless"
 selectorAffix.rRTail = "hookless"
-selectorAffix."rTurnRTail" = "hookless"
+selectorAffix."r/ascBase" = "hookless"
 selectorAffix."rFlap" = "hooklessFlap"
 
 [prime.r.variants-buildup.stages.body.corner-hooked]
@@ -4175,7 +4276,7 @@ descriptionAffix = "corner-hooked body shape"
 selectorAffix.r = "cornerHooked"
 selectorAffix."r/sansSerif" = "hookless"
 selectorAffix.rRTail = "cornerHooked"
-selectorAffix."rTurnRTail" = "cornerHooked"
+selectorAffix."r/ascBase" = "cornerHooked"
 selectorAffix."rFlap" = "hooklessFlap"
 
 [prime.r.variants-buildup.stages.body.compact]
@@ -4184,7 +4285,7 @@ descriptionAffix = "compact body shape (identical to 'hookless' for monospace fo
 selectorAffix.r = "compact"
 selectorAffix."r/sansSerif" = "compact"
 selectorAffix.rRTail = "compact"
-selectorAffix."rTurnRTail" = "compact"
+selectorAffix."r/ascBase" = "compact"
 selectorAffix."rFlap" = "compactFlap"
 
 [prime.r.variants-buildup.stages.serifs.serifless]
@@ -4194,7 +4295,7 @@ descriptionAffix = "serifs"
 selectorAffix.r = "serifless"
 selectorAffix."r/sansSerif" = "serifless"
 selectorAffix.rRTail = "serifless"
-selectorAffix."rTurnRTail" = "serifless"
+selectorAffix."r/ascBase" = "serifless"
 selectorAffix."rFlap" = "serifless"
 
 [prime.r.variants-buildup.stages.serifs.top-serifed]
@@ -4204,7 +4305,7 @@ descriptionAffix = "serif at top"
 selectorAffix.r = "topSerifed"
 selectorAffix."r/sansSerif" = "serifless"
 selectorAffix.rRTail = "topSerifed"
-selectorAffix."rTurnRTail" = "serifless"
+selectorAffix."r/ascBase" = "serifless"
 selectorAffix."rFlap" = "serifless"
 
 [prime.r.variants-buildup.stages.serifs.base-serifed]
@@ -4214,7 +4315,7 @@ descriptionAffix = "serif at bottom"
 selectorAffix.r = "baseSerifed"
 selectorAffix."r/sansSerif" = "serifless"
 selectorAffix.rRTail = "serifless"
-selectorAffix."rTurnRTail" = "serifed"
+selectorAffix."r/ascBase" = "serifed"
 selectorAffix."rFlap" = "serifed"
 
 [prime.r.variants-buildup.stages.serifs.serifed]
@@ -4223,7 +4324,7 @@ descriptionAffix = "serifs"
 selectorAffix.r = "serifed"
 selectorAffix."r/sansSerif" = "serifless"
 selectorAffix.rRTail = {if =  [{body="earless-corner"}, {body="earless-rounded"}], then = "serifless", else = "topSerifed"}
-selectorAffix."rTurnRTail" = "serifed"
+selectorAffix."r/ascBase" = "serifed"
 selectorAffix."rFlap" = "serifed"
 
 
@@ -4443,7 +4544,7 @@ rank = 1
 descriptionAffix = "toothed shape"
 selectorAffix.u = "toothed"
 selectorAffix."u/sansSerif" = "toothed"
-selectorAffix."u/uRTailBase" = "urtBase"
+selectorAffix."u/descBase" = "descBase"
 selectorAffix.uShortLeg = "toothed"
 selectorAffix.uHookLeft = "toothed"
 selectorAffix.turnh = "toothed"
@@ -4454,7 +4555,7 @@ selectorAffix."turnm/reduced" = "toothed"
 selectorAffix."turnmLeg/full" = "toothed"
 selectorAffix."turnmLeg/reduced" = "toothed"
 selectorAffix."cyrl/i.italic" = "toothed"
-selectorAffix."cyrl/i.italic/descBase" = "toothed"
+selectorAffix."cyrl/i.italic/descBase" = "descBase"
 selectorAffix."cyrl/sha.italic/full" = "toothed"
 selectorAffix."cyrl/sha.italic/reduced" = "toothed"
 selectorAffix."cyrl/shcha.italic/full" = "toothed"
@@ -4470,7 +4571,7 @@ rank = 2
 descriptionAffix = "tailed shape"
 selectorAffix.u = "tailed"
 selectorAffix."u/sansSerif" = "tailed"
-selectorAffix."u/uRTailBase" = "urtBase"
+selectorAffix."u/descBase" = "descBase"
 selectorAffix.uShortLeg = "tailed"
 selectorAffix.uHookLeft = "tailed"
 selectorAffix.turnh = "toothed"
@@ -4481,7 +4582,7 @@ selectorAffix."turnm/reduced" = "tailed"
 selectorAffix."turnmLeg/full" = "toothed"
 selectorAffix."turnmLeg/reduced" = "toothed"
 selectorAffix."cyrl/i.italic" = "tailed"
-selectorAffix."cyrl/i.italic/descBase" = "toothed"
+selectorAffix."cyrl/i.italic/descBase" = "descBase"
 selectorAffix."cyrl/sha.italic/full" = "tailed"
 selectorAffix."cyrl/sha.italic/reduced" = "tailed"
 selectorAffix."cyrl/shcha.italic/full" = "toothed"
@@ -4497,7 +4598,7 @@ rank = 3
 descriptionAffix = "toothless (corner bottom-right) shape"
 selectorAffix.u = "toothlessCorner"
 selectorAffix."u/sansSerif" = "toothlessCorner"
-selectorAffix."u/uRTailBase" = "urtBase"
+selectorAffix."u/descBase" = "descBase"
 selectorAffix.uShortLeg = "toothlessCorner"
 selectorAffix.uHookLeft = "toothlessCorner"
 selectorAffix.turnh = "toothlessCorner"
@@ -4508,7 +4609,7 @@ selectorAffix."turnm/reduced" = "toothlessCorner"
 selectorAffix."turnmLeg/full" = "toothlessCorner"
 selectorAffix."turnmLeg/reduced" = "toothlessCorner"
 selectorAffix."cyrl/i.italic" = "toothed"
-selectorAffix."cyrl/i.italic/descBase" = "toothed"
+selectorAffix."cyrl/i.italic/descBase" = "descBase"
 selectorAffix."cyrl/sha.italic/full" = "toothed"
 selectorAffix."cyrl/sha.italic/reduced" = "toothed"
 selectorAffix."cyrl/shcha.italic/full" = "toothed"
@@ -4524,7 +4625,7 @@ rank = 4
 descriptionAffix = "toothless (rounded) shape"
 selectorAffix.u = "toothlessRounded"
 selectorAffix."u/sansSerif" = "toothlessRounded"
-selectorAffix."u/uRTailBase" = "urtBase"
+selectorAffix."u/descBase" = "descBase"
 selectorAffix.uShortLeg = "toothlessRounded"
 selectorAffix.uHookLeft = "toothlessRounded"
 selectorAffix.turnh = "toothed"
@@ -4535,7 +4636,7 @@ selectorAffix."turnm/reduced" = "toothlessRounded"
 selectorAffix."turnmLeg/full" = "toothed"
 selectorAffix."turnmLeg/reduced" = "toothed"
 selectorAffix."cyrl/i.italic" = "toothed"
-selectorAffix."cyrl/i.italic/descBase" = "toothed"
+selectorAffix."cyrl/i.italic/descBase" = "descBase"
 selectorAffix."cyrl/sha.italic/full" = "toothed"
 selectorAffix."cyrl/sha.italic/reduced" = "toothed"
 selectorAffix."cyrl/shcha.italic/full" = "toothed"
@@ -4552,7 +4653,7 @@ descriptionAffix = "serifs"
 descriptionJoiner = "without"
 selectorAffix.u = "serifless"
 selectorAffix."u/sansSerif" = "serifless"
-selectorAffix."u/uRTailBase" = "serifless"
+selectorAffix."u/descBase" = "serifless"
 selectorAffix.uShortLeg = "serifless"
 selectorAffix.uHookLeft = "serifless"
 selectorAffix.turnh = "serifless"
@@ -4580,7 +4681,7 @@ disableIf = [{ body = "NOT toothed" }]
 descriptionAffix = "serif at bottom-right"
 selectorAffix.u = "bottomRightSerifed"
 selectorAffix."u/sansSerif" = "serifless"
-selectorAffix."u/uRTailBase" = "serifless"
+selectorAffix."u/descBase" = "serifless"
 selectorAffix.uShortLeg = "bottomRightSerifed"
 selectorAffix.uHookLeft = "bottomRightSerifed"
 selectorAffix.turnh = "serifless"
@@ -4607,7 +4708,7 @@ rank = 3
 descriptionAffix = "motion serifs at top-left and bottom-right"
 selectorAffix.u = "motionSerifed"
 selectorAffix."u/sansSerif" = "serifless"
-selectorAffix."u/uRTailBase" = "motionSerifed"
+selectorAffix."u/descBase" = "motionSerifed"
 selectorAffix.uShortLeg = "motionSerifed"
 selectorAffix.uHookLeft = {if = [{body = "toothed"}], then = "bottomRightSerifed", else = "serifless"}
 selectorAffix.turnh = "motionSerifed"
@@ -4634,7 +4735,7 @@ rank = 4
 descriptionAffix = "serifs"
 selectorAffix.u = "serifed"
 selectorAffix."u/sansSerif" = "serifless"
-selectorAffix."u/uRTailBase" = "serifed"
+selectorAffix."u/descBase" = "serifed"
 selectorAffix.uShortLeg = "motionSerifed"
 selectorAffix.uHookLeft = "serifed"
 selectorAffix.turnh = "serifed"
@@ -4674,8 +4775,8 @@ rank = 1
 descriptionAffix = "straight body"
 selectorAffix.v = "straight"
 selectorAffix."v/sansSerif" = "straight"
-selectorAffix."v/nonCursive" = "straight"
-selectorAffix.vHookTop = ""
+selectorAffix.vScript = "rounded"
+selectorAffix.vHookRight = "straight"
 selectorAffix.vLoop = "straight"
 
 [prime.v.variants-buildup.stages.body.curly]
@@ -4683,8 +4784,8 @@ rank = 2
 descriptionAffix = "curly body"
 selectorAffix.v = "curly"
 selectorAffix."v/sansSerif" = "curly"
-selectorAffix."v/nonCursive" = "curly"
-selectorAffix.vHookTop = ""
+selectorAffix.vScript = "rounded"
+selectorAffix.vHookRight = "curly"
 selectorAffix.vLoop = "curly"
 
 [prime.v.variants-buildup.stages.body.cursive]
@@ -4692,8 +4793,8 @@ rank = 3
 descriptionAffix = "cursive body"
 selectorAffix.v = "cursive"
 selectorAffix."v/sansSerif" = "cursive"
-selectorAffix."v/nonCursive" = "straight"
-selectorAffix.vHookTop = ""
+selectorAffix.vScript = "rounded"
+selectorAffix.vHookRight = "straight"
 selectorAffix.vLoop = "straight"
 
 [prime.v.variants-buildup.stages.serifs.serifless]
@@ -4702,8 +4803,8 @@ descriptionAffix = "serifs"
 descriptionJoiner = "without"
 selectorAffix.v = "serifless"
 selectorAffix."v/sansSerif" = "serifless"
-selectorAffix."v/nonCursive" = "serifless"
-selectorAffix.vHookTop = "serifless"
+selectorAffix.vScript = "serifless"
+selectorAffix.vHookRight = "serifless"
 selectorAffix.vLoop = "serifless"
 
 [prime.v.variants-buildup.stages.serifs.motion-serifed]
@@ -4712,8 +4813,8 @@ disableIf = [{ body = "cursive" }]
 descriptionAffix = "motion serifs"
 selectorAffix.v = "motionSerifed"
 selectorAffix."v/sansSerif" = "serifless"
-selectorAffix."v/nonCursive" = "motionSerifed"
-selectorAffix.vHookTop = "serifed"
+selectorAffix.vScript = "motionSerifed"
+selectorAffix.vHookRight = "motionSerifed"
 selectorAffix.vLoop = "serifless"
 
 [prime.v.variants-buildup.stages.serifs.serifed]
@@ -4721,8 +4822,8 @@ rank = 3
 descriptionAffix = "serifs"
 selectorAffix.v = "serifed"
 selectorAffix."v/sansSerif" = "serifless"
-selectorAffix."v/nonCursive" = {if = [{body = "cursive"}], then = "motionSerifed", else = "serifed"}
-selectorAffix.vHookTop = "serifed"
+selectorAffix.vScript = {if = [{body = "cursive"}], then = "motionSerifed", else = "serifed"}
+selectorAffix.vHookRight = {if = [{body = "cursive"}], then = "motionSerifed", else = "serifed"}
 selectorAffix.vLoop = {if = [{body = "cursive"}], then = "serifless", else = "serifed"}
 
 
@@ -4744,23 +4845,23 @@ groupRank = 1
 descriptionAffix = "standard, straight body"
 selectorAffix.w = "straight"
 selectorAffix."w/sansSerif" = "straight"
-selectorAffix.wHookTop = "straight"
+selectorAffix.wHookRight = "straight"
 
 [prime.w.variants-buildup.stages.body.straight-almost-flat-top]
 rank = 2
 groupRank = 1
-descriptionAffix = "straight body shape that the middle is forced to be aligned the top"
+descriptionAffix = "straight body shape that the middle is almost aligned to the top"
 selectorAffix.w = "straightAlmostFlatTop"
-selectorAffix."w/sansSerif" = "straightAlmostFlatTop"
-selectorAffix.wHookTop = "straightAlmostFlatTop"
+selectorAffix."w/sansSerif" = "straightFlatTop"
+selectorAffix.wHookRight = "straightAlmostFlatTop"
 
 [prime.w.variants-buildup.stages.body.straight-flat-top]
 rank = 3
 groupRank = 1
-descriptionAffix = "straight body shape that the middle is forced to be aligned the top"
+descriptionAffix = "straight body shape that the middle is forced to be aligned to the top"
 selectorAffix.w = "straightFlatTop"
 selectorAffix."w/sansSerif" = "straightFlatTop"
-selectorAffix.wHookTop = "straightFlatTop"
+selectorAffix.wHookRight = "straightFlatTop"
 
 [prime.w.variants-buildup.stages.body.straight-double-v]
 rank = 4
@@ -4768,7 +4869,7 @@ groupRank = 2
 descriptionAffix = "body shape like double V"
 selectorAffix.w = "straightDoubleV"
 selectorAffix."w/sansSerif" = "straightDoubleV"
-selectorAffix.wHookTop = "straightDoubleV"
+selectorAffix.wHookRight = "straightDoubleV"
 
 [prime.w.variants-buildup.stages.body.straight-asymmetric]
 rank = 5
@@ -4776,7 +4877,7 @@ groupRank = 2
 descriptionAffix = "asymmetric shape"
 selectorAffix.w = "straightAsymmetric"
 selectorAffix."w/sansSerif" = "straightAsymmetric"
-selectorAffix.wHookTop = "straightAsymmetric"
+selectorAffix.wHookRight = "straightAsymmetric"
 
 [prime.w.variants-buildup.stages.body.straight-vertical-sides]
 rank = 6
@@ -4784,31 +4885,67 @@ groupRank = 3
 descriptionAffix = "straight body shape with vertical sides"
 selectorAffix.w = "straightVerticalSides"
 selectorAffix."w/sansSerif" = "straightVerticalSides"
-selectorAffix.wHookTop = "straightVerticalSides"
+selectorAffix.wHookRight = "straightVerticalSides"
+
+[prime.w.variants-buildup.stages.body.straight-vertical-sides-flat-top]
+rank = 7
+groupRank = 3
+nonBreakingVariantAdditionPriority = 100
+descriptionAffix = "straight body shape with vertical sides, and a middle stem aligned to the top"
+selectorAffix.w = "straightVerticalSidesFlatTop"
+selectorAffix."w/sansSerif" = "straightVerticalSidesFlatTop"
+selectorAffix.wHookRight = "straightVerticalSidesFlatTop"
 
 [prime.w.variants-buildup.stages.body.rounded-vertical-sides]
-rank = 7
+rank = 8
 groupRank = 3
 descriptionAffix = "rounded body shape with vertical sides"
 selectorAffix.w = "roundedVerticalSides"
 selectorAffix."w/sansSerif" = "roundedVerticalSides"
-selectorAffix.wHookTop = "roundedVerticalSides"
+selectorAffix.wHookRight = "roundedVerticalSides"
+
+[prime.w.variants-buildup.stages.body.rounded-vertical-sides-flat-top]
+rank = 9
+groupRank = 3
+nonBreakingVariantAdditionPriority = 100
+descriptionAffix = "rounded body shape with vertical sides, and a middle stem aligned to the top"
+selectorAffix.w = "roundedVerticalSidesFlatTop"
+selectorAffix."w/sansSerif" = "roundedVerticalSidesFlatTop"
+selectorAffix.wHookRight = "roundedVerticalSidesFlatTop"
 
 [prime.w.variants-buildup.stages.body.curly]
-rank = 8
-groupRank = 4
+rank = 10
+groupRank = 3
 descriptionAffix = "curly body"
 selectorAffix.w = "curly"
 selectorAffix."w/sansSerif" = "curly"
-selectorAffix.wHookTop = "curly"
+selectorAffix.wHookRight = "curly"
+
+[prime.w.variants-buildup.stages.body.curly-almost-flat-top]
+rank = 11
+groupRank = 3
+nonBreakingVariantAdditionPriority = 100
+descriptionAffix = "curly body with a middle stem almost aligned to the top"
+selectorAffix.w = "curlyAlmostFlatTop"
+selectorAffix."w/sansSerif" = "curlyFlatTop"
+selectorAffix.wHookRight = "curlyAlmostFlatTop"
+
+[prime.w.variants-buildup.stages.body.curly-flat-top]
+rank = 12
+groupRank = 3
+nonBreakingVariantAdditionPriority = 100
+descriptionAffix = "curly body with a middle stem aligned to the top"
+selectorAffix.w = "curlyFlatTop"
+selectorAffix."w/sansSerif" = "curlyFlatTop"
+selectorAffix.wHookRight = "curlyFlatTop"
 
 [prime.w.variants-buildup.stages.body.cursive]
-rank = 9
+rank = 13
 groupRank = 4
 descriptionAffix = "cursive shape"
 selectorAffix.w = "cursive"
 selectorAffix."w/sansSerif" = "cursive"
-selectorAffix.wHookTop = "cursive"
+selectorAffix.wHookRight = "cursive"
 
 [prime.w.variants-buildup.stages.serifs.serifless]
 rank = 1
@@ -4816,7 +4953,7 @@ descriptionAffix = "serifs"
 descriptionJoiner = "without"
 selectorAffix.w = "serifless"
 selectorAffix."w/sansSerif" = "serifless"
-selectorAffix.wHookTop = "serifless"
+selectorAffix.wHookRight = "serifless"
 
 [prime.w.variants-buildup.stages.serifs.motion-serifed]
 rank = 2
@@ -4824,14 +4961,14 @@ disableIf = [{ body = "cursive" }]
 descriptionAffix = "motion serifs"
 selectorAffix.w = "motionSerifed"
 selectorAffix."w/sansSerif" = "serifless"
-selectorAffix.wHookTop = "motionSerifed"
+selectorAffix.wHookRight = "motionSerifed"
 
 [prime.w.variants-buildup.stages.serifs.serifed]
 rank = 3
 descriptionAffix = "serifs"
 selectorAffix.w = "serifed"
 selectorAffix."w/sansSerif" = "serifless"
-selectorAffix.wHookTop = "serifed"
+selectorAffix.wHookRight = { if = [{ body = "straight-double-v" }, { body = "straight-asymmetric" }], then = "motionSerifed", else = "serifed" }
 
 
 
@@ -4948,28 +5085,28 @@ next = "hook"
 rank = 1
 descriptionAffix = "straight shape"
 selectorAffix.y = "straight"
-selectorAffix.yLoop = "straightLoop"
 selectorAffix."y/sansSerif" = "straight"
 selectorAffix."y/nonCursive" = "straight"
-selectorAffix.yHookTop = "straight"
+selectorAffix.yHookRight = "straight"
+selectorAffix.yLoop = "straightLoop"
 
 [prime.y.variants-buildup.stages.body.curly]
 rank = 2
 descriptionAffix = "curly shape"
 selectorAffix.y = "curly"
-selectorAffix.yLoop = "curlyLoop"
 selectorAffix."y/sansSerif" = "curly"
 selectorAffix."y/nonCursive" = "curly"
-selectorAffix.yHookTop = "curly"
+selectorAffix.yHookRight = "curly"
+selectorAffix.yLoop = "curlyLoop"
 
 [prime.y.variants-buildup.stages.body.cursive]
 rank = 3
 descriptionAffix = "cursive shape"
 selectorAffix.y = "cursive"
-selectorAffix.yLoop = "straightLoop"
 selectorAffix."y/sansSerif" = "cursive"
 selectorAffix."y/nonCursive" = "straight"
-selectorAffix.yHookTop = "cursive"
+selectorAffix.yHookRight = "cursive"
+selectorAffix.yLoop = "straightLoop"
 
 [prime.y.variants-buildup.stages.hook."*"]
 next = "serifs"
@@ -4978,58 +5115,58 @@ next = "serifs"
 rank = 1
 keyAffix = ""
 selectorAffix.y = ""
-selectorAffix.yLoop = ""
 selectorAffix."y/sansSerif" = ""
 selectorAffix."y/nonCursive" = ""
-selectorAffix.yHookTop = ""
+selectorAffix.yHookRight = ""
+selectorAffix.yLoop = ""
 
 [prime.y.variants-buildup.stages.hook.turn]
 rank = 2
 disableIf = [{ body = "cursive" }]
 descriptionAffix = "a tail turns leftward"
 selectorAffix.y = "turn"
-selectorAffix.yLoop = ""
 selectorAffix."y/sansSerif" = "turn"
 selectorAffix."y/nonCursive" = "turn"
-selectorAffix.yHookTop = "turn"
+selectorAffix.yHookRight = "turn"
+selectorAffix.yLoop = ""
 
 [prime.y.variants-buildup.stages.hook.flat-hook]
 rank = 3
 disableIf = [{ body = "NOT cursive" }]
 descriptionAffix = "a flat terminal hook"
 selectorAffix.y = "flatHook"
-selectorAffix.yLoop = ""
 selectorAffix."y/sansSerif" = "flatHook"
 selectorAffix."y/nonCursive" = ""
-selectorAffix.yHookTop = "flatHook"
+selectorAffix.yHookRight = "flatHook"
+selectorAffix.yLoop = ""
 
 [prime.y.variants-buildup.stages.serifs.serifless]
 rank = 1
 descriptionAffix = "serifs"
 descriptionJoiner = "without"
 selectorAffix.y = "serifless"
-selectorAffix.yLoop = "serifless"
 selectorAffix."y/sansSerif" = "serifless"
 selectorAffix."y/nonCursive" = "serifless"
-selectorAffix.yHookTop = "serifless"
+selectorAffix.yHookRight = "serifless"
+selectorAffix.yLoop = "serifless"
 
 [prime.y.variants-buildup.stages.serifs.motion-serifed]
 rank = 2
 descriptionAffix = "motion serifs"
 selectorAffix.y = "motionSerifed"
-selectorAffix.yLoop = "motionSerifed"
 selectorAffix."y/sansSerif" = "serifless"
 selectorAffix."y/nonCursive" = "motionSerifed"
-selectorAffix.yHookTop = "motionSerifed"
+selectorAffix.yHookRight = "motionSerifed"
+selectorAffix.yLoop = "motionSerifed"
 
 [prime.y.variants-buildup.stages.serifs.serifed]
 rank = 3
 descriptionAffix = "serifs"
 selectorAffix.y = "serifed"
-selectorAffix.yLoop = "serifed"
 selectorAffix."y/sansSerif" = "serifless"
 selectorAffix."y/nonCursive" = "serifed"
-selectorAffix.yHookTop = { if = [{ body = "cursive" }], then = "motionSerifed", else = "serifed" }
+selectorAffix.yHookRight = { if = [{ body = "cursive" }], then = "motionSerifed", else = "serifed" }
+selectorAffix.yLoop = "serifed"
 
 
 
@@ -5755,6 +5892,59 @@ selector."grek/delta" = "flatTop"
 
 
 
+[prime.lower-eta]
+sampler = "η"
+samplerExplain = "Greek lower Eta"
+nonBreakingTagForNewVariantSelector = "VXAA" # REMOVE IN NEXT MAJOR VERSION CHANGE
+tagKind = "letter"
+
+[prime.lower-eta.variants-buildup]
+entry = "body"
+descriptionLeader = "Greek lower Eta (`η`)"
+
+[prime.lower-eta.variants-buildup.stages.body."*"]
+next = "serifs"
+
+[prime.lower-eta.variants-buildup.stages.body.eared]
+rank = 1
+keyAffix = ""
+selectorAffix."grek/eta" = "straight"
+selectorAffix."grek/eta/sansSerif" = "straight"
+
+[prime.lower-eta.variants-buildup.stages.body.earless-corner]
+rank = 2
+descriptionAffix = "earless (corner top-left) body shape"
+selectorAffix."grek/eta" = "earlessCornerStraight"
+selectorAffix."grek/eta/sansSerif" = "earlessCornerStraight"
+
+[prime.lower-eta.variants-buildup.stages.body.earless-rounded]
+rank = 3
+descriptionAffix = "earless (rounded top-left) body shape"
+selectorAffix."grek/eta" = "earlessRoundedStraight"
+selectorAffix."grek/eta/sansSerif" = "earlessRoundedStraight"
+
+[prime.lower-eta.variants-buildup.stages.serifs.serifless]
+rank = 1
+descriptionJoiner = "without"
+descriptionAffix = "serifs"
+selectorAffix."grek/eta" = "serifless"
+selectorAffix."grek/eta/sansSerif" = "serifless"
+
+[prime.lower-eta.variants-buildup.stages.serifs.motion-serifed]
+rank = 2
+descriptionAffix = "serif at top left"
+enableIf = [ { body = "eared" } ]
+selectorAffix."grek/eta" = "topLeftSerifed"
+selectorAffix."grek/eta/sansSerif" = "serifless"
+
+[prime.lower-eta.variants-buildup.stages.serifs.serifed]
+rank = 3
+descriptionAffix = "serifs"
+selectorAffix."grek/eta" = "serifed"
+selectorAffix."grek/eta/sansSerif" = "serifless"
+
+
+
 [prime.lower-theta]
 sampler = "θ"
 samplerExplain = "Greek lower Theta"
@@ -5764,16 +5954,25 @@ tagKind = "letter"
 rank = 1
 description = "Greek lower Theta (`θ`) with a capsule (O-like) body shape"
 selector."grek/theta" = "capsule"
+selector."grek/theta/nonCursive" = "capsule"
 
 [prime.lower-theta.variants.oval]
 rank = 2
 description = "Greek lower Theta (`θ`) with a standard (oval) body shape"
 selector."grek/theta" = "oval"
+selector."grek/theta/nonCursive" = "oval"
 
 [prime.lower-theta.variants.diamond]
 rank = 3
 description = "Greek lower Theta (`θ`) with a diamond body shape"
 selector."grek/theta" = "diamond"
+selector."grek/theta/nonCursive" = "diamond"
+
+[prime.lower-theta.variants.cursive]
+rank = 4
+description = "Greek lower Theta (`θ`) with a cursive body shape"
+selector."grek/theta" = "cursive"
+selector."grek/theta/nonCursive" = "oval"
 
 
 
@@ -5868,6 +6067,94 @@ selector."latn/iota" = "serifedSemiTailed"
 
 
 
+[prime.lower-kappa]
+sampler = "κ"
+samplerExplain = "Greek lower Kappa"
+nonBreakingTagForNewVariantSelector = "VXAB" # REMOVE IN NEXT MAJOR VERSION CHANGE
+tagKind = "letter"
+
+[prime.lower-kappa.variants-buildup]
+entry = "body"
+descriptionLeader = "Greek lower Kappa (`κ`)"
+
+[prime.lower-kappa.variants-buildup.stages.body."*"]
+next = "serifs"
+
+[prime.lower-kappa.variants-buildup.stages.body.straight]
+rank = 1
+descriptionAffix = "standard shape"
+selectorAffix."grek/kappa" = "straight"
+selectorAffix."grek/kappa/sansSerif" = "straight"
+
+[prime.lower-kappa.variants-buildup.stages.body.curly]
+rank = 2
+descriptionAffix = "curly shape"
+selectorAffix."grek/kappa" = "curly"
+selectorAffix."grek/kappa/sansSerif" = "curly"
+
+[prime.lower-kappa.variants-buildup.stages.body.symmetric-touching]
+rank = 3
+descriptionAffix = "symmetric legs touching the vertical bar"
+selectorAffix."grek/kappa" = "symmetricTouching"
+selectorAffix."grek/kappa/sansSerif" = "symmetricTouching"
+
+[prime.lower-kappa.variants-buildup.stages.body.symmetric-connected]
+rank = 4
+descriptionAffix = "symmetric legs connected to the vertical bar"
+selectorAffix."grek/kappa" = "symmetricConnected"
+selectorAffix."grek/kappa/sansSerif" = "symmetricConnected"
+
+[prime.lower-kappa.variants-buildup.stages.serifs.serifless]
+rank = 1
+descriptionAffix = "serifs"
+descriptionJoiner = "without"
+selectorAffix."grek/kappa" = "serifless"
+selectorAffix."grek/kappa/sansSerif" = "serifless"
+
+[prime.lower-kappa.variants-buildup.stages.serifs.top-left-serifed]
+rank = 2
+descriptionAffix = "serifs at top left"
+selectorAffix."grek/kappa" = "topLeftSerifed"
+selectorAffix."grek/kappa/sansSerif" = "serifless"
+
+[prime.lower-kappa.variants-buildup.stages.serifs.bottom-right-serifed]
+rank = 3
+descriptionAffix = "serifs at bottom right"
+selectorAffix."grek/kappa" = "bottomRightSerifed"
+selectorAffix."grek/kappa/sansSerif" = "serifless"
+
+[prime.lower-kappa.variants-buildup.stages.serifs.top-left-and-bottom-right-serifed]
+rank = 4
+descriptionAffix = "serifs at top left and bottom right"
+selectorAffix."grek/kappa" = "topLeftAndBottomRightSerifed"
+selectorAffix."grek/kappa/sansSerif" = "serifless"
+
+[prime.lower-kappa.variants-buildup.stages.serifs.top-right-serifed]
+rank = 5
+descriptionAffix = "serifs at top right"
+selectorAffix."grek/kappa" = "topRightSerifed"
+selectorAffix."grek/kappa/sansSerif" = "serifless"
+
+[prime.lower-kappa.variants-buildup.stages.serifs.tri-serifed]
+rank = 6
+descriptionAffix = "serifs at top left and both legs"
+selectorAffix."grek/kappa" = "triSerifed"
+selectorAffix."grek/kappa/sansSerif" = "serifless"
+
+[prime.lower-kappa.variants-buildup.stages.serifs.serifed]
+rank = 7
+descriptionAffix = "serifs"
+selectorAffix."grek/kappa" = "serifedKappa"
+selectorAffix."grek/kappa/sansSerif" = "serifless"
+
+[prime.lower-kappa.variants-buildup.stages.serifs.full-serifed]
+rank = 8
+descriptionAffix = "full serifs at legs"
+selectorAffix."grek/kappa" = "fullSerifed"
+selectorAffix."grek/kappa/sansSerif" = "serifless"
+
+
+
 [prime.capital-lambda]
 sampler = "Λ"
 samplerExplain = "Greek capital Lambda (`Λ`)"
@@ -5886,7 +6173,6 @@ descriptionAffix = "straight shape"
 selectorAffix."grek/Lambda" = "straight"
 selectorAffix."grek/Lambda/sansSerif" = "straight"
 selectorAffix."cyrl/Yus" = "straight"
-selectorAffix."Y/LambdaBase" = "straight"
 
 [prime.capital-lambda.variants-buildup.stages.body.curly]
 rank = 2
@@ -5894,7 +6180,6 @@ descriptionAffix = "curly shape"
 selectorAffix."grek/Lambda" = "curly"
 selectorAffix."grek/Lambda/sansSerif" = "curly"
 selectorAffix."cyrl/Yus" = "curly"
-selectorAffix."Y/LambdaBase" = "curly"
 
 [prime.capital-lambda.variants-buildup.stages.serifs.serifless]
 rank = 1
@@ -5903,7 +6188,6 @@ descriptionJoiner = "without"
 selectorAffix."grek/Lambda" = "serifless"
 selectorAffix."grek/Lambda/sansSerif" = "serifless"
 selectorAffix."cyrl/Yus" = ""
-selectorAffix."Y/LambdaBase" = "serifless"
 
 [prime.capital-lambda.variants-buildup.stages.serifs.top-serifed]
 rank = 2
@@ -5911,7 +6195,6 @@ descriptionAffix = "serifs at top"
 selectorAffix."grek/Lambda" = "topSerifed"
 selectorAffix."grek/Lambda/sansSerif" = "serifless"
 selectorAffix."cyrl/Yus" = ""
-selectorAffix."Y/LambdaBase" = "baseSerifed"
 
 [prime.capital-lambda.variants-buildup.stages.serifs.base-serifed]
 rank = 3
@@ -5919,7 +6202,6 @@ descriptionAffix = "serifs at base"
 selectorAffix."grek/Lambda" = "baseSerifed"
 selectorAffix."grek/Lambda/sansSerif" = "serifless"
 selectorAffix."cyrl/Yus" = ""
-selectorAffix."Y/LambdaBase" = "serifed"
 
 [prime.capital-lambda.variants-buildup.stages.serifs.tri-serifed]
 rank = 4
@@ -5927,7 +6209,6 @@ descriptionAffix = "serifs at both top and base"
 selectorAffix."grek/Lambda" = "triSerifed"
 selectorAffix."grek/Lambda/sansSerif" = "serifless"
 selectorAffix."cyrl/Yus" = ""
-selectorAffix."Y/LambdaBase" = "serifed"
 
 
 
@@ -5940,31 +6221,37 @@ tagKind = "letter"
 rank = 1
 description = "More-straight Greek lower Lambda (`λ`)"
 selector."grek/lambda" = "straightSerifless"
+selector."latn/lambda" = "straight"
 
 [prime.lower-lambda.variants.straight-turn]
 rank = 2
 description = "Greek lower Lambda (`λ`) with straight upper and a tail turns leftward"
 selector."grek/lambda" = "straightTurnSerifless"
+selector."latn/lambda" = "straightTurn"
 
 [prime.lower-lambda.variants.tailed-turn]
 rank = 3
 description = "More curly Greek lower Lambda (`λ`), with a tail turns leftward at top and a tail turns right at bottom-right"
 selector."grek/lambda" = "tailedTurnSerifless"
+selector."latn/lambda" = "tailedTurn"
 
 [prime.lower-lambda.variants.curly]
 rank = 4
 description = "More curly Greek lower Lambda (`λ`), like Iosevka 2.x"
 selector."grek/lambda" = "curlySerifless"
+selector."latn/lambda" = "curly"
 
 [prime.lower-lambda.variants.curly-turn]
 rank = 5
 description = "More curly Greek lower Lambda (`λ`), like Iosevka 2.x, with a tail turns leftward"
 selector."grek/lambda" = "curlyTurnSerifless"
+selector."latn/lambda" = "curlyTurn"
 
 [prime.lower-lambda.variants.curly-tailed-turn]
 rank = 6
 description = "More curly Greek lower Lambda (`λ`), with a tail turns leftward at top, a tail turns right at bottom-right, and curly bottom-left leg"
 selector."grek/lambda" = "curlyTailedTurnSerifless"
+selector."latn/lambda" = "curlyTailedTurn"
 
 
 
@@ -6329,12 +6616,12 @@ tagKind = "letter"
 
 [prime.partial-derivative.variants.straight-bar]
 rank = 1
-description = "Partial derivative symbol (`∂`) with a straight upper bar"
+description = "Partial derivative symbol (`∂`) with a straight bar"
 selector."partial" = "straight-bar"
 
 [prime.partial-derivative.variants.curly-bar]
 rank = 2
-description = "Partial derivative symbol (`∂`) with a curly upper bar"
+description = "Partial derivative symbol (`∂`) with a curly bar"
 selector."partial" = "curly-bar"
 
 [prime.partial-derivative.variants.closed-contour]
@@ -6358,14 +6645,14 @@ rank = 1
 next = "double-storey-hook"
 descriptionAffix = "double-storey body"
 selectorAffix."cyrl/a" = "doubleStorey"
-selectorAffix."cyrl/ae/a" = "doubleStorey"
+selectorAffix."cyrl/aie/a" = "doubleStorey"
 
 [prime.cyrl-a.variants-buildup.stages.storey.single-storey]
 rank = 2
 next = "ear"
 descriptionAffix = "single-storey body"
 selectorAffix."cyrl/a" = "singleStorey"
-selectorAffix."cyrl/ae/a" = "doubleStorey"
+selectorAffix."cyrl/aie/a" = "doubleStorey"
 
 [prime.cyrl-a.variants-buildup.stages.double-storey-hook."*"]
 next = "bar"
@@ -6375,14 +6662,14 @@ rank = 1
 keyAffix = ""
 descriptionAffix = "serifless hook"
 selectorAffix."cyrl/a" = ""
-selectorAffix."cyrl/ae/a" = ""
+selectorAffix."cyrl/aie/a" = ""
 
 [prime.cyrl-a.variants-buildup.stages.double-storey-hook.hook-serifed]
 rank = 2
 keyAffix = "hook-inward-serifed"
 descriptionAffix = "serifed hook"
 selectorAffix."cyrl/a" = "hookInwardSerifed"
-selectorAffix."cyrl/ae/a" = "hookInwardSerifed"
+selectorAffix."cyrl/aie/a" = "hookInwardSerifed"
 
 [prime.cyrl-a.variants-buildup.stages.ear."*"]
 next = "bar"
@@ -6391,72 +6678,72 @@ next = "bar"
 rank = 1
 keyAffix = ""
 selectorAffix."cyrl/a" = ""
-selectorAffix."cyrl/ae/a" = ""
+selectorAffix."cyrl/aie/a" = ""
 
 [prime.cyrl-a.variants-buildup.stages.ear.top-cut]
 rank = 2
 descriptionAffix = "a diagonal cut at top"
 selectorAffix."cyrl/a" = "topCut"
-selectorAffix."cyrl/ae/a" = ""
+selectorAffix."cyrl/aie/a" = ""
 
 [prime.cyrl-a.variants-buildup.stages.ear.earless-corner]
 rank = 3
 descriptionAffix = "earless (cornered top-right)"
 selectorAffix."cyrl/a" = "earlessCorner"
-selectorAffix."cyrl/ae/a" = ""
+selectorAffix."cyrl/aie/a" = ""
 
 [prime.cyrl-a.variants-buildup.stages.ear.earless-rounded]
 rank = 4
 descriptionAffix = "earless (rounded top-right)"
 selectorAffix."cyrl/a" = "earlessRounded"
-selectorAffix."cyrl/ae/a" = ""
+selectorAffix."cyrl/aie/a" = ""
 
 [prime.cyrl-a.variants-buildup.stages.bar.serifless]
 rank = 1
 descriptionAffix = "serif at terminal"
 descriptionJoiner = "without"
 selectorAffix."cyrl/a" = "serifless"
-selectorAffix."cyrl/ae/a" = "serifless"
+selectorAffix."cyrl/aie/a" = "serifless"
 
 [prime.cyrl-a.variants-buildup.stages.bar.serifed]
 rank = 2
 descriptionAffix = "serif at terminal"
 selectorAffix."cyrl/a" = "serifed"
-selectorAffix."cyrl/ae/a" = "serifless"
+selectorAffix."cyrl/aie/a" = "serifless"
 
 [prime.cyrl-a.variants-buildup.stages.bar.double-serifed]
 rank = 3
 disableIf = [{ storey = "double-storey" }, { ear = "NOT eared" }]
 descriptionAffix = "serifs at top and bottom"
 selectorAffix."cyrl/a" = "doubleSerifed"
-selectorAffix."cyrl/ae/a" = "serifless"
+selectorAffix."cyrl/aie/a" = "serifless"
 
 [prime.cyrl-a.variants-buildup.stages.bar.tailed]
 rank = 4
 descriptionAffix = "curly tail"
 selectorAffix."cyrl/a" = "tailed"
-selectorAffix."cyrl/ae/a" = "serifless"
+selectorAffix."cyrl/aie/a" = "serifless"
 
 [prime.cyrl-a.variants-buildup.stages.bar.tailed-serifed]
 rank = 5
 disableIf = [{ storey = "double-storey" }, { ear = "NOT eared" }]
 descriptionAffix = "curly tail; with serifs at top and bottom"
 selectorAffix."cyrl/a" = "tailedSerifed"
-selectorAffix."cyrl/ae/a" = "serifless"
+selectorAffix."cyrl/aie/a" = "serifless"
 
 [prime.cyrl-a.variants-buildup.stages.bar.toothless-corner]
 rank = 6
 disableIf = [{ storey = "single-storey" }]
 descriptionAffix = "toothless (cornered bottom-right)"
 selectorAffix."cyrl/a" = "toothlessCorner"
-selectorAffix."cyrl/ae/a" = "serifless"
+selectorAffix."cyrl/aie/a" = "serifless"
 
 [prime.cyrl-a.variants-buildup.stages.bar.toothless-rounded]
 rank = 7
 disableIf = [{ storey = "single-storey" }]
 descriptionAffix = "toothless (rounded bottom-right)"
 selectorAffix."cyrl/a" = "toothlessRounded"
-selectorAffix."cyrl/ae/a" = "serifless"
+selectorAffix."cyrl/aie/a" = "serifless"
 
 
 
@@ -6814,8 +7101,28 @@ selectorAffix."cyrl/KaVBar" = "topLeftAndBottomRightSerifed"
 selectorAffix."cyrl/KaHook" = "topLeftSerifed"
 selectorAffix."cyrl/KaBashkir" = "bottomRightSerifed"
 
-[prime.cyrl-capital-ka.variants-buildup.stages.serifs.serifed]
+[prime.cyrl-capital-ka.variants-buildup.stages.serifs.top-right-serifed]
 rank = 5
+nonBreakingVariantAdditionPriority = 100
+descriptionAffix = "serifs at top right"
+selectorAffix."cyrl/Ka" = "topRightSerifed"
+selectorAffix."cyrl/KaDescender" = "topRightSerifed"
+selectorAffix."cyrl/KaVBar" = "topRightSerifed"
+selectorAffix."cyrl/KaHook" = "topRightSerifed"
+selectorAffix."cyrl/KaBashkir" = "topRightSerifed"
+
+[prime.cyrl-capital-ka.variants-buildup.stages.serifs.tri-serifed]
+rank = 6
+nonBreakingVariantAdditionPriority = 100
+descriptionAffix = "serifs at top left and both legs"
+selectorAffix."cyrl/Ka" = "triSerifed"
+selectorAffix."cyrl/KaDescender" = "topLeftAndTopRightSerifed"
+selectorAffix."cyrl/KaVBar" = "triSerifed"
+selectorAffix."cyrl/KaHook" = "topLeftAndTopRightSerifed"
+selectorAffix."cyrl/KaBashkir" = "topRightAndBottomRightSerifed"
+
+[prime.cyrl-capital-ka.variants-buildup.stages.serifs.serifed]
+rank = 7
 descriptionAffix = "serifs"
 selectorAffix."cyrl/Ka" = "serifed"
 selectorAffix."cyrl/KaDescender" = "serifed"
@@ -6910,8 +7217,28 @@ selectorAffix."cyrl/kaVBar" = "topLeftAndBottomRightSerifed"
 selectorAffix."cyrl/kaHook" = "topLeftSerifed"
 selectorAffix."cyrl/kaBashkir" = "bottomRightSerifed"
 
-[prime.cyrl-ka.variants-buildup.stages.serifs.serifed]
+[prime.cyrl-ka.variants-buildup.stages.serifs.top-right-serifed]
 rank = 5
+nonBreakingVariantAdditionPriority = 100
+descriptionAffix = "serifs at top right"
+selectorAffix."cyrl/ka" = "topRightSerifed"
+selectorAffix."cyrl/kaDescender" = "topRightSerifed"
+selectorAffix."cyrl/kaVBar" = "topRightSerifed"
+selectorAffix."cyrl/kaHook" = "topRightSerifed"
+selectorAffix."cyrl/kaBashkir" = "topRightSerifed"
+
+[prime.cyrl-ka.variants-buildup.stages.serifs.tri-serifed]
+rank = 6
+nonBreakingVariantAdditionPriority = 100
+descriptionAffix = "serifs at top left and bottom right"
+selectorAffix."cyrl/ka" = "triSerifed"
+selectorAffix."cyrl/kaDescender" = "topLeftAndTopRightSerifed"
+selectorAffix."cyrl/kaVBar" = "triSerifed"
+selectorAffix."cyrl/kaHook" = "topLeftAndTopRightSerifed"
+selectorAffix."cyrl/kaBashkir" = "topRightAndBottomRightSerifed"
+
+[prime.cyrl-ka.variants-buildup.stages.serifs.serifed]
+rank = 7
 descriptionAffix = "serifs"
 selectorAffix."cyrl/ka" = "serifed"
 selectorAffix."cyrl/kaDescender" = "serifed"
@@ -7236,18 +7563,21 @@ next = "hook"
 rank = 1
 descriptionAffix = "straight shape"
 selectorAffix."cyrl/U" = "straight"
+selectorAffix."cyrl/Izhitsa" = "straight"
 selectorAffix."cyrl/Ue" = "straight"
 
 [prime.cyrl-capital-u.variants-buildup.stages.body.curly]
 rank = 2
 descriptionAffix = "curly shape"
 selectorAffix."cyrl/U" = "curly"
+selectorAffix."cyrl/Izhitsa" = "curly"
 selectorAffix."cyrl/Ue" = "curly"
 
 [prime.cyrl-capital-u.variants-buildup.stages.body.cursive]
 rank = 3
 descriptionAffix = "cursive shape"
 selectorAffix."cyrl/U" = "cursive"
+selectorAffix."cyrl/Izhitsa" = "straight"
 selectorAffix."cyrl/Ue" = "straight"
 
 [prime.cyrl-capital-u.variants-buildup.stages.hook."*"]
@@ -7257,6 +7587,7 @@ next = "serifs"
 rank = 1
 keyAffix = ""
 selectorAffix."cyrl/U" = ""
+selectorAffix."cyrl/Izhitsa" = ""
 selectorAffix."cyrl/Ue" = ""
 
 [prime.cyrl-capital-u.variants-buildup.stages.hook.turn]
@@ -7264,6 +7595,7 @@ rank = 2
 disableIf = [{ body = "cursive" }]
 descriptionAffix = "a tail turns leftward"
 selectorAffix."cyrl/U" = "turn"
+selectorAffix."cyrl/Izhitsa" = ""
 selectorAffix."cyrl/Ue" = ""
 
 [prime.cyrl-capital-u.variants-buildup.stages.hook.flat-hook]
@@ -7271,6 +7603,7 @@ rank = 3
 disableIf = [{ body = "NOT cursive" }]
 descriptionAffix = "a flat terminal hook"
 selectorAffix."cyrl/U" = "flatHook"
+selectorAffix."cyrl/Izhitsa" = ""
 selectorAffix."cyrl/Ue" = ""
 
 [prime.cyrl-capital-u.variants-buildup.stages.serifs.serifless]
@@ -7278,18 +7611,21 @@ rank = 1
 descriptionAffix = "serifs"
 descriptionJoiner = "without"
 selectorAffix."cyrl/U" = "serifless"
+selectorAffix."cyrl/Izhitsa" = "serifless"
 selectorAffix."cyrl/Ue" = "serifless"
 
 [prime.cyrl-capital-u.variants-buildup.stages.serifs.motion-serifed]
 rank = 2
 descriptionAffix = "motion serifs"
 selectorAffix."cyrl/U" = "motionSerifed"
+selectorAffix."cyrl/Izhitsa" = "motionSerifed"
 selectorAffix."cyrl/Ue" = "motionSerifed"
 
 [prime.cyrl-capital-u.variants-buildup.stages.serifs.serifed]
 rank = 3
 descriptionAffix = "serifs"
 selectorAffix."cyrl/U" = "serifed"
+selectorAffix."cyrl/Izhitsa" = "serifed"
 selectorAffix."cyrl/Ue" = "serifed"
 
 
@@ -7310,18 +7646,24 @@ next = "hook"
 rank = 1
 descriptionAffix = "straight shape"
 selectorAffix."cyrl/u" = "straight"
+selectorAffix."cyrl/u/nonCursive" = "straight"
+selectorAffix."cyrl/izhitsa" = "straight"
 selectorAffix."cyrl/ue" = "straight"
 
 [prime.cyrl-u.variants-buildup.stages.body.curly]
 rank = 2
 descriptionAffix = "curly shape"
 selectorAffix."cyrl/u" = "curly"
+selectorAffix."cyrl/u/nonCursive" = "curly"
+selectorAffix."cyrl/izhitsa" = "curly"
 selectorAffix."cyrl/ue" = "curly"
 
 [prime.cyrl-u.variants-buildup.stages.body.cursive]
 rank = 3
 descriptionAffix = "cursive shape"
 selectorAffix."cyrl/u" = "cursive"
+selectorAffix."cyrl/u/nonCursive" = "straight"
+selectorAffix."cyrl/izhitsa" = "straight"
 selectorAffix."cyrl/ue" = "straight"
 
 [prime.cyrl-u.variants-buildup.stages.hook."*"]
@@ -7331,6 +7673,8 @@ next = "serifs"
 rank = 1
 keyAffix = ""
 selectorAffix."cyrl/u" = ""
+selectorAffix."cyrl/u/nonCursive" = ""
+selectorAffix."cyrl/izhitsa" = ""
 selectorAffix."cyrl/ue" = ""
 
 [prime.cyrl-u.variants-buildup.stages.hook.turn]
@@ -7338,6 +7682,8 @@ rank = 2
 disableIf = [{ body = "cursive" }]
 descriptionAffix = "a tail turns leftward"
 selectorAffix."cyrl/u" = "turn"
+selectorAffix."cyrl/u/nonCursive" = "turn"
+selectorAffix."cyrl/izhitsa" = ""
 selectorAffix."cyrl/ue" = ""
 
 [prime.cyrl-u.variants-buildup.stages.hook.flat-hook]
@@ -7345,6 +7691,8 @@ rank = 3
 disableIf = [{ body = "NOT cursive" }]
 descriptionAffix = "a flat terminal hook"
 selectorAffix."cyrl/u" = "flatHook"
+selectorAffix."cyrl/u/nonCursive" = ""
+selectorAffix."cyrl/izhitsa" = ""
 selectorAffix."cyrl/ue" = ""
 
 [prime.cyrl-u.variants-buildup.stages.serifs.serifless]
@@ -7352,18 +7700,24 @@ rank = 1
 descriptionAffix = "serifs"
 descriptionJoiner = "without"
 selectorAffix."cyrl/u" = "serifless"
+selectorAffix."cyrl/u/nonCursive" = "serifless"
+selectorAffix."cyrl/izhitsa" = "serifless"
 selectorAffix."cyrl/ue" = "serifless"
 
 [prime.cyrl-u.variants-buildup.stages.serifs.motion-serifed]
 rank = 2
 descriptionAffix = "motion serifs"
 selectorAffix."cyrl/u" = "motionSerifed"
+selectorAffix."cyrl/u/nonCursive" = "motionSerifed"
+selectorAffix."cyrl/izhitsa" = "motionSerifed"
 selectorAffix."cyrl/ue" = "motionSerifed"
 
 [prime.cyrl-u.variants-buildup.stages.serifs.serifed]
 rank = 3
 descriptionAffix = "serifs"
 selectorAffix."cyrl/u" = "serifed"
+selectorAffix."cyrl/u/nonCursive" = "serifed"
+selectorAffix."cyrl/izhitsa" = "serifed"
 selectorAffix."cyrl/ue" = "serifed"
 
 
@@ -7606,6 +7960,7 @@ description = "Serifless Cyrillic Capital E (`Э`)"
 selector."cyrl/E" = "serifless"
 selector."cyrl/ETopSerifOnly" = "serifless"
 selector."cyrl/Ye" = "serifless"
+selector."cyrl/YeTopSerifOnly" = "serifless"
 selector."currency/euroSign" = "serifless"
 
 [prime.cyrl-capital-e.variants.unilateral-serifed]
@@ -7614,6 +7969,7 @@ description = "Cyrillic Capital E (`Э`) with serif at top"
 selector."cyrl/E" = "unilateralSerifed"
 selector."cyrl/ETopSerifOnly" = "unilateralSerifed"
 selector."cyrl/Ye" = "unilateralSerifed"
+selector."cyrl/YeTopSerifOnly" = "unilateralSerifed"
 selector."currency/euroSign" = "unilateralSerifed"
 
 [prime.cyrl-capital-e.variants.unilateral-bottom-serifed]
@@ -7622,6 +7978,7 @@ description = "Cyrillic Capital E (`Э`) with serif at bottom"
 selector."cyrl/E" = "bottomSerifed"
 selector."cyrl/ETopSerifOnly" = "serifless"
 selector."cyrl/Ye" = "unilateralSerifed"
+selector."cyrl/YeTopSerifOnly" = "unilateralSerifed"
 selector."currency/euroSign" = "unilateralSerifed"
 
 [prime.cyrl-capital-e.variants.bilateral-serifed]
@@ -7630,6 +7987,7 @@ description = "Cyrillic Capital E (`Э`) with serifs at both top and bottom"
 selector."cyrl/E" = "bilateralSerifed"
 selector."cyrl/ETopSerifOnly" = "unilateralSerifed"
 selector."cyrl/Ye" = "bilateralSerifed"
+selector."cyrl/YeTopSerifOnly" = "unilateralSerifed"
 selector."currency/euroSign" = "bilateralSerifed"
 
 [prime.cyrl-capital-e.variants.unilateral-inward-serifed]
@@ -7638,6 +7996,7 @@ description = "Cyrillic Capital E (`Э`) with inward serif at top"
 selector."cyrl/E" = "unilateralInwardSerifed"
 selector."cyrl/ETopSerifOnly" = "unilateralInwardSerifed"
 selector."cyrl/Ye" = "unilateralInwardSerifed"
+selector."cyrl/YeTopSerifOnly" = "unilateralInwardSerifed"
 selector."currency/euroSign" = "unilateralInwardSerifed"
 
 [prime.cyrl-capital-e.variants.unilateral-bottom-inward-serifed]
@@ -7646,6 +8005,7 @@ description = "Cyrillic Capital E (`Э`) with inward serif at bottom"
 selector."cyrl/E" = "bottomInwardSerifed"
 selector."cyrl/ETopSerifOnly" = "serifless"
 selector."cyrl/Ye" = "unilateralInwardSerifed"
+selector."cyrl/YeTopSerifOnly" = "unilateralInwardSerifed"
 selector."currency/euroSign" = "unilateralInwardSerifed"
 
 [prime.cyrl-capital-e.variants.bilateral-inward-serifed]
@@ -7654,6 +8014,61 @@ description = "Cyrillic Capital E (`Э`) with inward serif at both top and botto
 selector."cyrl/E" = "bilateralInwardSerifed"
 selector."cyrl/ETopSerifOnly" = "unilateralInwardSerifed"
 selector."cyrl/Ye" = "bilateralInwardSerifed"
+selector."cyrl/YeTopSerifOnly" = "unilateralInwardSerifed"
+selector."currency/euroSign" = "bilateralInwardSerifed"
+
+[prime.cyrl-capital-e.variants.unilateral-mid-serifed]
+rank = 8
+description = "Cyrillic Capital E (`Э`) with serif at top and center"
+selector."cyrl/E" = "unilateralMidSerifed"
+selector."cyrl/ETopSerifOnly" = "unilateralSerifed"
+selector."cyrl/Ye" = "unilateralMidSerifed"
+selector."cyrl/YeTopSerifOnly" = "unilateralSerifed"
+selector."currency/euroSign" = "unilateralSerifed"
+
+[prime.cyrl-capital-e.variants.unilateral-bottom-mid-serifed]
+rank = 9
+description = "Cyrillic Capital E (`Э`) with serif at bottom and center"
+selector."cyrl/E" = "bottomMidSerifed"
+selector."cyrl/ETopSerifOnly" = "serifless"
+selector."cyrl/Ye" = "unilateralMidSerifed"
+selector."cyrl/YeTopSerifOnly" = "unilateralSerifed"
+selector."currency/euroSign" = "unilateralSerifed"
+
+[prime.cyrl-capital-e.variants.bilateral-mid-serifed]
+rank = 10
+description = "Cyrillic Capital E (`Э`) with serifs at both top, bottom and center"
+selector."cyrl/E" = "bilateralMidSerifed"
+selector."cyrl/ETopSerifOnly" = "unilateralSerifed"
+selector."cyrl/Ye" = "bilateralMidSerifed"
+selector."cyrl/YeTopSerifOnly" = "unilateralSerifed"
+selector."currency/euroSign" = "bilateralSerifed"
+
+[prime.cyrl-capital-e.variants.unilateral-inward-mid-serifed]
+rank = 11
+description = "Cyrillic Capital E (`Э`) with inward serif at top and center"
+selector."cyrl/E" = "unilateralInwardMidSerifed"
+selector."cyrl/ETopSerifOnly" = "unilateralInwardSerifed"
+selector."cyrl/Ye" = "unilateralInwardMidSerifed"
+selector."cyrl/YeTopSerifOnly" = "unilateralInwardSerifed"
+selector."currency/euroSign" = "unilateralInwardSerifed"
+
+[prime.cyrl-capital-e.variants.unilateral-bottom-inward-mid-serifed]
+rank = 12
+description = "Cyrillic Capital E (`Э`) with inward serif at bottom and center"
+selector."cyrl/E" = "bottomInwardMidSerifed"
+selector."cyrl/ETopSerifOnly" = "serifless"
+selector."cyrl/Ye" = "unilateralInwardMidSerifed"
+selector."cyrl/YeTopSerifOnly" = "unilateralInwardSerifed"
+selector."currency/euroSign" = "unilateralInwardSerifed"
+
+[prime.cyrl-capital-e.variants.bilateral-inward-mid-serifed]
+rank = 13
+description = "Cyrillic Capital E (`Э`) with inward serif at both top, bottom and center"
+selector."cyrl/E" = "bilateralInwardMidSerifed"
+selector."cyrl/ETopSerifOnly" = "unilateralInwardSerifed"
+selector."cyrl/Ye" = "bilateralInwardMidSerifed"
+selector."cyrl/YeTopSerifOnly" = "unilateralInwardSerifed"
 selector."currency/euroSign" = "bilateralInwardSerifed"
 
 
@@ -7669,6 +8084,7 @@ description = "Serifless Cyrillic Lower E (`э`)"
 selector."cyrl/e" = "serifless"
 selector."cyrl/eTopSerifOnly" = "serifless"
 selector."cyrl/ye" = "serifless"
+selector."cyrl/yeTopSerifOnly" = "serifless"
 
 [prime.cyrl-e.variants.unilateral-serifed]
 rank = 2
@@ -7676,6 +8092,7 @@ description = "Cyrillic Lower E (`э`) with serif at top"
 selector."cyrl/e" = "unilateralSerifed"
 selector."cyrl/eTopSerifOnly" = "unilateralSerifed"
 selector."cyrl/ye" = "unilateralSerifed"
+selector."cyrl/yeTopSerifOnly" = "unilateralSerifed"
 
 [prime.cyrl-e.variants.unilateral-bottom-serifed]
 rank = 3
@@ -7683,6 +8100,7 @@ description = "Cyrillic Lower E (`э`) with serif at bottom"
 selector."cyrl/e" = "bottomSerifed"
 selector."cyrl/eTopSerifOnly" = "serifless"
 selector."cyrl/ye" = "unilateralSerifed"
+selector."cyrl/yeTopSerifOnly" = "unilateralSerifed"
 
 [prime.cyrl-e.variants.bilateral-serifed]
 rank = 4
@@ -7690,6 +8108,7 @@ description = "Cyrillic Lower E (`э`) with serifs at both top and bottom"
 selector."cyrl/e" = "bilateralSerifed"
 selector."cyrl/eTopSerifOnly" = "unilateralSerifed"
 selector."cyrl/ye" = "bilateralSerifed"
+selector."cyrl/yeTopSerifOnly" = "unilateralSerifed"
 
 [prime.cyrl-e.variants.unilateral-inward-serifed]
 rank = 5
@@ -7697,6 +8116,7 @@ description = "Cyrillic Lower E (`э`) with inward serif at top"
 selector."cyrl/e" = "unilateralInwardSerifed"
 selector."cyrl/eTopSerifOnly" = "unilateralInwardSerifed"
 selector."cyrl/ye" = "unilateralInwardSerifed"
+selector."cyrl/yeTopSerifOnly" = "unilateralInwardSerifed"
 
 [prime.cyrl-e.variants.unilateral-bottom-inward-serifed]
 rank = 6
@@ -7704,6 +8124,7 @@ description = "Cyrillic Lower E (`э`) with inward serif at bottom"
 selector."cyrl/e" = "bottomInwardSerifed"
 selector."cyrl/eTopSerifOnly" = "serifless"
 selector."cyrl/ye" = "unilateralInwardSerifed"
+selector."cyrl/yeTopSerifOnly" = "unilateralInwardSerifed"
 
 [prime.cyrl-e.variants.bilateral-inward-serifed]
 rank = 7
@@ -7711,6 +8132,55 @@ description = "Cyrillic Lower E (`э`) with inward serif at both top and bottom"
 selector."cyrl/e" = "bilateralInwardSerifed"
 selector."cyrl/eTopSerifOnly" = "unilateralInwardSerifed"
 selector."cyrl/ye" = "bilateralInwardSerifed"
+selector."cyrl/yeTopSerifOnly" = "unilateralInwardSerifed"
+
+[prime.cyrl-e.variants.unilateral-mid-serifed]
+rank = 8
+description = "Cyrillic Lower E (`э`) with serif at top and center"
+selector."cyrl/e" = "unilateralMidSerifed"
+selector."cyrl/eTopSerifOnly" = "unilateralSerifed"
+selector."cyrl/ye" = "unilateralMidSerifed"
+selector."cyrl/yeTopSerifOnly" = "unilateralSerifed"
+
+[prime.cyrl-e.variants.unilateral-bottom-mid-serifed]
+rank = 9
+description = "Cyrillic Lower E (`э`) with serif at bottom and center"
+selector."cyrl/e" = "bottomMidSerifed"
+selector."cyrl/eTopSerifOnly" = "serifless"
+selector."cyrl/ye" = "unilateralMidSerifed"
+selector."cyrl/yeTopSerifOnly" = "unilateralSerifed"
+
+[prime.cyrl-e.variants.bilateral-mid-serifed]
+rank = 10
+description = "Cyrillic Lower E (`э`) with serifs at both top, bottom and center"
+selector."cyrl/e" = "bilateralMidSerifed"
+selector."cyrl/eTopSerifOnly" = "unilateralSerifed"
+selector."cyrl/ye" = "bilateralMidSerifed"
+selector."cyrl/yeTopSerifOnly" = "unilateralSerifed"
+
+[prime.cyrl-e.variants.unilateral-inward-mid-serifed]
+rank = 11
+description = "Cyrillic Lower E (`э`) with inward serif at top and center"
+selector."cyrl/e" = "unilateralInwardMidSerifed"
+selector."cyrl/eTopSerifOnly" = "unilateralInwardSerifed"
+selector."cyrl/ye" = "unilateralInwardMidSerifed"
+selector."cyrl/yeTopSerifOnly" = "unilateralInwardSerifed"
+
+[prime.cyrl-e.variants.unilateral-bottom-inward-mid-serifed]
+rank = 12
+description = "Cyrillic Lower E (`э`) with inward serif at bottom and center"
+selector."cyrl/e" = "bottomInwardMidSerifed"
+selector."cyrl/eTopSerifOnly" = "serifless"
+selector."cyrl/ye" = "unilateralInwardMidSerifed"
+selector."cyrl/yeTopSerifOnly" = "unilateralInwardSerifed"
+
+[prime.cyrl-e.variants.bilateral-inward-mid-serifed]
+rank = 13
+description = "Cyrillic Lower E (`э`) with inward serif at both top, bottom and center"
+selector."cyrl/e" = "bilateralInwardMidSerifed"
+selector."cyrl/eTopSerifOnly" = "unilateralInwardSerifed"
+selector."cyrl/ye" = "bilateralInwardMidSerifed"
+selector."cyrl/yeTopSerifOnly" = "unilateralInwardSerifed"
 
 
 
@@ -7730,19 +8200,19 @@ next = "openness"
 rank = 1
 descriptionAffix = "straight leg"
 selectorAffix."cyrl/Ya" = "straight"
-selectorAffix."cyrl/Yae/left" = "straight"
+selectorAffix."cyrl/YaIe/YaHalf" = "straight"
 
 [prime.cyrl-capital-ya.variants-buildup.stages.leg.curly]
 rank = 2
 descriptionAffix = "curly leg"
 selectorAffix."cyrl/Ya" = "curly"
-selectorAffix."cyrl/Yae/left" = "curly"
+selectorAffix."cyrl/YaIe/YaHalf" = "curly"
 
 [prime.cyrl-capital-ya.variants-buildup.stages.leg.standing]
 rank = 3
 descriptionAffix = "standing leg (like Helvetica)"
 selectorAffix."cyrl/Ya" = "standing"
-selectorAffix."cyrl/Yae/left" = "standing"
+selectorAffix."cyrl/YaIe/YaHalf" = "standing"
 
 [prime.cyrl-capital-ya.variants-buildup.stages.openness."*"]
 next = "serifs"
@@ -7751,32 +8221,32 @@ next = "serifs"
 rank = 1
 keyAffix = ""
 selectorAffix."cyrl/Ya" = ""
-selectorAffix."cyrl/Yae/left" = ""
+selectorAffix."cyrl/YaIe/YaHalf" = ""
 
 [prime.cyrl-capital-ya.variants-buildup.stages.openness.open]
 rank = 2
 descriptionAffix = "open contour"
 selectorAffix."cyrl/Ya" = "open"
-selectorAffix."cyrl/Yae/left" = "open"
+selectorAffix."cyrl/YaIe/YaHalf" = "open"
 
 [prime.cyrl-capital-ya.variants-buildup.stages.serifs.serifless]
 rank = 1
 descriptionAffix = "serifs"
 descriptionJoiner = "without"
 selectorAffix."cyrl/Ya" = "serifless"
-selectorAffix."cyrl/Yae/left" = "serifless"
+selectorAffix."cyrl/YaIe/YaHalf" = "serifless"
 
 [prime.cyrl-capital-ya.variants-buildup.stages.serifs.motion-serifed]
 rank = 2
 descriptionAffix = "motion serifs at bottom-left"
 selectorAffix."cyrl/Ya" = "bottomRightSerifed"
-selectorAffix."cyrl/Yae/left" = "bottomRightSerifed"
+selectorAffix."cyrl/YaIe/YaHalf" = "bottomRightSerifed"
 
 [prime.cyrl-capital-ya.variants-buildup.stages.serifs.serifed]
 rank = 3
 descriptionAffix = "serifs"
 selectorAffix."cyrl/Ya" = "serifed"
-selectorAffix."cyrl/Yae/left" = "bottomRightSerifed"
+selectorAffix."cyrl/YaIe/YaHalf" = "bottomRightSerifed"
 
 
 
@@ -7797,21 +8267,21 @@ rank = 1
 groupRank = 1
 descriptionAffix = "straight leg"
 selectorAffix."cyrl/ya" = "straight"
-selectorAffix."cyrl/yae/left" = "straight"
+selectorAffix."cyrl/yaie/ya" = "straight"
 
 [prime.cyrl-ya.variants-buildup.stages.leg.curly]
 rank = 2
 groupRank = 2
 descriptionAffix = "curly leg"
 selectorAffix."cyrl/ya" = "curly"
-selectorAffix."cyrl/yae/left" = "curly"
+selectorAffix."cyrl/yaie/ya" = "curly"
 
 [prime.cyrl-ya.variants-buildup.stages.leg.standing]
 rank = 3
 groupRank = 3
 descriptionAffix = "standing leg (like Helvetica)"
 selectorAffix."cyrl/ya" = "standing"
-selectorAffix."cyrl/yae/left" = "standing"
+selectorAffix."cyrl/yaie/ya" = "standing"
 
 [prime.cyrl-ya.variants-buildup.stages.openness."*"]
 next = "tails"
@@ -7821,14 +8291,14 @@ rank = 1
 groupRrank = 10
 keyAffix = ""
 selectorAffix."cyrl/ya" = ""
-selectorAffix."cyrl/yae/left" = ""
+selectorAffix."cyrl/yaie/ya" = ""
 
 [prime.cyrl-ya.variants-buildup.stages.openness.open]
 rank = 2
 groupRrank = 20
 descriptionAffix = "open contour"
 selectorAffix."cyrl/ya" = "open"
-selectorAffix."cyrl/yae/left" = "open"
+selectorAffix."cyrl/yaie/ya" = "open"
 
 [prime.cyrl-ya.variants-buildup.stages.tails."*"]
 next = "serifs"
@@ -7837,32 +8307,32 @@ next = "serifs"
 rank = 1
 keyAffix = ""
 selectorAffix."cyrl/ya" = ""
-selectorAffix."cyrl/yae/left" = ""
+selectorAffix."cyrl/yaie/ya" = ""
 
 [prime.cyrl-ya.variants-buildup.stages.tails.tailed]
 rank = 2
 descriptionAffix = "tail"
 selectorAffix."cyrl/ya" = "tailed"
-selectorAffix."cyrl/yae/left" = ""
+selectorAffix."cyrl/yaie/ya" = ""
 
 [prime.cyrl-ya.variants-buildup.stages.serifs.serifless]
 rank = 1
 descriptionAffix = "serifs"
 descriptionJoiner = "without"
 selectorAffix."cyrl/ya" = "serifless"
-selectorAffix."cyrl/yae/left" = "serifless"
+selectorAffix."cyrl/yaie/ya" = "serifless"
 
 [prime.cyrl-ya.variants-buildup.stages.serifs.motion-serifed]
 rank = 2
 descriptionAffix = "motion serifs at bottom-left"
 selectorAffix."cyrl/ya" = "bottomRightSerifed"
-selectorAffix."cyrl/yae/left" = "bottomRightSerifed"
+selectorAffix."cyrl/yaie/ya" = "bottomRightSerifed"
 
 [prime.cyrl-ya.variants-buildup.stages.serifs.serifed]
 rank = 3
 descriptionAffix = "serifs"
 selectorAffix."cyrl/ya" = "smallCyrl"
-selectorAffix."cyrl/yae/left" = "bottomRightSerifed"
+selectorAffix."cyrl/yaie/ya" = "bottomRightSerifed"
 
 
 
@@ -8073,7 +8543,7 @@ selector.asciiCaret = "high"
 
 [prime.caret.variants.medium]
 rank = 2
-description = "Lower circumflex `^`"
+description = "Medium circumflex `^`"
 selector.asciiCaret = "medium"
 
 [prime.caret.variants.low]
@@ -8875,8 +9345,10 @@ capital-gamma = "serifless"
 lower-gamma = "casual"
 capital-delta = "straight"
 lower-delta = "rounded"
+lower-eta = "serifless"
 lower-theta = "oval"
 lower-iota = "serifed-semi-tailed"
+lower-kappa = "straight-serifless"
 capital-lambda = "straight-serifless"
 lower-lambda = "straight"
 lower-mu = "tailed-serifless"
@@ -9040,6 +9512,8 @@ eszet = "sulzbacher-bottom-serifed"
 capital-thorn = "serifed"
 lower-thorn = "serifed"
 capital-gamma = "serifed"
+lower-eta = "motion-serifed"
+lower-kappa = "straight-tri-serifed"
 capital-lambda = "straight-base-serifed"
 lower-lambda = "straight-turn"
 lower-mu = "tailed-serifed"
@@ -9093,7 +9567,7 @@ y = "cursive-motion-serifed"
 z = "cursive"
 long-s = "flat-hook-tailed"
 eszet = "sulzbacher-tailed-serifless"
-lower-lambda = "straight"
+lower-kappa = "straight-top-left-serifed"
 lower-mu = "tailed-motion-serifed"
 cyrl-a = "single-storey-tailed"
 cyrl-ve = "cursive"
@@ -9118,6 +9592,9 @@ capital-d = "more-rounded-serifless"
 capital-g = "toothless-corner-serifless-hooked"
 capital-i = "short-serifed"
 capital-j = "serifless"
+capital-m = "hanging-serifless"
+capital-v = "straight-serifless"
+capital-w = "straight-serifless"
 a = "double-storey-serifless"
 d = "toothed-serifless"
 e = "flat-crossbar"
@@ -9127,14 +9604,17 @@ i = "hooky"
 j = "serifed"
 k = "straight-serifless"
 l = "zshaped"
+r = "serifless"
 t = "bent-hook-short-neck"
 u = "toothed-serifless"
+v = "straight-serifless"
+w = "straight-serifless"
 y = "straight-turn-serifless"
 long-s = "flat-hook-middle-serifed-xh"
 eszet = "longs-s-lig-serifless"
 lower-eth = "straight-bar"
-lower-iota = "tailed"
 lower-gamma = "straight"
+lower-iota = "tailed"
 lower-lambda = "tailed-turn"
 lower-mu = "toothed-serifless"
 lower-nu = "straight"
@@ -9173,8 +9653,11 @@ micro-sign = "toothed-serifless"
 
 [composite.ss01.slab-override.design]
 capital-d = "more-rounded-bilateral-serifed"
-capital-j = "serifed-symmetric"
 capital-g = "toothless-corner-serifed-hooked"
+capital-j = "serifed-symmetric"
+capital-m = "hanging-serifed"
+capital-v = "straight-serifed"
+capital-w = "straight-serifed"
 a = "double-storey-serifed"
 b = "toothed-serifed"
 c = "unilateral-serifed"
@@ -9197,6 +9680,7 @@ z = "straight-serifed"
 long-s = "flat-hook-double-serifed-xh"
 eszet = "longs-s-lig-bottom-serifed"
 lower-iota = "tailed-serifed"
+lower-kappa = "straight-tri-serifed"
 lower-mu = "toothed-serifed"
 cyrl-a = "double-storey-serifed"
 cyrl-ve = "standard-bilateral-serifed"
@@ -9220,12 +9704,15 @@ description = "Anonymous Pro Style"
 
 [composite.ss02.design]
 capital-c = "unilateral-serifed"
+capital-d = "more-rounded-serifless"
 capital-g = "toothless-rounded-serifed-hooked"
 capital-i = "short-serifed"
 capital-j = "serifless"
 capital-m = "hanging-serifless"
 capital-s = "bilateral-serifed"
 capital-t = "serifed"
+capital-v = "straight-serifless"
+capital-w = "straight-serifless"
 capital-x = "straight-serifed"
 capital-y = "straight-serifed"
 capital-z = "straight-serifed"
@@ -9239,7 +9726,9 @@ j = "serifed"
 k = "straight-serifless"
 l = "serifed"
 r = "serifed"
+t = "bent-hook"
 u = "toothed-serifless"
+v = "straight-serifless"
 w = "straight-flat-top-serifless"
 x = "straight-serifed"
 y = "straight-turn-serifless"
@@ -9247,6 +9736,7 @@ z = "straight-serifed"
 long-s = "flat-hook-double-serifed-xh"
 eszet = "longs-s-lig-serifless"
 lower-eth = "straight-bar"
+lower-eta = "motion-serifed"
 lower-iota = "serifed-flat-tailed"
 lower-lambda = "straight-turn"
 lower-xi = "rounded"
@@ -9286,8 +9776,11 @@ percent = "rings-continuous-slash"
 micro-sign = "toothed-serifless"
 
 [composite.ss02.slab-override.design]
+capital-d = "more-rounded-bilateral-serifed"
 capital-j = "serifed-symmetric"
 capital-m = "hanging-serifed"
+capital-v = "straight-serifed"
+capital-w = "straight-serifed"
 a = "double-storey-serifed"
 b = "toothed-serifed"
 d = "toothed-serifed"
@@ -9303,6 +9796,7 @@ v = "straight-serifed"
 w = "straight-flat-top-serifed"
 y = "straight-turn-serifed"
 eszet = "longs-s-lig-bottom-serifed"
+lower-kappa = "straight-tri-serifed"
 lower-mu = "tailed-serifed"
 cyrl-a = "double-storey-serifed"
 cyrl-ve = "standard-bilateral-serifed"
@@ -9329,9 +9823,12 @@ capital-i = "serifed"
 capital-j = "serifed"
 capital-k = "symmetric-touching-serifless"
 capital-m = "slanted-sides-hanging-serifless"
+capital-v = "straight-serifless"
+capital-w = "straight-serifless"
 a = "double-storey-serifless"
 b = "toothless-corner-serifless"
 d = "toothed-serifless"
+e = "flat-crossbar"
 f = "flat-hook-serifless"
 g = "double-storey"
 i = "serifed"
@@ -9339,17 +9836,22 @@ j = "serifed"
 k = "symmetric-touching-serifless"
 l = "serifed"
 q = "top-cut-straight-serifless"
+r = "serifless"
 t = "bent-hook-short-neck"
 u = "toothed-serifless"
+v = "straight-serifless"
+w = "straight-serifless"
 y = "straight-turn-serifless"
 capital-eszet = "rounded-serifless"
 long-s = "flat-hook-serifless"
 eszet = "longs-s-lig-serifless"
-lower-beta = "standard"
-lower-chi = "semi-chancery-straight-serifless"
 lower-eth = "straight-bar"
+lower-beta = "standard"
+lower-theta = "oval"
+lower-kappa = "symmetric-touching-serifless"
 lower-lambda = "tailed-turn"
 lower-phi = "straight"
+lower-chi = "semi-chancery-straight-serifless"
 partial-derivative = "closed-contour"
 cyrl-a = "double-storey-serifless"
 cyrl-ve = "standard-serifless"
@@ -9382,6 +9884,7 @@ micro-sign = "tailed-serifless"
 
 [composite.ss03.italic]
 a = "single-storey-top-cut-serifless"
+e = "rounded"
 f = "flat-hook-tailed"
 g = "single-storey-top-cut"
 i = "tailed-serifed"
@@ -9390,6 +9893,7 @@ l = "tailed"
 long-s = "flat-hook-descending"
 eszet = "longs-s-lig-descending-serifless"
 lower-beta = "cursive"
+lower-theta = "cursive"
 lower-phi = "cursive"
 cyrl-a = "single-storey-top-cut-serifless"
 cyrl-ve = "cursive-tall"
@@ -9403,19 +9907,25 @@ capital-d = "more-rounded-bilateral-serifed"
 capital-g = "toothless-corner-serifed-hooked"
 capital-k = "symmetric-touching-serifed"
 capital-m = "slanted-sides-hanging-serifed"
+capital-v = "straight-serifed"
+capital-w = "straight-serifed"
 a = "double-storey-serifed"
 b = "toothless-corner-serifed"
 d = "toothed-serifed"
 f = "flat-hook-serifed"
 k = "symmetric-touching-serifed"
 q = "top-cut-straight-serifed"
+r = "serifed"
 u = "toothed-serifed"
+v = "straight-serifed"
+w = "straight-serifed"
 x = "straight-serifed"
 y = "straight-turn-serifed"
 z = "straight-serifed"
 capital-eszet = "rounded-serifed"
 long-s = "flat-hook-bottom-serifed"
 eszet = "longs-s-lig-bottom-serifed"
+lower-kappa = "symmetric-touching-tri-serifed"
 cyrl-a = "double-storey-serifed"
 cyrl-ve = "standard-bilateral-serifed"
 cyrl-capital-ka = "symmetric-touching-serifed"
@@ -9434,14 +9944,18 @@ a = "single-storey-top-cut-serifed"
 f = "flat-hook-tailed"
 k = "cursive-top-left-and-bottom-right-serifed"
 l = "tailed-serifed"
+r = "top-serifed"
 u = "toothed-motion-serifed"
+v = "straight-motion-serifed"
+w = "straight-motion-serifed"
 x = "straight-bilateral-motion-serifed"
 y = "straight-turn-motion-serifed"
 long-s = "flat-hook-descending"
 eszet = "longs-s-lig-descending-serifless"
+lower-kappa = "symmetric-touching-top-left-and-bottom-right-serifed"
 cyrl-a = "single-storey-top-cut-serifed"
 cyrl-ve = "cursive-tall"
-cyrl-ka = "symmetric-connected-top-left-and-bottom-right-serifed"
+cyrl-ka = "symmetric-connected-tri-serifed"
 cyrl-u = "straight-turn-motion-serifed"
 cyrl-ef = "serifless"
 micro-sign = "tailed-motion-serifed"
@@ -9459,6 +9973,8 @@ capital-i = "serifed"
 capital-j = "serifed"
 capital-m = "hanging-serifless"
 capital-q = "straight"
+capital-v = "straight-serifless"
+capital-w = "straight-serifless"
 a = "double-storey-serifless"
 e = "flat-crossbar"
 d = "toothed-serifless"
@@ -9467,8 +9983,11 @@ i = "serifed"
 j = "flat-hook-serifed"
 k = "straight-serifless"
 l = "serifed-flat-tailed"
+r = "serifless"
 t = "flat-hook-short-neck"
 u = "toothed-serifless"
+v = "straight-serifless"
+w = "straight-serifless"
 y = "straight-turn-serifless"
 capital-eszet = "rounded-serifless"
 long-s = "flat-hook-middle-serifed-xh"
@@ -9520,6 +10039,8 @@ micro-sign = "tailed-serifless"
 capital-d = "more-rounded-bilateral-serifed"
 capital-g = "toothless-corner-serifed-hooked"
 capital-m = "hanging-serifed"
+capital-v = "straight-serifed"
+capital-w = "straight-serifed"
 a = "double-storey-serifed"
 b = "toothed-serifed"
 c = "unilateral-serifed"
@@ -9542,6 +10063,7 @@ z = "straight-serifed"
 capital-eszet = "rounded-serifed"
 long-s = "flat-hook-double-serifed-xh"
 eszet = "longs-s-lig-bottom-serifed"
+lower-kappa = "straight-tri-serifed"
 lower-mu = "tailed-serifed"
 lower-psi = "flat-top-serifed"
 cyrl-a = "double-storey-serifed"
@@ -9572,6 +10094,8 @@ capital-i = "serifed"
 capital-j = "serifed"
 capital-k = "symmetric-touching-serifless"
 capital-m = "slanted-sides-hanging-serifless"
+capital-v = "straight-serifless"
+capital-w = "straight-serifless"
 a = "double-storey-tailed"
 d = "toothed-serifless"
 e = "flat-crossbar"
@@ -9584,11 +10108,14 @@ l = "serifed-semi-tailed"
 r = "corner-hooked-serifed"
 t = "bent-hook-short-neck"
 u = "toothed-serifless"
+v = "straight-serifless"
+w = "straight-serifless"
 y = "straight-turn-serifless"
 capital-eszet = "rounded-serifless"
 long-s = "bent-hook-serifless"
 eszet = "longs-s-lig-serifless"
 lower-iota = "serifed-semi-tailed"
+lower-kappa = "symmetric-touching-serifless"
 lower-lambda = "straight-turn"
 lower-mu = "toothed-serifless"
 lower-xi = "rounded"
@@ -9630,6 +10157,8 @@ capital-d = "more-rounded-bilateral-serifed"
 capital-g = "toothless-corner-serifed-hooked"
 capital-k = "symmetric-touching-serifed"
 capital-m = "slanted-sides-hanging-serifed"
+capital-v = "straight-serifed"
+capital-w = "straight-serifed"
 b = "toothed-serifed"
 c = "unilateral-serifed"
 d = "toothed-serifed"
@@ -9649,6 +10178,7 @@ z = "straight-serifed"
 capital-eszet = "rounded-serifed"
 long-s = "bent-hook-bottom-serifed"
 eszet = "longs-s-lig-bottom-serifed"
+lower-kappa = "symmetric-touching-tri-serifed"
 lower-mu = "toothed-serifed"
 lower-psi = "flat-top-serifed"
 cyrl-ve = "standard-bilateral-serifed"
@@ -9675,6 +10205,9 @@ capital-d = "more-rounded-serifless"
 capital-g = "toothless-corner-serifless-hooked"
 capital-i = "serifed"
 capital-j = "serifed"
+capital-m = "hanging-serifless"
+capital-v = "straight-serifless"
+capital-w = "straight-serifless"
 a = "double-storey-tailed"
 d = "toothed-serifless"
 e = "flat-crossbar"
@@ -9686,6 +10219,8 @@ l = "serifed-flat-tailed"
 r = "hookless-serifless"
 t = "bent-hook-short-neck"
 u = "toothed-serifless"
+v = "straight-serifless"
+w = "straight-serifless"
 y = "straight-turn-serifless"
 capital-eszet = "rounded-serifless"
 long-s = "flat-hook-serifless"
@@ -9727,6 +10262,9 @@ micro-sign = "toothed-serifless"
 [composite.ss06.slab-override.design]
 capital-d = "more-rounded-bilateral-serifed"
 capital-g = "toothless-corner-serifed-hooked"
+capital-m = "hanging-serifed"
+capital-v = "straight-serifed"
+capital-w = "straight-serifed"
 b = "toothed-serifed"
 c = "unilateral-serifed"
 d = "toothed-serifed"
@@ -9748,6 +10286,7 @@ z = "straight-serifed"
 capital-eszet = "rounded-serifed"
 long-s = "flat-hook-bottom-serifed"
 eszet = "longs-s-lig-bottom-serifed"
+lower-kappa = "straight-tri-serifed"
 lower-mu = "tailed-serifed"
 lower-chi = "straight-bilateral-motion-serifed"
 cyrl-ve = "standard-bilateral-serifed"
@@ -9774,6 +10313,8 @@ capital-g = "toothless-corner-serifless-hooked"
 capital-i = "serifed"
 capital-j = "serifed"
 capital-k = "symmetric-touching-serifless"
+capital-m = "hanging-serifless"
+capital-v = "straight-serifless"
 capital-w = "straight-flat-top-serifless"
 a = "single-storey-earless-corner-serifless"
 b = "toothless-corner-serifless"
@@ -9789,17 +10330,23 @@ q = "earless-corner-straight-serifless"
 r = "corner-hooked-serifless"
 t = "bent-hook-short-neck"
 u = "toothed-serifless"
+v = "straight-serifless"
 w = "straight-flat-top-serifless"
 y = "straight-turn-serifless"
 long-s = "bent-hook-middle-serifed"
 eszet = "longs-s-lig-serifless"
 lower-iota = "zshaped"
+lower-kappa = "symmetric-touching-serifless"
 lower-lambda = "straight-turn"
 lower-mu = "toothed-bottom-right-serifed"
 lower-pi = "tailless"
 lower-tau = "tailless"
 cyrl-a = "double-storey-serifless"
 cyrl-ve = "standard-serifless"
+cyrl-capital-zhe = "symmetric-touching"
+cyrl-zhe = "symmetric-touching"
+cyrl-capital-ka = "symmetric-touching-serifless"
+cyrl-ka = "symmetric-touching-serifless"
 cyrl-capital-u = "straight-turn-serifless"
 cyrl-u = "straight-turn-serifless"
 cyrl-ef = "serifless"
@@ -9825,6 +10372,8 @@ micro-sign = "toothed-serifless"
 capital-d = "more-rounded-bilateral-serifed"
 capital-g = "toothless-corner-serifed-hooked"
 capital-k = "symmetric-touching-serifed"
+capital-m = "hanging-serifed"
+capital-v = "straight-serifed"
 capital-w = "straight-flat-top-serifed"
 a = "single-storey-earless-corner-serifed"
 b = "toothless-corner-serifed"
@@ -9846,11 +10395,13 @@ y = "straight-turn-serifed"
 z = "straight-serifed"
 long-s = "bent-hook-double-serifed"
 eszet = "longs-s-lig-bottom-serifed"
+lower-kappa = "symmetric-touching-tri-serifed"
 lower-mu = "toothed-serifed"
 cyrl-a = "double-storey-serifed"
 cyrl-ve = "standard-bilateral-serifed"
 cyrl-ze = "unilateral-serifed"
-cyrl-ka = "symmetric-connected-serifed"
+cyrl-capital-ka = "symmetric-touching-serifed"
+cyrl-ka = "symmetric-touching-serifed"
 cyrl-capital-u = "straight-turn-serifed"
 cyrl-u = "straight-turn-serifed"
 cyrl-ef = "serifed"
@@ -9890,17 +10441,21 @@ i = "serifed"
 j = "serifed"
 k = "curly-serifless"
 l = "zshaped"
+r = "serifless"
+t = "bent-hook"
 u = "toothed-serifless"
 v = "curly-serifless"
 w = "curly-serifless"
 x = "curly-serifless"
 y = "curly-serifless"
 z = "curly-serifless"
+capital-eszet = "corner-serifless"
 long-s = "bent-hook-middle-serifed"
 eszet = "longs-s-lig-serifless"
 capital-delta = "curly"
 lower-delta = "flat-top"
 lower-theta = "diamond"
+lower-kappa = "curly-serifless"
 capital-lambda = "curly-serifless"
 lower-lambda = "curly-tailed-turn"
 lower-mu = "toothed-serifless"
@@ -9934,6 +10489,7 @@ at = "threefold"
 dollar = "open"
 cent = "open"
 percent = "dots"
+bar = "force-upright"
 micro-sign = "toothed-serifless"
 lig-ltgteq = "slanted"
 lig-neq = "slightly-slanted-dotted"
@@ -9941,7 +10497,9 @@ lig-double-arrow-bar = "with-notch"
 lig-single-arrow-bar = "with-notch"
 
 [composite.ss08.italic]
+e = "rounded"
 g = "single-storey-serifless"
+capital-eszet = "flat-top-serifless"
 cyrl-yeri = "round"
 cyrl-yery = "round"
 
@@ -9963,14 +10521,17 @@ a = "double-storey-serifed"
 d = "toothed-serifed"
 f = "serifed"
 k = "curly-serifed"
+r = "serifed"
 u = "toothed-serifed"
 v = "curly-serifed"
 w = "curly-serifed"
 x = "curly-serifed"
 y = "curly-serifed"
 z = "curly-serifed"
+capital-eszet = "corner-bottom-serifed"
 long-s = "bent-hook-double-serifed"
 eszet = "longs-s-lig-bottom-serifed"
+lower-kappa = "curly-tri-serifed"
 capital-lambda = "curly-base-serifed"
 lower-mu = "toothed-serifed"
 cyrl-a = "double-storey-serifed"
@@ -9989,11 +10550,14 @@ micro-sign = "toothed-serifed"
 
 [composite.ss08.slab-override.italic]
 k = "curly-top-left-and-bottom-right-serifed"
+r = "top-serifed"
 u = "toothed-motion-serifed"
 v = "curly-motion-serifed"
 w = "curly-motion-serifed"
 x = "curly-bilateral-motion-serifed"
 y = "curly-motion-serifed"
+capital-eszet = "flat-top-serifed"
+lower-kappa = "curly-top-left-and-bottom-right-serifed"
 lower-mu = "toothed-motion-serifed"
 cyrl-ka = "curly-top-left-and-bottom-right-serifed"
 cyrl-u = "curly-motion-serifed"
@@ -10010,6 +10574,9 @@ capital-d = "more-rounded-serifless"
 capital-g = "toothless-corner-serifless-hooked"
 capital-i = "serifed"
 capital-j = "serifed"
+capital-m = "hanging-serifless"
+capital-v = "straight-serifless"
+capital-w = "straight-serifless"
 a = "double-storey-serifless"
 d = "toothed-serifless"
 e = "flat-crossbar"
@@ -10022,6 +10589,7 @@ l = "serifed-semi-tailed"
 r = "hookless-serifless"
 t = "bent-hook-short-neck"
 u = "toothed-serifless"
+v = "straight-serifless"
 w = "straight-flat-top-serifless"
 y = "straight-turn-serifless"
 capital-eszet = "rounded-serifless"
@@ -10066,6 +10634,9 @@ l = "tailed-serifed"
 [composite.ss09.slab-override.design]
 capital-d = "more-rounded-bilateral-serifed"
 capital-g = "toothless-corner-serifed-hooked"
+capital-m = "hanging-serifed"
+capital-v = "straight-serifed"
+capital-w = "straight-serifed"
 a = "double-storey-serifed"
 d = "toothed-serifed"
 f = "serifed"
@@ -10073,6 +10644,7 @@ i = "serifed"
 k = "straight-serifed"
 r = "hookless-serifed"
 u = "toothed-serifed"
+v = "straight-serifed"
 w = "straight-flat-top-serifed"
 x = "straight-serifed"
 y = "straight-turn-serifed"
@@ -10080,6 +10652,7 @@ z = "straight-serifed"
 capital-eszet = "rounded-serifed"
 long-s = "bent-hook-double-serifed"
 eszet = "longs-s-lig-bottom-serifed"
+lower-kappa = "straight-tri-serifed"
 cyrl-a = "double-storey-serifed"
 cyrl-ve = "standard-bilateral-serifed"
 cyrl-ka = "symmetric-connected-serifed"
@@ -10098,9 +10671,11 @@ i = "tailed-serifed"
 k = "straight-top-left-and-bottom-right-serifed"
 r = "hookless-top-serifed"
 u = "toothed-motion-serifed"
+v = "straight-motion-serifed"
 w = "straight-flat-top-motion-serifed"
 x = "straight-bilateral-motion-serifed"
 y = "straight-turn-motion-serifed"
+lower-kappa = "straight-top-left-and-bottom-right-serifed"
 cyrl-ve = "standard-unilateral-serifed"
 cyrl-ka = "symmetric-connected-top-left-and-bottom-right-serifed"
 cyrl-u = "straight-turn-motion-serifed"
@@ -10117,10 +10692,14 @@ capital-a = "round-top-serifless"
 capital-i = "serifed"
 capital-j = "serifless"
 capital-k = "symmetric-touching-serifless"
+capital-m = "hanging-serifless"
 capital-q = "crossing"
+capital-v = "straight-serifless"
 capital-w = "straight-vertical-sides-serifless"
 a = "double-storey-toothless-corner"
 b = "toothed-serifless"
+d = "toothed-serifless"
+e = "flat-crossbar"
 f = "flat-hook-serifless"
 g = "single-storey-flat-hook-serifless"
 i = "hooky"
@@ -10128,19 +10707,24 @@ j = "flat-hook-serifed"
 k = "symmetric-connected-serifless"
 l = "hooky"
 q = "straight-serifless"
+r = "serifless"
 t = "flat-hook"
+u = "toothed-serifless"
+v = "straight-serifless"
 w = "rounded-vertical-sides-serifless"
 y = "cursive-flat-hook-serifless"
 long-s = "flat-hook-middle-serifed"
 eszet = "sulzbacher-serifless"
 lower-delta = "flat-top"
 lower-iota = "serifed-flat-tailed"
+lower-kappa = "symmetric-connected-serifless"
 lower-lambda = "straight"
 lower-tau = "flat-tailed"
 cyrl-a = "double-storey-toothless-corner"
 cyrl-u = "straight-serifless"
 one = "base-flat-top-serif"
 four = "closed-serifless"
+five = "upright-flat-serifless"
 six = "straight-bar"
 seven = "straight-serifless"
 eight = "two-circles"
@@ -10160,11 +10744,14 @@ micro-sign = "toothless-rounded-serifless"
 capital-a = "straight-serifless"
 a = "single-storey-top-cut-tailed"
 b = "bottom-cut-serifless"
+d = "tailed-serifless"
+e = "rounded"
 g = "single-storey-flat-hook-top-cut"
 i = "serifed-flat-tailed"
 j = "serifed"
 l = "serifed-flat-tailed"
 q = "top-cut-straight-serifless"
+u = "tailed-serifless"
 cyrl-a = "single-storey-top-cut-tailed"
 cyrl-u = "cursive-flat-hook-serifless"
 
@@ -10172,38 +10759,51 @@ cyrl-u = "cursive-flat-hook-serifless"
 capital-a = "round-top-base-serifed"
 capital-j = "serifed"
 capital-k = "symmetric-touching-serifed"
+capital-m = "hanging-serifed"
+capital-v = "straight-serifed"
 capital-w = "straight-vertical-sides-serifed"
 b = "toothed-serifed"
+d = "toothed-serifed"
 f = "flat-hook-serifed"
 g = "single-storey-flat-hook-serifed"
 i = "serifed"
 k = "symmetric-connected-serifed"
 l = "serifed"
 q = "straight-serifed"
+r = "serifed"
+u = "toothed-serifed"
+v = "straight-serifed"
 w = "rounded-vertical-sides-serifed"
 x = "straight-serifed"
 y = "cursive-flat-hook-serifed"
 z = "straight-serifed"
 long-s = "flat-hook-double-serifed"
 eszet = "sulzbacher-bottom-serifed"
+lower-kappa = "symmetric-connected-tri-serifed"
 cyrl-ka = "symmetric-connected-serifed"
 cyrl-capital-u = "straight-serifed"
 cyrl-u = "straight-serifed"
 four = "closed-serifed"
+five = "upright-flat-serifed"
 seven = "straight-serifed"
 micro-sign = "toothless-rounded-serifed"
 
 [composite.ss10.slab-override.italic]
 capital-a = "straight-base-serifed"
 b = "bottom-cut-serifed"
+d = "tailed-serifed"
 g = "single-storey-flat-hook-top-cut"
 i = "serifed-flat-tailed"
 k = "symmetric-connected-top-left-and-bottom-right-serifed"
 l = "serifed-flat-tailed"
 q = "top-cut-straight-serifed"
+r = "top-serifed"
+u = "tailed-motion-serifed"
+v = "straight-motion-serifed"
 w = "rounded-vertical-sides-motion-serifed"
 x = "straight-bilateral-motion-serifed"
 y = "cursive-flat-hook-motion-serifed"
+lower-kappa = "symmetric-connected-top-left-and-bottom-right-serifed"
 cyrl-ka = "symmetric-connected-top-left-and-bottom-right-serifed"
 cyrl-u = "cursive-flat-hook-motion-serifed"
 micro-sign = "toothless-rounded-motion-serifed"
@@ -10230,6 +10830,7 @@ tilde = "high"
 asterisk = "hex-high"
 underscore = "high"
 caret = "high"
+paren = "normal"
 brace = "straight"
 guillemet = "straight"
 number-sign = "upright"
@@ -10238,6 +10839,8 @@ at = "threefold"
 dollar = "through-cap"
 cent = "through-cap"
 percent = "rings-continuous-slash"
+question = "smooth"
+pilcrow = "high"
 
 [composite.ss11.slab-override.design]
 two = "straight-neck-serifed"
@@ -10259,9 +10862,12 @@ capital-i = "serifed"
 capital-j = "serifed"
 capital-k = "symmetric-touching-serifless"
 capital-m = "slanted-sides-hanging-serifless"
+capital-v = "straight-serifless"
+capital-w = "straight-serifless"
 a = "double-storey-toothless-corner"
 b = "toothless-corner-serifless"
 d = "toothless-corner-serifless"
+e = "flat-crossbar"
 f = "serifless"
 g = "single-storey-earless-corner"
 i = "serifed-semi-tailed"
@@ -10275,12 +10881,16 @@ q = "earless-corner-straight-serifless"
 r = "earless-corner-serifless"
 t = "bent-hook-short-neck"
 u = "toothless-corner-serifless"
+v = "straight-serifless"
+w = "straight-serifless"
 y = "straight-turn-serifless"
 capital-eszet = "rounded-serifless"
 long-s = "bent-hook-serifless"
 eszet = "longs-s-lig-serifless"
 lower-alpha = "barred-earless-corner-tailed"
 capital-gamma = "bottom-serifed"
+lower-eta = "earless-corner-serifless"
+lower-kappa = "symmetric-touching-serifless"
 lower-lambda = "straight-turn"
 lower-mu = "toothless-corner-serifless"
 lower-nu = "straight"
@@ -10323,6 +10933,7 @@ micro-sign = "toothless-corner-serifless"
 [composite.ss12.italic]
 a = "single-storey-earless-corner-tailed"
 d = "tailed-serifless"
+e = "rounded"
 f = "tailed"
 i = "tailed-serifed"
 l = "tailed-serifed"
@@ -10339,6 +10950,8 @@ capital-d = "more-rounded-bilateral-serifed"
 capital-g = "toothless-corner-serifed-hookless"
 capital-k = "symmetric-touching-serifed"
 capital-m = "slanted-sides-hanging-serifed"
+capital-v = "straight-serifed"
+capital-w = "straight-serifed"
 b = "toothless-corner-serifed"
 d = "toothless-corner-serifed"
 f = "serifed"
@@ -10349,6 +10962,8 @@ p = "earless-corner-serifed"
 q = "earless-corner-straight-serifed"
 r = "earless-corner-serifed"
 u = "toothless-corner-serifed"
+v = "straight-serifed"
+w = "straight-serifed"
 x = "straight-serifed"
 y = "straight-turn-serifed"
 z = "straight-serifed"
@@ -10356,6 +10971,7 @@ capital-eszet = "rounded-serifed"
 long-s = "bent-hook-bottom-serifed"
 eszet = "longs-s-lig-bottom-serifed"
 capital-gamma = "serifed"
+lower-kappa = "symmetric-touching-tri-serifed"
 lower-mu = "toothless-corner-serifed"
 lower-upsilon = "straight-serifed"
 lower-psi = "flat-top-serifed"
@@ -10378,10 +10994,13 @@ m = "earless-corner-double-arch-short-leg-bottom-right-serifed"
 n = "earless-corner-straight-motion-serifed"
 r = "earless-corner-serifless"
 u = "tailed-motion-serifed"
+v = "straight-motion-serifed"
+w = "straight-motion-serifed"
 x = "straight-bilateral-motion-serifed"
 y = "straight-turn-motion-serifed"
 long-s = "bent-hook-tailed"
 eszet = "longs-s-lig-tailed-serifless"
+lower-kappa = "symmetric-touching-top-left-and-bottom-right-serifed"
 lower-mu = "tailed-motion-serifed"
 cyrl-ka = "symmetric-touching-top-left-and-bottom-right-serifed"
 cyrl-u = "straight-turn-motion-serifed"
@@ -10399,6 +11018,9 @@ capital-g = "toothless-corner-serifless-hooked"
 capital-i = "serifed"
 capital-j = "serifed"
 capital-k = "symmetric-touching-serifless"
+capital-m = "hanging-serifless"
+capital-v = "straight-serifless"
+capital-w = "straight-serifless"
 a = "double-storey-tailed"
 d = "toothed-serifless"
 e = "flat-crossbar"
@@ -10410,10 +11032,13 @@ l = "hooky"
 r = "corner-hooked-serifless"
 t = "bent-hook-short-neck2"
 u = "toothed-serifless"
+v = "straight-serifless"
+w = "straight-serifless"
 y = "straight-turn-serifless"
 long-s = "bent-hook-middle-serifed"
 eszet = "longs-s-lig-serifless"
 lower-iota = "tailed"
+lower-kappa = "symmetric-touching-serifless"
 lower-lambda = "straight-turn"
 lower-mu = "toothed-serifless"
 lower-pi = "tailless"
@@ -10450,6 +11075,9 @@ micro-sign = "toothed-serifless"
 capital-d = "more-rounded-bilateral-serifed"
 capital-g = "toothless-corner-serifed-hooked"
 capital-k = "symmetric-touching-serifed"
+capital-m = "hanging-serifed"
+capital-v = "straight-serifed"
+capital-w = "straight-serifed"
 b = "toothed-serifed"
 c = "unilateral-serifed"
 d = "toothed-serifed"
@@ -10473,6 +11101,7 @@ z = "straight-serifed"
 long-s = "bent-hook-double-serifed"
 eszet = "longs-s-lig-bottom-serifed"
 lower-iota = "tailed-serifed"
+lower-kappa = "symmetric-touching-tri-serifed"
 lower-mu = "toothed-serifed"
 cyrl-ve = "standard-bilateral-serifed"
 cyrl-ze = "unilateral-serifed"
@@ -10498,17 +11127,21 @@ capital-j = "serifless"
 capital-k = "symmetric-connected-serifless"
 capital-m = "hanging-serifless"
 capital-q = "straight"
+capital-v = "straight-serifless"
 capital-w = "straight-flat-top-serifless"
 a = "double-storey-serifless"
 d = "toothed-serifless"
+e = "flat-crossbar"
 f = "flat-hook-serifless"
 g = "single-storey-flat-hook-serifless"
 i = "serifed"
 j = "flat-hook-serifed"
 k = "symmetric-connected-serifless"
 l = "serifed-flat-tailed"
+r = "serifless"
 t = "flat-hook-short-neck"
 u = "toothless-rounded-serifless"
+v = "straight-serifless"
 w = "straight-flat-top-serifless"
 y = "straight-serifless"
 long-s = "flat-hook-serifless"
@@ -10519,6 +11152,7 @@ lower-gamma = "straight"
 lower-delta = "flat-top"
 lower-theta = "capsule"
 lower-iota = "serifed-flat-tailed"
+lower-kappa = "symmetric-connected-serifless"
 lower-lambda = "straight"
 lower-mu = "toothed-serifless"
 lower-nu = "straight"
@@ -10558,6 +11192,7 @@ lig-hyphen-chain = "without-notch"
 
 [composite.ss14.italic]
 a = "single-storey-tailed"
+e = "rounded"
 f = "flat-hook-tailed"
 y = "cursive-flat-hook-serifless"
 long-s = "flat-hook-tailed"
@@ -10571,13 +11206,16 @@ capital-g = "toothless-rounded-serifed-hooked"
 capital-j = "serifed"
 capital-k = "symmetric-connected-serifed"
 capital-m = "hanging-serifed"
+capital-v = "straight-serifed"
 capital-w = "straight-flat-top-serifed"
 a = "double-storey-serifed"
 d = "toothed-serifed"
 f = "flat-hook-serifed"
 g = "single-storey-flat-hook-serifed"
 k = "symmetric-connected-serifed"
+r = "serifed"
 u = "toothless-rounded-serifed"
+v = "straight-serifed"
 w = "straight-flat-top-serifed"
 x = "straight-serifed"
 y = "straight-serifed"
@@ -10585,6 +11223,7 @@ z = "straight-serifed"
 long-s = "flat-hook-bottom-serifed"
 eszet = "sulzbacher-bottom-serifed"
 lower-alpha = "barred-double-serifed"
+lower-kappa = "symmetric-connected-tri-serifed"
 lower-mu = "toothed-serifed"
 lower-upsilon = "straight-serifed"
 lower-psi = "flat-top-serifed"
@@ -10605,13 +11244,16 @@ a = "single-storey-tailed"
 f = "flat-hook-tailed"
 g = "single-storey-flat-hook-serifless"
 k = "symmetric-connected-top-left-and-bottom-right-serifed"
+r = "top-serifed"
 u = "toothless-rounded-motion-serifed"
+v = "straight-motion-serifed"
 w = "straight-flat-top-motion-serifed"
 x = "straight-bilateral-motion-serifed"
 y = "cursive-flat-hook-motion-serifed"
 long-s = "flat-hook-tailed"
 eszet = "sulzbacher-tailed-serifless"
 lower-alpha = "barred-tailed"
+lower-kappa = "symmetric-connected-top-left-and-bottom-right-serifed"
 lower-mu = "toothed-motion-serifed"
 cyrl-a = "single-storey-tailed"
 cyrl-ve = "standard-unilateral-serifed"
@@ -10626,11 +11268,15 @@ tag = "ss15"
 description = "IBM Plex Mono Style"
 
 [composite.ss15.design]
+capital-d = "more-rounded-serifless"
 capital-i = "serifed"
 capital-j = "serifed"
 capital-m = "hanging-serifless"
+capital-v = "straight-serifless"
+capital-w = "straight-serifless"
 a = "double-storey-tailed"
 d = "toothed-serifless"
+e = "flat-crossbar"
 f = "flat-hook-serifed-crossbar-at-x-height"
 g = "double-storey"
 i = "serifed"
@@ -10640,6 +11286,7 @@ l = "serifed"
 r = "hookless-serifed"
 t = "flat-hook-short-neck"
 u = "toothed-serifless"
+v = "straight-serifless"
 w = "straight-flat-top-serifless"
 x = "straight-serifless"
 y = "straight-turn-serifless"
@@ -10647,7 +11294,10 @@ capital-eszet = "corner-serifless"
 long-s = "flat-hook-double-serifed-xh"
 eszet = "traditional-flat-hook-serifless"
 lower-delta = "flat-top"
+lower-eta = "motion-serifed"
+lower-theta = "oval"
 lower-iota = "serifed-flat-tailed"
+lower-kappa = "straight-top-right-serifed"
 lower-lambda = "tailed-turn"
 lower-tau = "flat-tailed"
 lower-upsilon = "straight-serifless"
@@ -10684,6 +11334,7 @@ micro-sign = "toothed-serifless"
 
 [composite.ss15.italic]
 a = "single-storey-tailed"
+e = "rounded"
 f = "flat-hook-diagonal-tailed-crossbar-at-x-height"
 g = "single-storey-serifless"
 i = "serifed-diagonal-tailed"
@@ -10698,6 +11349,7 @@ x = "cursive"
 y = "cursive-serifless"
 z = "cursive"
 long-s = "flat-hook-diagonal-tailed-middle-serifed-xh"
+lower-theta = "cursive"
 lower-iota = "serifed-diagonal-tailed"
 lower-tau = "diagonal-tailed"
 cyrl-a = "single-storey-tailed"
@@ -10709,15 +11361,20 @@ cyrl-yery = "cursive"
 ampersand = "closed"
 
 [composite.ss15.slab-override.design]
+capital-d = "more-rounded-bilateral-serifed"
 capital-m = "hanging-serifed"
+capital-v = "straight-serifed"
+capital-w = "straight-serifed"
 d = "toothed-serifed"
 k = "straight-serifed"
 u = "toothed-serifed"
+v = "straight-serifed"
 w = "straight-flat-top-serifed"
 x = "straight-serifed"
 y = "straight-turn-serifed"
 capital-eszet = "corner-bottom-serifed"
 eszet = "traditional-flat-hook-bottom-serifed"
+lower-kappa = "straight-tri-serifed"
 lower-upsilon = "straight-serifed"
 cyrl-capital-ka = "symmetric-connected-serifed"
 cyrl-ka = "symmetric-connected-serifed"
@@ -10735,9 +11392,11 @@ micro-sign = "toothed-serifed"
 [composite.ss15.slab-override.italic]
 k = "diagonal-tailed-cursive-top-left-serifed"
 u = "toothed-motion-serifed"
+v = "cursive-serifed"
 w = "cursive-serifed"
 x = "cursive"
 y = "cursive-motion-serifed"
+eszet = "traditional-flat-hook-serifless"
 cyrl-ka = "symmetric-connected-top-left-and-bottom-right-serifed"
 cyrl-u = "cursive-motion-serifed"
 cyrl-ef = "split-diagonal-tailed-cursive"
@@ -10760,6 +11419,8 @@ capital-l = "motion-serifed"
 capital-m = "hanging-serifless"
 capital-s = "bilateral-inward-serifed"
 capital-t = "serifed"
+capital-v = "straight-serifless"
+capital-w = "straight-serifless"
 a = "double-storey-serifed"
 b = "toothless-corner-serifed"
 c = "unilateral-inward-serifed"
@@ -10778,6 +11439,8 @@ q = "earless-corner-straight-serifless"
 r = "serifed"
 t = "bent-hook-short-neck2"
 u = "toothed-serifed"
+v = "straight-serifless"
+w = "straight-serifless"
 y = "straight-turn-serifless"
 capital-eszet = "rounded-serifless"
 long-s = "bent-hook-middle-serifed"
@@ -10786,6 +11449,7 @@ capital-thorn = "asymmetric-serifless"
 lower-thorn = "motion-serifed"
 capital-gamma = "serifed"
 lower-iota = "serifed-semi-tailed"
+lower-kappa = "straight-bottom-right-serifed"
 lower-lambda = "straight-turn"
 lower-mu = "toothed-bottom-right-serifed"
 lower-tau = "semi-tailed"
@@ -10828,6 +11492,8 @@ capital-d = "more-rounded-bilateral-serifed"
 capital-k = "symmetric-connected-serifed"
 capital-l = "serifed"
 capital-m = "hanging-serifed"
+capital-v = "straight-serifed"
+capital-w = "straight-serifed"
 a = "double-storey-hook-inward-serifed-serifed"
 h = "straight-serifed"
 k = "straight-serifed"
@@ -10846,6 +11512,7 @@ long-s = "bent-hook-double-serifed"
 eszet = "longs-s-lig-dual-serifed"
 capital-thorn = "asymmetric-serifed"
 lower-thorn = "serifed"
+lower-kappa = "straight-tri-serifed"
 lower-mu = "toothed-serifed"
 cyrl-a = "double-storey-hook-inward-serifed-serifed"
 cyrl-ve = "standard-bilateral-serifed"
@@ -10879,14 +11546,19 @@ capital-i = "serifed"
 capital-j = "serifed"
 capital-k = "straight-bottom-right-serifed"
 capital-l = "motion-serifed"
+capital-m = "hanging-serifless"
 capital-p = "closed-motion-serifed"
 capital-r = "straight-top-left-and-bottom-right-serifed"
 capital-s = "unilateral-inward-serifed"
 capital-u = "toothed-serifless"
+capital-v = "straight-serifless"
+capital-w = "straight-serifless"
 capital-z = "straight-top-serifed"
 a = "double-storey-tailed"
 b = "toothed-serifless"
 c = "serifless"
+d = "toothed-serifless"
+e = "flat-crossbar"
 f = "serifed"
 g = "double-storey"
 h = "straight-serifless"
@@ -10899,6 +11571,7 @@ n = "straight-serifless"
 r = "hookless-serifed"
 s = "serifless"
 t = "flat-hook-short-neck"
+u = "toothed-serifless"
 v = "straight-serifless"
 w = "straight-serifless"
 x = "straight-serifless"
@@ -10909,7 +11582,9 @@ long-s = "bent-hook-serifless"
 eszet = "longs-s-lig-serifless"
 lower-eth = "straight-bar"
 capital-thorn = "motion-serifed"
+lower-theta = "capsule"
 lower-iota = "serifed-flat-tailed"
+lower-kappa = "straight-serifless"
 lower-lambda = "tailed-turn"
 lower-tau = "flat-tailed"
 lower-chi = "semi-chancery-straight-serifless"
@@ -10952,6 +11627,8 @@ micro-sign = "tailed-serifless"
 a = "single-storey-tailed"
 b = "toothless-corner-serifless"
 c = "unilateral-inward-serifed"
+d = "tailed-serifless"
+e = "rounded"
 f = "tailed"
 g = "single-storey-serifless"
 h = "tailed-serifless"
@@ -10962,6 +11639,7 @@ m = "tailed-serifless"
 n = "tailed-serifless"
 r = "corner-hooked-top-serifed"
 s = "unilateral-inward-serifed"
+u = "tailed-serifless"
 v = "cursive-serifed"
 w = "cursive-serifless"
 x = "chancery"
@@ -10969,6 +11647,7 @@ y = "cursive-serifless"
 z = "cursive"
 long-s = "bent-hook-descending"
 eszet = "longs-s-lig-descending-serifless"
+lower-kappa = "straight-bottom-right-serifed"
 cyrl-a = "single-storey-tailed"
 cyrl-ze = "unilateral-bottom-inward-serifed"
 cyrl-ka = "symmetric-connected-bottom-right-serifed"
@@ -10983,19 +11662,24 @@ capital-e = "serifed"
 capital-f = "serifed"
 capital-k = "straight-serifed"
 capital-l = "serifed"
+capital-m = "hanging-serifed"
 capital-p = "closed-serifed"
 capital-r = "straight-serifed"
 capital-s = "bilateral-inward-serifed"
 capital-u = "toothed-serifed"
+capital-w = "straight-serifed"
+capital-v = "straight-serifed"
 capital-z = "straight-serifed"
 a = "double-storey-hook-inward-serifed-tailed"
 b = "toothed-serifed"
 c = "unilateral-inward-serifed"
+d = "toothed-serifed"
 h = "straight-serifed"
 k = "straight-serifed"
 m = "serifed"
 n = "straight-serifed"
 s = "unilateral-inward-serifed"
+u = "toothed-serifed"
 v = "straight-serifed"
 w = "straight-serifed"
 x = "straight-serifed"
@@ -11005,6 +11689,7 @@ capital-eszet = "corner-serifed"
 long-s = "bent-hook-bottom-serifed"
 eszet = "longs-s-lig-bottom-serifed"
 capital-thorn = "serifed"
+lower-kappa = "straight-tri-serifed"
 cyrl-a = "double-storey-hook-inward-serifed-tailed"
 cyrl-ze = "unilateral-inward-serifed"
 cyrl-capital-ka = "symmetric-connected-serifed"
@@ -11023,11 +11708,13 @@ micro-sign = "tailed-serifed"
 capital-u = "toothed-motion-serifed"
 a = "single-storey-tailed"
 b = "toothless-corner-serifed"
+d = "tailed-serifed"
 h = "tailed-motion-serifed"
 k = "cursive-top-left-and-bottom-right-serifed"
 m = "tailed-top-left-serifed"
 n = "tailed-motion-serifed"
 s = "bilateral-inward-serifed"
+u = "tailed-motion-serifed"
 v = "cursive-serifed"
 w = "cursive-serifed"
 x = "chancery"
@@ -11035,6 +11722,7 @@ y = "cursive-motion-serifed"
 z = "cursive"
 long-s = "bent-hook-descending"
 eszet = "longs-s-lig-descending-serifless"
+lower-kappa = "straight-top-left-and-bottom-right-serifed"
 cyrl-a = "single-storey-tailed"
 cyrl-ze = "unilateral-bottom-inward-serifed"
 cyrl-ka = "symmetric-connected-top-left-and-bottom-right-serifed"
@@ -11054,9 +11742,12 @@ capital-i = "serifed"
 capital-j = "serifed"
 capital-k = "symmetric-connected-serifless"
 capital-m = "hanging-serifless"
+capital-v = "straight-serifless"
+capital-w = "straight-serifless"
 a = "double-storey-tailed"
 b = "toothless-corner-serifless"
 d = "toothed-serifless"
+e = "flat-crossbar"
 f = "serifless-crossbar-at-x-height"
 g = "double-storey"
 i = "serifed"
@@ -11064,13 +11755,18 @@ j = "serifed"
 k = "symmetric-connected-serifless"
 l = "serifed"
 q = "earless-corner-straight-serifless"
+r = "serifless"
+t = "bent-hook"
 u = "toothed-serifless"
+v = "straight-serifless"
+w = "straight-serifless"
 y = "straight-turn-serifless"
 long-s = "bent-hook-middle-serifed-xh"
 eszet = "longs-s-lig-serifless"
 lower-alpha = "barred-tailed"
 lower-gamma = "straight"
 lower-theta = "capsule"
+lower-kappa = "symmetric-connected-serifless"
 lower-lambda = "straight-turn"
 lower-tau = "short-tailed"
 lower-upsilon = "straight-serifless"
@@ -11111,18 +11807,24 @@ eszet = "longs-s-lig-descending-serifless"
 capital-g = "toothless-rounded-serifed-hooked"
 capital-k = "symmetric-connected-serifed"
 capital-m = "hanging-serifed"
+capital-v = "straight-serifed"
+capital-w = "straight-serifed"
 b = "toothless-corner-serifed"
 d = "toothed-serifed"
 f = "serifed-crossbar-at-x-height"
 k = "symmetric-connected-serifed"
 q = "earless-corner-straight-serifed"
+r = "serifed"
 u = "toothed-serifed"
+v = "straight-serifed"
+w = "straight-serifed"
 x = "straight-serifed"
 y = "straight-turn-serifed"
 z = "straight-serifed"
 long-s = "bent-hook-double-serifed-xh"
 eszet = "longs-s-lig-bottom-serifed"
 lower-alpha = "barred-tailed-serifed"
+lower-kappa = "symmetric-connected-tri-serifed"
 lower-upsilon = "straight-serifed"
 lower-psi = "flat-top-serifed"
 cyrl-ve = "standard-bilateral-serifed"
@@ -11139,12 +11841,16 @@ micro-sign = "tailed-serifed"
 [composite.ss18.slab-override.italic]
 f = "extended-crossbar-at-x-height"
 k = "symmetric-connected-top-left-and-bottom-right-serifed"
+r = "top-serifed"
 u = "toothed-motion-serifed"
+v = "straight-motion-serifed"
+w = "straight-motion-serifed"
 x = "straight-bilateral-motion-serifed"
 y = "straight-turn-motion-serifed"
 long-s = "bent-hook-descending-middle-serifed-xh"
 eszet = "longs-s-lig-descending-serifless"
 lower-alpha = "barred-tailed"
+lower-kappa = "symmetric-connected-top-left-and-bottom-right-serifed"
 cyrl-ve = "standard-unilateral-serifed"
 cyrl-ka = "symmetric-connected-top-left-and-bottom-right-serifed"
 cyrl-u = "straight-turn-motion-serifed"
@@ -11171,10 +11877,13 @@ w = "curly-serifless"
 x = "curly-serifless"
 y = "curly-serifless"
 z = "curly-serifless"
+lower-eth = "curly-bar"
 capital-delta = "curly"
+lower-kappa = "curly-serifless"
 capital-lambda = "curly-serifless"
 lower-lambda = "curly"
 lower-chi = "curly-serifless"
+partial-derivative = "curly-bar"
 cyrl-capital-u = "curly-serifless"
 cyrl-u = "curly-serifless"
 cyrl-capital-ya = "curly-serifless"
@@ -11206,6 +11915,7 @@ w = "curly-serifed"
 x = "curly-serifed"
 y = "curly-turn-serifed"
 z = "curly-serifed"
+lower-kappa = "curly-tri-serifed"
 capital-lambda = "curly-base-serifed"
 lower-lambda = "curly-turn"
 lower-chi = "curly-bilateral-motion-serifed"
@@ -11223,4 +11933,5 @@ w = "curly-motion-serifed"
 x = "cursive"
 y = "cursive-motion-serifed"
 z = "cursive"
+lower-kappa = "curly-top-left-serifed"
 cyrl-u = "cursive-motion-serifed"

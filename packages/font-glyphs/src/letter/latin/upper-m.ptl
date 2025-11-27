@@ -26,7 +26,7 @@ glyph-block Letter-Latin-Upper-M : begin
 	define SLAB-FULL            4
 
 	glyph-block-export MShape
-	define [MShape] : with-params [top df form slabType slanted [kMidHang df.adws]] : glyph-proc
+	define [MShape] : with-params [top df form slabType slanted [kMidHang df.adws] [middleYExt nothing]] : glyph-proc
 		local sidesSlope : if slanted 0.04 0
 		local xLeftTop  : df.leftSB  + top * sidesSlope
 		local xRightTop : df.rightSB - top * sidesSlope
@@ -76,6 +76,7 @@ glyph-block Letter-Latin-Upper-M : begin
 		include : dispiro
 			flat (xRightTop - kMidShift * [HSwToV swSideTop]) top [widths.rhs.heading swMiddle Downward]
 			curl (df.middle + [HSwToV : 0.5 * swMiddleShrunk]) middleY [widths.rhs.heading swMiddleShrunk Downward]
+		if (middleYExt !== nothing) : include : VBar.m df.middle middleYExt middleY swMiddleShrunk
 
 		local sfT : SerifFrame top 0 xLeftTop  xRightTop  (swRef -- swSideBot) (hSplit -- 3) (fForceSymmetric -- (form !== FORM-FLAT))
 		local sfB : SerifFrame top 0 df.leftSB df.rightSB (swRef -- swSideBot) (hSplit -- 3) (fForceSymmetric -- (form !== FORM-FLAT))
@@ -95,7 +96,7 @@ glyph-block Letter-Latin-Upper-M : begin
 	define [CyrSoftEmShape] : with-params [top df form slabType slanted vSlab] : glyph-proc
 		local subDf : df.slice 4 3
 		local sidesSlope : if slanted 0.04 0
-		local xTopRight : subDf.rightSB - top * sidesSlope
+		local xRightTop : subDf.rightSB - top * sidesSlope
 		local xTopBarRightEnd : mix df.width df.rightSB : if vSlab 0.25 0.375
 
 		local swSideBot : match form
@@ -107,8 +108,10 @@ glyph-block Letter-Latin-Upper-M : begin
 
 		include : MShape top subDf form slabType slanted (kMidHang -- df.adws)
 
-		include : HBar.t xTopRight xTopBarRightEnd top swSideBot
-		if vSlab : include : VSerif.dr xTopBarRightEnd top VJut (VJutStroke * swSideBot / Stroke)
+		include : HBar.t xRightTop xTopBarRightEnd top swSideBot
+		if vSlab : begin
+			local swVJut : Math.min (VJutStroke * (swSideBot / Stroke)) : VSwToH : 0.625 * (xTopBarRightEnd - xRightTop)
+			include : VSerif.dr xTopBarRightEnd top VJut swVJut
 
 	define MConfig : SuffixCfg.combine
 		SuffixCfg.weave
@@ -155,8 +158,11 @@ glyph-block Letter-Latin-Upper-M : begin
 			include : LeaningAnchor.Below.VBar.l df.leftSB
 			include : MShape XH df form slab slanted
 
-		define cyrSoftEmDf : DivFrame (para.advanceScaleM * para.advanceScaleM) 4
-		define cyrSoftemDf : DivFrame (para.advanceScaleT * para.advanceScaleM) 4
+		# This is actually wider than `para.advanceScaleMM` by itself.
+		define cyrSoftEmDf : DivFrame [mix 1 para.advanceScaleM 2] 4
+
+		# This is incidentally equivalent to `para.advanceScaleT + (para.advanceScaleM - 1)`.
+		define cyrSoftemDf : DivFrame para.advanceScaleMM 4
 
 		DefineSelectorGlyph "cyrl/EmSoft" suffix cyrSoftEmDf 'capital'
 		DefineSelectorGlyph "cyrl/emSoft" suffix cyrSoftemDf 'e'
