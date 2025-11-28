@@ -7,7 +7,7 @@ trap { pop-location }
 $plans = Get-Item (join-path $PSScriptRoot "private-build-plans_*.toml")
 
 if ($plans.Count -eq 0) {
-    throw "no plans found in $iodir"
+    throw "no plans found"
 }
 
 if (-not (get-command "fontforge" -ErrorAction SilentlyContinue)) {
@@ -78,7 +78,10 @@ foreach($p in $plans) {
     Remove-Item -Path $patchdir -Recurse -force -ErrorAction SilentlyContinue;
     New-Item -Path $patchdir -ItemType Directory -ErrorAction SilentlyContinue | out-null;
 
-    Push-Location (join-path $PSScriptRoot "nerd-fonts")
+    # note: not sure what the status of the bundled nerd-fonts folder is, this looks for the
+    # full nerd-fonts repo (same level as this repo)
+    # NOTE: you also need to change the dist path below
+    Push-Location (join-path $PSScriptRoot "..\..\nerd-fonts")
     foreach($ff in $fontfiles) {
 
         $part = (get-item $ff).BaseName
@@ -114,7 +117,8 @@ foreach($p in $plans) {
         write-host "Name to use is $currentName"
 
         # note: absolute -out causes error
-        fontforge -script font-patcher --name $currentName --complete --quiet $ff -out ..\..\dist\$name\ttf.patched | out-null;
+        # path with included nerd-fonts: ..\..\dist\$name\ttf.patched
+        fontforge -script font-patcher --name $currentName --complete --quiet $ff -out ..\Iosevka\dist\$name\ttf.patched | out-null;
     }
 }
 
