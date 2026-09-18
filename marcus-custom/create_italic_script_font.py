@@ -1,7 +1,11 @@
 import fontforge
+import psMat
 import sys
 import os
 import re
+import tempfile
+
+from extra_glyphs import add_extra_glyphs, copy_donor_notices, publish_output
 
 # to run this script: fontforge -script .\create_italic_script_font.py
 
@@ -29,14 +33,14 @@ else:
 # note: nerd font has issues at the moment with naming which does not work with VS
 # so we don't support a nerd patch here atm
 target_font_dir = R"S:\git\Iosevka\dist\iosevka-marcus-cond\ttf.patched"
-output_font_dir = R"S:\git\Iosevka\dist\iosemka-script-" + script_font_name # if use_monaspace else R"D:\git\Iosevka\dist\iosemka-script-cascadia-new"
+final_font_dir = R"S:\git\Iosevka\dist\iosemka-script-" + script_font_name + ".final"
 
 if not os.path.exists(target_font_dir):
     raise Exception("Target font directory not found: " + target_font_dir)
 
-# create output dir if not found
-if not os.path.exists(output_font_dir):
-    os.makedirs(output_font_dir)
+output_font_dir = tempfile.mkdtemp(prefix=".script-glyphs-", dir=os.path.dirname(final_font_dir))
+copy_donor_notices(output_font_dir)
+skipped_styles = []
 
 # Process target fonts, either copying them or replacing them.
 # enumerate the directory
@@ -77,6 +81,8 @@ for root, dirs, files in os.walk(target_font_dir):
                 font = fontforge.open(os.path.join(script_font_dir, scriptFont))
             else:
                 print ("script font " + scriptFont + " not found, skipping")
+                skipped_styles.append(style)
+                source_font.close()
                 continue
             # else: we ignore this italic font
         else:
@@ -140,10 +146,14 @@ for root, dirs, files in os.walk(target_font_dir):
 
         output_path = os.path.join(output_font_dir, "IosemkaScript-" + style + ".ttf")
 
+        add_extra_glyphs(font)
         font.generate(output_path)
         font.close()
 
         if font != source_font:
             source_font.close()
 
-print("done")
+if skipped_styles:
+    print("Skipped styles without a cursive donor: " + ", ".join(skipped_styles))
+publish_output(output_font_dir, final_font_dir)
+print("done: " + final_font_dir)

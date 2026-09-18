@@ -23,6 +23,73 @@ Various scripts:
 - create_italic_script_font.py: supports either monaspace Radon or Cascadia, replaces the italic fonts with their cursive variants
 
 
+Update to latest upstreams:
+
+1. Fetch the relevant tag from the Iosevka remote and merge.
+1. Update the nerd-fonts repository (outside of this one, not contained), checkout the relevant tag.
+1. Update donor fonts
+
+## Extra Japanese glyphs
+
+`marcus-custom/extra_glyphs.py` adds U+30C4 (katakana tsu), U+30B7 (shi), and
+U+30C3 (small tsu) only when they are missing. It uses FontForge's Python,
+not the standalone Python interpreter. The editor may flag `fontforge` and
+`psMat` as unresolved when its Python environment lacks FontForge's modules;
+use the FontForge commands below to run and test these scripts.
+Noto Sans CJK JP `Sans2.004` Regular
+and Bold are stored in `marcus-custom/noto-sans-cjk-jp` with their license,
+source URLs, and SHA-256 hashes.
+
+Change `extra_glyph_font_name` in `extra_glyphs.py` to select another donor;
+add its directory, weight-to-filename mapping, and license notices to
+`extra_glyph_fonts`. This choice is independent of `script_font_name` in
+`create_italic_script_font.py`, which still selects the cursive italic donor.
+The closest donor weight is used, with ties going to the lighter weight.
+Japanese glyphs remain upright, use two digit-zero advances, and retain their
+relative proportions, including the smaller outline of small tsu.
+
+The output flow is now:
+
+1. `build_all.ps1`: Iosevka -> Nerd Fonts in `dist/<plan>/ttf.patched` -> extra
+	glyphs in `dist/<plan>/ttf.final`. Install from `ttf.final` for these families.
+2. `create_italic_script_font.py`: reads the condensed `ttf.patched` directory,
+	substitutes and scales cursive donors, then adds the Japanese glyphs before
+	generation. Output goes to `dist/iosemka-script-<donor>.final`.
+
+Final output directories are staged, then published. Previous final directories
+are retained with a `.previous-<timestamp>` suffix. Missing cursive styles are
+reported and excluded from the new Script output, not inherited from old runs.
+A failed Script run leaves its `.script-glyphs-*` staging directory for inspection
+but does not replace the previous final directory. Keep donor license notices
+with distributed fonts. The extra-glyph stage does not restore Nerd icons missing
+from cursive donor fonts.
+
+Patch existing fonts without building Iosevka or running Nerd Fonts, from the
+repository root:
+
+```powershell
+fontforge -lang=py -script .\marcus-custom\extra_glyphs.py --input-dir .\dist\iosevka-marcus-cond\ttf.patched --output-dir .\dist\iosevka-marcus-cond\ttf.final
+```
+
+For a small sample instead, use `--fonts` followed by explicit TTF paths and
+`--output-dir .\dist\extra-glyphs-preview`. The command processes only those files.
+It never overwrites its inputs. Rerunning on already-patched fonts copies them
+byte-for-byte. The Script generator itself still processes the whole family.
+
+Validation commands (no Iosevka build):
+
+```powershell
+fontforge -lang=py -script .\marcus-custom\test_extra_glyphs.py
+node .\marcus-custom\validate_extra_glyphs.mjs .\dist\iosevka-marcus-cond\ttf.patched\IosemkaCondensed-Regular.ttf .\dist\extra-glyphs-preview\IosemkaCondensed-Regular.ttf
+```
+
+The Node validator uses the repository's installed `ot-builder` and `harfbuzzjs`
+dependencies. It checks original glyphs, advances, hinting, naming, metrics, and
+sample shaping across OpenType features. Check new outlines visually for clipping
+and size before installation. `build_all.ps1 -skipIoBuild` still runs Nerd Fonts
+and extra-glyph patching; it is not a dry run.
+
+
 
 
 

@@ -1,126 +1,146 @@
 param ([switch]$skipIoBuild, $nameFilter)
 
+$ErrorActionPreference = "Stop"
 $iodir = join-path $PSScriptRoot ".."
 Push-Location $iodir
-trap { pop-location }
+try {
 
-$plans = Get-Item (join-path $PSScriptRoot "private-build-plans_*.toml")
+    $plans = Get-Item (join-path $PSScriptRoot "private-build-plans_*.toml")
 
-if ($plans.Count -eq 0) {
-    throw "no plans found"
-}
-
-if (-not (get-command "fontforge" -ErrorAction SilentlyContinue)) {
-    throw "cannot find fontforge";
-}
-if (-not (get-command "python" -ErrorAction SilentlyContinue)) {
-    throw "cannot find python"
-}
-
-if (-not (get-command "ttfautohint" -ErrorAction SilentlyContinue)) {
-    #https://freetype.org/ttfautohint/
-    throw "cannot find ttfautohint"
-}
-
-write-host "Building plans...";
-
-function cap($s) {
-    return $s[0].ToString().ToUpperInvariant() + $s.Substring(1);
-}
-
-
-foreach($p in $plans) {
-
-    write-host "Plan file: $p"
-    $c = get-content $p -raw;
-
-    if ($c -notmatch "\[buildPlans\.(iosevka-marcus(-.+)?)\]") {
-        throw "could not extract name from plan"
+    if ($plans.Count -eq 0) {
+        throw "no plans found"
     }
 
-    $name = $matches[1];
-
-    if ($c -notmatch "family = (.+)") {
-        throw "could not get family"
+    if (-not (get-command "fontforge" -ErrorAction SilentlyContinue)) {
+        throw "cannot find fontforge";
+    }
+    if (-not (get-command "python" -ErrorAction SilentlyContinue)) {
+        throw "cannot find python"
     }
 
-    copy-item -Path $p -Destination (Join-Path $PSScriptRoot "..\private-build-plans.toml") -Force;
-
-    $family = ($matches[1]).Trim().Trim('"');
-
-    $newName = "Iosemka";
-    if ($family -match "Iosevka Marcus (.+)") {
-        # We need to remove the space here so that NerdFonts does not consider it 
-        # part of the subfamily. It appears to then correctly insert a space anyway.
-        $newName += $matches[1];
+    if (-not (get-command "ttfautohint" -ErrorAction SilentlyContinue)) {
+        #https://freetype.org/ttfautohint/
+        throw "cannot find ttfautohint"
     }
 
-    if ($nameFilter -and ($newName -notmatch $nameFilter)) {
-        write-host "Skipping $name → $newName ($family)"
-        continue;
+    write-host "Building plans...";
+
+    function cap($s) {
+        return $s[0].ToString().ToUpperInvariant() + $s.Substring(1);
     }
 
-    if (-not $skipIoBuild) {
-        write-host "Building plan $name ($family)"
 
-        push-location (join-path $PSScriptRoot "..\")
-        npm run build -- ttf::$name
-    }
+    foreach($p in $plans) {
 
-    write-host "Patching with Nerd font"
+        write-host "Plan file: $p"
+        $c = get-content $p -raw;
 
-    $fontfiles = get-item (join-path $PSScriptRoot "..\dist\$name\ttf\*.ttf");
-    if ($fontfiles.Count -eq 0) {
-        throw "could not find any font files"
-    }
-
-    $patchdir = join-path $PSScriptRoot "..\dist\$name\ttf.patched";
-    Remove-Item -Path $patchdir -Recurse -force -ErrorAction SilentlyContinue;
-    New-Item -Path $patchdir -ItemType Directory -ErrorAction SilentlyContinue | out-null;
-
-    # note: not sure what the status of the bundled nerd-fonts folder is, this looks for the
-    # full nerd-fonts repo (same level as this repo)
-    # NOTE: you also need to change the dist path below
-    Push-Location (join-path $PSScriptRoot "..\..\nerd-fonts")
-    foreach($ff in $fontfiles) {
-
-        $part = (get-item $ff).BaseName
-
-        if ($part -notmatch "-([^-]+)`$") {
-            throw "unexpected format $ff ($part)"
+        if ($c -notmatch "\[buildPlans\.(iosevka-marcus(-.+)?)\]") {
+            throw "could not extract name from plan"
         }
 
-        $part = $matches[1]
+        $name = $matches[1];
 
-        if (!$part.StartsWith("normal")) {
-            throw "expected part to end with 'normal'";
+        if ($c -notmatch "family = (.+)") {
+            throw "could not get family"
         }
 
-        $part = $part.Substring("normal".Length)
+        $family = ($matches[1]).Trim().Trim('"');
 
-        $currentName = $newName;
+        $newName = "Iosemka";
+        if ($family -match "Iosevka Marcus (.+)") {
+            # We need to remove the space here so that NerdFonts does not consider it 
+            # part of the subfamily. It appears to then correctly insert a space anyway.
+            $newName += $matches[1];
+        }
 
-        if ($part.Length) {
-            
-            $m = [regex]::Matches($part, "[A-Z][a-z]+");
+        if ($nameFilter -and ($newName -notmatch $nameFilter)) {
+            write-host "Skipping $name → $newName ($family)"
+            continue;
+        }
 
-            if ($m.Count -eq 0) {
-                throw "expected subfamily matches"
+        copy-item -Path $p -Destination (Join-Path $PSScriptRoot "..\private-build-plans.toml") -Force;
+
+        if (-not $skipIoBuild) {
+            write-host "Building plan $name ($family)"
+
+            npm run build -- ttf::$name
+            if ($LASTEXITCODE -ne 0) {
+                throw "Iosevka build failed for $name (exit $LASTEXITCODE)"
             }
-
-            $currentName += " " + ($m -join " ")
-        } else {
-            # nerdfont needs this, or it may see "Condensed" as a subfamily
-            $currentName += " Regular"
         }
 
-        write-host "Name to use is $currentName"
+        write-host "Patching with Nerd font"
 
-        # note: absolute -out causes error
-        # path with included nerd-fonts: ..\..\dist\$name\ttf.patched
-        fontforge -script font-patcher --name $currentName --complete --quiet $ff -out ..\Iosevka\dist\$name\ttf.patched | out-null;
+        $fontfiles = get-item (join-path $PSScriptRoot "..\dist\$name\ttf\*.ttf");
+        if ($fontfiles.Count -eq 0) {
+            throw "could not find any font files"
+        }
+
+        $patchdir = join-path $PSScriptRoot "..\dist\$name\ttf.patched";
+        if (Test-Path -LiteralPath $patchdir) {
+            Remove-Item -LiteralPath $patchdir -Recurse -force;
+        }
+        New-Item -Path $patchdir -ItemType Directory | out-null;
+
+        # note: not sure what the status of the bundled nerd-fonts folder is, this looks for the
+        # full nerd-fonts repo (same level as this repo)
+        # NOTE: you also need to change the dist path below
+        Push-Location (join-path $PSScriptRoot "..\..\nerd-fonts")
+        try {
+            foreach($ff in $fontfiles) {
+
+                $part = (get-item $ff).BaseName
+
+                if ($part -notmatch "-([^-]+)`$") {
+                    throw "unexpected format $ff ($part)"
+                }
+
+                $part = $matches[1]
+
+                if (!$part.StartsWith("normal")) {
+                    throw "expected part to end with 'normal'";
+                }
+
+                $part = $part.Substring("normal".Length)
+
+                $currentName = $newName;
+
+                if ($part.Length) {
+            
+                    $m = [regex]::Matches($part, "[A-Z][a-z]+");
+
+                    if ($m.Count -eq 0) {
+                        throw "expected subfamily matches"
+                    }
+
+                    $currentName += " " + ($m -join " ")
+                } else {
+                    # nerdfont needs this, or it may see "Condensed" as a subfamily
+                    $currentName += " Regular"
+                }
+
+                write-host "Name to use is $currentName"
+
+                # note: absolute -out causes error
+                # path with included nerd-fonts: ..\..\dist\$name\ttf.patched
+                fontforge -script font-patcher --name $currentName --complete --quiet $ff -out ..\Iosevka\dist\$name\ttf.patched | out-null;
+                if ($LASTEXITCODE -ne 0) {
+                    throw "Nerd Fonts patching failed for $ff (exit $LASTEXITCODE)"
+                }
+            }
+        } finally {
+            Pop-Location
+        }
+
+        $finaldir = join-path $iodir "dist\$name\ttf.final"
+        fontforge -lang=py -script (join-path $PSScriptRoot "extra_glyphs.py") --input-dir $patchdir --output-dir $finaldir
+        if ($LASTEXITCODE -ne 0) {
+            throw "Extra glyph patching failed for $name (exit $LASTEXITCODE)"
+        }
     }
-}
 
-Push-Location $PSScriptRoot
-write-host "Done"
+    write-host "Done"
+} finally {
+    Pop-Location
+}
