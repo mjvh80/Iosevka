@@ -13,6 +13,14 @@ export class Box {
 		this.height = t - b;
 		this.width = r - l;
 	}
+
+	static fromPointAndSize(x, y, w, h = w) {
+		return new Box(y + h / 2, y - h / 2, x - w / 2, x + w / 2);
+	}
+	static fromPointAndHalfSize(x, y, hw, hh = hw) {
+		return new Box(y + hh, y - hh, x - hw, x + hw);
+	}
+
 	withTop(t) {
 		return new Box(t, this.bottom, this.left, this.right);
 	}
@@ -33,7 +41,7 @@ export class Box {
 	}
 
 	pad(d) {
-		return new Box(this.top - d, this.bottom + d, this.left - d, this.right + d);
+		return new Box(this.top - d, this.bottom + d, this.left + d, this.right - d);
 	}
 	padLeft(d) {
 		return new Box(this.top, this.bottom, this.left + d, this.right);

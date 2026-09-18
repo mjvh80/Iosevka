@@ -1,6 +1,7 @@
 $$include '../../meta/macros.ptl'
 
 import [mix linreg clamp fallback] from "@iosevka/util"
+import [MathSansSerif] from "@iosevka/glyph/relation"
 
 glyph-module
 
@@ -8,21 +9,40 @@ glyph-block Letter-Greek-Lower-Nu : begin
 	glyph-block-import CommonShapes
 	glyph-block-import Common-Derivatives
 
-	alias 'grek/nu.straight' null 'v.straightSerifless'
-	alias 'grek/nu.curly'    null 'v.curlySerifless'
+	alias 'grek/nu.straightSerifless' null 'v.straightSerifless'
+	alias 'grek/nu.straightSerifed'   null 'v.straightMotionSerifed'
 
-	create-glyph 'grek/nu.casual' : glyph-proc
-		include : MarkSet.e
-		local xmid : Middle + 0.375 * Stroke
-		include : dispiro
-			g4 (SB + [HSwToV : 0.4 * Stroke]) (XH - O) [widths.rhs]
-			bezControls 0.33 0.2 1 0.76 6 important
-			g4.down.end xmid 0 [heading Downward]
+	alias 'grek/nu.curlySerifless' null 'v.curlySerifless'
+	alias 'grek/nu.curlySerifed'   null 'v.curlyMotionSerifed'
+
+	define [NuBaseShape df k ltOvershoot] : glyph-proc
+		local xMid : df.middle + 0.375 * Stroke
+		local xStart : df.leftSB + [HSwToV : k * Stroke]
+		local yStart : XH - ltOvershoot
 		include : dispiro
 			widths.rhs
-			flat RightSB XH [heading Downward]
-			curl RightSB (XH * 0.9) [heading Downward]
-			quadControls 0 0.3 6
-			g4   xmid 0
+			g4 xStart yStart
+			bezControls 0.33 0.2 1 0.76 6 important
+			g4.down.end xMid 0 [heading Downward]
+		include : dispiro
+			widths.rhs
+			flat df.rightSB      XH        [heading Downward]
+			curl df.rightSB [mix XH 0 0.1] [heading Downward]
+			quadControls 0 0.35 6
+			g4   xMid 0
+
+	create-glyph 'grek/nu.casualSerifless' : glyph-proc
+		local df : include : DivFrame 1
+		include : df.markSet.e
+		include : NuBaseShape df 0.4 O
+
+	create-glyph 'grek/nu.casualSerifed' : glyph-proc
+		local df : include : DivFrame 1
+		include : df.markSet.e
+		include : difference
+			NuBaseShape df 0.75 0
+			Rect XH (XH - Stroke) 0 (df.leftSB + [HSwToV HalfStroke])
+		include : HSerif.lt (df.leftSB + [HSwToV QuarterStroke]) XH (SideJut + [HSwToV QuarterStroke])
 
 	select-variant 'grek/nu' 0x3BD
+	link-reduced-variant 'grek/nu/sansSerif' 'grek/nu' MathSansSerif

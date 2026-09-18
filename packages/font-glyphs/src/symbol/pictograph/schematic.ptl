@@ -175,14 +175,14 @@ glyph-block Symbol-Pictograph-Schematic : for-width-kinds WideWidth4 : begin
 				g4.right.mid [mix left mid1 (0.5 + kX2)] yTop
 				g4 mid1 yInter
 				g4.down.mid [mix mid1 mid2 (0.5 - kX)] ySide
-				arch.rhs yBot (sw -- boxDrawingStroke)
+				Arch.rhs yBot (sw -- boxDrawingStroke)
 				g4.up.mid [mix left mid1 (0.5 + kX)] ySide
 				g4 mid1 yInter
 				flat [mix mid1 mid2 (0.5 - kX2)] yTop
 				curl [mix mid1 mid2 (0.5 + kX2)] yTop
 				g4 mid2 yInter
 				g4.down.mid [mix mid2 right (0.5 - kX)] ySide
-				arch.rhs yBot (sw -- boxDrawingStroke)
+				Arch.rhs yBot (sw -- boxDrawingStroke)
 				g4.up.mid [mix mid1 mid2 (0.5 + kX)] ySide
 				g4 mid2 yInter
 				g4.right.mid [mix mid2 right (0.5 - kX2)] yTop
@@ -229,8 +229,8 @@ glyph-block Symbol-Pictograph-Schematic : for-width-kinds WideWidth4 : begin
 		define [VerticalPart] : intersection
 			Rect top bottom left (midx + [HSwToV : 0.5 * boxDrawingStroke])
 			union
-				ExtLineCenter 1 boxDrawingStroke midx bottom left midy
-				ExtLineCenter 1 boxDrawingStroke left midy midx top
+				ExtLineCenter midx bottom left midy boxDrawingStroke 1
+				ExtLineCenter left midy   midx top  boxDrawingStroke 1
 
 		create-glyph [MangleName 'transistorPNP'] [MangleUnicode 0x1CC10] : glyph-proc
 			set-width MosaicWidth

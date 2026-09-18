@@ -1,5 +1,5 @@
-import fs from "fs";
-import path from "path";
+import fs from "node:fs";
+import path from "node:path";
 
 import * as Toml from "@iarna/toml";
 import { CliProc, Ot } from "ot-builder";
@@ -61,7 +61,7 @@ async function main(argv) {
 // To derive -Term variants, simply apply NWID
 async function deriveTerm(font) {
 	const gsub = font.gsub;
-	let nwidMap = new Map();
+	const nwidMap = new Map();
 	for (const feature of gsub.features) {
 		if (feature.tag !== "NWID") continue;
 		for (const lookup of feature.lookups) {
@@ -99,6 +99,15 @@ async function deriveFixed_DropWideChars(font) {
 		0x27fe, // LONG RIGHTWARDS DOUBLE ARROW FROM BAR
 		0x27ff, // LONG RIGHTWARDS SQUIGGLE ARROW
 		0x2b33, // LONG LEFTWARDS SQUIGGLE ARROW
+		0x1f8d0, // LONG RIGHTWARDS ARROW OVER LONG LEFTWARDS ARROW
+		0x1f8d1, // LONG RIGHTWARDS HARPOON OVER LONG LEFTWARDS HARPOON
+		0x1f8d2, // LONG RIGHTWARDS HARPOON OVER SHORT LEFTWARDS HARPOON
+		0x1f8d3, // SHORT RIGHTWARDS HARPOON OVER LONG LEFTWARDS HARPOON
+		0x1f8d4, // LONG LEFTWARDS HARPOON OVER SHORT RIGHTWARDS HARPOON
+		0x1f8d5, // SHORT LEFTWARDS HARPOON OVER LONG RIGHTWARDS HARPOON
+		0x1f8d6, // LONG RIGHTWARDS ARROW THROUGH X
+		0x1f8d7, // LONG RIGHTWARDS ARRIW WITH DOUBLE SLASH
+		0x1f8d8, // LONG LEFT RIGHT ARROW WITH DEPENDENT LOBE
 	];
 	for (const ch of longCharCodes) {
 		font.cmap.unicode.delete(ch);

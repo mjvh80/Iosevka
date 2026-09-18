@@ -16,7 +16,7 @@ function CharGrid(args) {
 	const ITEM_SIZE = 1.5;
 
 	let rows = 0;
-	let frames = [];
+	const frames = [];
 	for (let offset = 0; offset < ITEMS_PER_ROW; offset++) {
 		frames.push({
 			"horizontal-align": "center",
@@ -50,12 +50,14 @@ function CharGrid(args) {
 					{ "font-weight": 600 },
 					{ "font-size": 0.5 * EM },
 					{ color: theme.body },
-					"U+" + char.lch.toString(16).toUpperCase().padStart(4, "0"),
+					`U+${char.lch.toString(16).toUpperCase().padStart(4, "0")}`,
 				],
 			});
 		}
 
-		const isMark = char.inFont && (gcMap.get(char.lch) === "Nonspacing_Mark" || gcMap.get(char.lch) === "Enclosing_Mark");
+		const isMark =
+			char.inFont &&
+			(gcMap.get(char.lch) === "Nonspacing_Mark" || gcMap.get(char.lch) === "Enclosing_Mark");
 		const dimensions = {
 			"horizontal-align": "center",
 			"vertical-align": "center",
@@ -81,7 +83,7 @@ function CharGrid(args) {
 			contents: [
 				...fontSettings,
 				{ color: char.inFont ? theme.body : theme.dimmed },
-				char.inFont ? (isMark ? "\uEF0E" : "") + String.fromCodePoint(char.lch) : "\uF00F",
+				char.inFont ? (isMark ? "\uf89E" : "") + String.fromCodePoint(char.lch) : "\uf880",
 			],
 		});
 	}

@@ -4,7 +4,8 @@ import [GlyphBlock GlyphBuildExecutor GlyphSaveSink] from "@iosevka/glyph/block"
 import as Gr from "@iosevka/glyph/relation"
 import as SpiroKit from "@iosevka/font-kits/spiro-kit"
 import as BooleKit from "@iosevka/font-kits/boole-kit"
-import [DesignParameters calculateMetrics setFontMetrics GenDivFrame] from "./meta/aesthetics.mjs"
+import as LetterModel from "@iosevka/font-kits/letter-model"
+import [DesignParameters calculateMetrics setFontMetrics] from "./meta/aesthetics.mjs"
 import [$NamedParameterPair$] from "@iosevka/util"
 
 extern isFinite
@@ -24,7 +25,7 @@ export : define [buildGlyphs para recursive] : begin
 	setFontMetrics para Metrics fontMetrics
 
 	# Glyph metrics and parameters
-	define DivFrame : GenDivFrame Metrics
+	define DivFrame : LetterModel.SetupBuilders Metrics
 	define MarkSet    [DivFrame 1 2].markSet
 
 	# Anchor parameters
@@ -68,12 +69,15 @@ export : define [buildGlyphs para recursive] : begin
 	run-glyph-module "./common/derivatives.mjs"
 	run-glyph-module "./common/shapes.mjs"
 	run-glyph-module "./common/o-shape-variants.mjs"
+	run-glyph-module "./common/polygon.mjs"
 	run-glyph-module "./space/index.mjs"
 	run-glyph-module "./marks/index.mjs"
 
 	# Unified letters
 	run-glyph-module "./letter/accent-builder.mjs"
 	run-glyph-module "./letter/shared.mjs"
+	run-glyph-module "./letter/shared/arc-hook.mjs"
+	run-glyph-module "./letter/shared/shoulder-bowl.mjs"
 	run-glyph-module "./letter/latin.mjs"
 	run-glyph-module "./letter/greek.mjs"
 	run-glyph-module "./letter/cyrillic.mjs"
@@ -101,6 +105,9 @@ export : define [buildGlyphs para recursive] : begin
 	run-glyph-module "./symbol/combining.mjs"
 	run-glyph-module "./symbol/ligation.mjs"
 
+	# Orthographic conventions
+	run-glyph-module "./orthography/index.mjs"
+
 	# Auto-builds
 	if [not recursive] : begin
 		run-glyph-module "./auto-build/recursive-build.mjs"
@@ -109,5 +116,7 @@ export : define [buildGlyphs para recursive] : begin
 		run-glyph-module "./auto-build/composite.mjs"
 
 	$Exec$.executePendingBlocks
+
+	$Exec$.release
 
 	return : object glyphStore fontMetrics

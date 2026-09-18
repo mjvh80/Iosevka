@@ -1,23 +1,11 @@
-"use strict";
-
-import fs from "fs";
-import path from "path";
-import url from "url";
+import fs from "node:fs";
 
 import { ArrayUtil } from "@iosevka/util";
-
-const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
-
-setImmediate(() => {
-	main().catch(e => {
-		console.error(e);
-		process.exit(1);
-	});
-});
+import { format, resolveConfig } from "prettier";
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-async function main() {
+export default async function main(argv) {
 	for (const target of Targets) {
 		await target.filter.load();
 	}
@@ -40,7 +28,7 @@ async function main() {
 		}
 	}
 
-	let out = [];
+	const out = [];
 
 	for (const [key, value] of results) {
 		out.push({
@@ -50,14 +38,16 @@ async function main() {
 		});
 	}
 
-	await fs.promises.writeFile(
-		path.resolve(__dirname, "../../../packages/font/src/generated/ttfa-ranges.mjs"),
-		`/* eslint-disable */\n` +
-			`// Machine generated. Do not modify。\n` +
-			`export default ` +
-			JSON.stringify(out, null, "\t") +
-			";\n",
-	);
+	// Perform codegen
+	const options = await resolveConfig(argv.out);
+	const sourceRaw =
+		`// Machine generated. Do not modify.\n` +
+		`export default ` +
+		JSON.stringify(out, null, "\t") +
+		";\n";
+	const sourceFormatted = await format(sourceRaw, { ...options, parser: "babel" });
+
+	await fs.promises.writeFile(argv.out, sourceFormatted);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
