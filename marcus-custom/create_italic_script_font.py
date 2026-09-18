@@ -3,6 +3,8 @@ import sys
 import os
 import re
 
+# to run this script: fontforge -script .\create_italic_script_font.py
+
 use_monaspace = False
 
 script_font_name = "CascadiaCode" # "VictorMono" # "Monaspace" if use_monaspace else "CascadiaCode"
@@ -18,6 +20,7 @@ if script_font_name == "Monaspace":
 elif script_font_name == "CascadiaCode":
     script_font_dir += "cascadia_frozen"
     script_font_prefix = "CascadiaCode-"
+    scale = 1.0
 else:
     script_font_dir += "victor_mono"
     script_font_prefix = "VictorMono-"
@@ -57,7 +60,7 @@ for root, dirs, files in os.walk(target_font_dir):
 
             if script_font_name == "CascadiaCode" and style == "Italic":
                 # use Light Italic glyphs for Italic style as Cascadia Code is a bit heavy
-                scriptFont = "CascadiaCode-LightItalic.ttf"
+                scriptFont = "CascadiaCode-SemiLightItalic.ttf"
             else:
                 scriptFont = script_font_prefix + style + ".ttf"
 
