@@ -1,159 +1,145 @@
+import argparse
+from pathlib import Path
+import tempfile
+
 import fontforge
 import psMat
-import sys
-import os
-import re
-import tempfile
 
 from extra_glyphs import add_extra_glyphs, copy_donor_notices, publish_output
 
-# to run this script: fontforge -script .\create_italic_script_font.py
 
-use_monaspace = False
-
-script_font_name = "CascadiaCode" # "VictorMono" # "Monaspace" if use_monaspace else "CascadiaCode"
-
-script_font_dir = "S:\\git\\Iosevka\\marcus-custom\\"
-script_font_prefix = ""
-
-scale = 1.1
-
-if script_font_name == "Monaspace":
-    script_font_dir += "monaspace"
-    script_font_prefix = "MonaspaceRadonFrozen-"
-elif script_font_name == "CascadiaCode":
-    script_font_dir += "cascadia_frozen"
-    script_font_prefix = "CascadiaCode-"
-    scale = 1.0
-else:
-    script_font_dir += "victor_mono"
-    script_font_prefix = "VictorMono-"
-    scale = 1.0
-
-# note: nerd font has issues at the moment with naming which does not work with VS
-# so we don't support a nerd patch here atm
-target_font_dir = R"S:\git\Iosevka\dist\iosevka-marcus-cond\ttf.patched"
-final_font_dir = R"S:\git\Iosevka\dist\iosemka-script-" + script_font_name + ".final"
-
-if not os.path.exists(target_font_dir):
-    raise Exception("Target font directory not found: " + target_font_dir)
-
-output_font_dir = tempfile.mkdtemp(prefix=".script-glyphs-", dir=os.path.dirname(final_font_dir))
-copy_donor_notices(output_font_dir)
-skipped_styles = []
-
-# Process target fonts, either copying them or replacing them.
-# enumerate the directory
-for root, dirs, files in os.walk(target_font_dir):
-    for file in files:
-        if not file.startswith("IosemkaCondensed-"):
-            raise Exception("Invalid font found in target directory: " + file )
-
-        style = file[len("IosemkaCondensed-"):-4]
-
-        print("processing file " + file + " style = " + style)
-
-        source_font = fontforge.open(os.path.join(root, file))
-
-        if style.endswith("Italic"):
-           
-           
-            # scriptFont = "MonaspaceRadonFrozen-" + style + ".ttf" if use_monaspace else "CascadiaCode-" + style + ".ttf"
-
-#            scriptFont = ("MonaspaceRadonFrozen-" + style + ".ttf") if script_font_name == "monaspace" else ("CascadiaCode-" + style + ".ttf") if script_font_name == "cascadia_frozen" else None
-
-            if script_font_name == "CascadiaCode" and style == "Italic":
-                # use Light Italic glyphs for Italic style as Cascadia Code is a bit heavy
-                scriptFont = "CascadiaCode-SemiLightItalic.ttf"
-            else:
-                scriptFont = script_font_prefix + style + ".ttf"
-
-           # elseif script_font_name == "Monaspace":
-
-           # if scriptFont == "VictorMono-Italic.ttf":
-            #    scriptFont = "VictorMono-MediumItalic.ttf"
-            
-
-#            if scriptFont == "VictorMono-Italic.ttf":
- #               scriptFont = "VictorMono-MediumItalic.ttf"
-
-            if os.path.exists(os.path.join(script_font_dir, scriptFont)):
-                font = fontforge.open(os.path.join(script_font_dir, scriptFont))
-            else:
-                print ("script font " + scriptFont + " not found, skipping")
-                skipped_styles.append(style)
-                source_font.close()
-                continue
-            # else: we ignore this italic font
-        else:
-            font = fontforge.open(os.path.join(root, file))
-
-        font.fontname = source_font.fontname.replace("Condensed", "Script")
-        font.familyname = source_font.familyname.replace("Condensed", "Script")
-        font.fullname = source_font.fullname.replace("Condensed", "Script")
-        font.sfntRevision = source_font.sfntRevision
-
-        # copy over sfnt_names but replace Condensed with Script
-        sfnt_names = []
-        for item in source_font.sfnt_names:
-            #if item[1] == "Preferred Family":
-            #    sfnt_names += [(item[0], item[1], "Iosemka Script")] # bug in nerd font patch
-            #else:
-            sfnt_names += [(item[0], item[1], item[2].replace("Condensed", "Script"))]
-        font.sfnt_names = tuple(sfnt_names) 
+script_font_name = "CascadiaCode"
+script_fonts = {
+    "CascadiaCode": {
+        "directory": "cascadia_frozen",
+        "prefix": "CascadiaCode-",
+        "scale": 1.0,
+        "style_overrides": {"Italic": "SemiLightItalic"},
+    },
+    "Monaspace": {
+        "directory": "monaspace",
+        "prefix": "MonaspaceRadonFrozen-",
+        "scale": 1.1,
+        "style_overrides": {},
+    },
+    "VictorMono": {
+        "directory": "victor_mono",
+        "prefix": "VictorMono-",
+        "scale": 1.0,
+        "style_overrides": {},
+    },
+}
+script_directory = Path(__file__).resolve().parent
+source_prefix = "IosemkaCondensed-"
+output_prefix = "IosemkaScript-"
 
 
-        # If we are using say Light Italic, names don't match and older Windows APIs choke.
-        font.os2_weight    = source_font.os2_weight
-        font.os2_width     = source_font.os2_width
-        font.os2_stylemap  = source_font.os2_stylemap
-        font.os2_panose    = source_font.os2_panose
+def parse_arguments(argv=None):
+    parser = argparse.ArgumentParser(description="Create Script fonts from Nerd-patched condensed fonts")
+    parser.add_argument("--donor", choices=script_fonts, default=script_font_name)
+    parser.add_argument("--donor-dir", type=Path)
+    parser.add_argument("--input-dir", type=Path)
+    parser.add_argument("--output-dir", type=Path)
+    args = parser.parse_args(argv)
+    config = script_fonts[args.donor]
+    dist_directory = script_directory.parent / "dist"
+    args.donor_dir = (args.donor_dir or script_directory / config["directory"]).expanduser().resolve()
+    args.input_dir = (args.input_dir or dist_directory / "iosevka-marcus-cond" / "ttf.patched").expanduser().resolve()
+    args.output_dir = (args.output_dir or dist_directory / f"iosemka-script-{args.donor}.final").expanduser().resolve()
+    return args
 
 
-        
-        # font.fullname = "Iosemka Script" + full_name_suffix
+def collect_fonts(input_directory):
+    if not input_directory.is_dir():
+        raise FileNotFoundError(f"Target font directory not found: {input_directory}")
+    fonts = []
+    styles = set()
+    for path in sorted(input_directory.rglob("*")):
+        if not path.is_file() or path.suffix.lower() != ".ttf":
+            continue
+        if not path.stem.startswith(source_prefix):
+            raise ValueError(f"Invalid font found in target directory: {path.name}")
+        style = path.stem[len(source_prefix):]
+        if not style or style.casefold() in styles:
+            raise ValueError(f"Empty or duplicate font style: {path.name}")
+        styles.add(style.casefold())
+        fonts.append((path, style))
+    if not fonts:
+        raise ValueError(f"No input TTF files found: {input_directory}")
+    return fonts
 
-        # font.sfntRevision = 42.3 # any number again
 
-        # font.sfnt_names = [
-        #     ('English (US)', 'Version', "Version 42"), # just picking something but same number for all 
-        #     ('English (US)', 'Family', 'Iosemka Script'),
-        #     ('English (US)', 'SubFamily', subfamily),
-        #     ('English (US)', 'Fullname', "Iosemka Script" + full_name_suffix),
-        #     ('English (US)', 'PostScriptName', "Iosemka-Script" + ps_name),
-        #     ('English (US)', 'Preferred Family', "Iosemka Script"),
-        #     ('English (US)', 'Preferred Styles', "Condensed " + subfamily),
-        #     ('English (US)', 'UniqueID', 'Iosemka Script 42')
-        # ]
+def copy_metadata(font, source_font):
+    for attribute in ("fontname", "familyname", "fullname"):
+        setattr(font, attribute, getattr(source_font, attribute).replace("Condensed", "Script"))
+    font.sfnt_names = tuple(
+        (language, name, value.replace("Condensed", "Script"))
+        for language, name, value in source_font.sfnt_names
+    )
+    for attribute in ("sfntRevision", "os2_weight", "os2_width", "os2_stylemap", "os2_panose"):
+        setattr(font, attribute, getattr(source_font, attribute))
 
-        should_change_em = True
 
-        if font != source_font and should_change_em:               
+def process_font(source_path, style, donor_directory, config, output_directory):
+    donor_path = None
+    if style.endswith("Italic"):
+        donor_style = config["style_overrides"].get(style, style)
+        donor_path = donor_directory / f"{config['prefix']}{donor_style}.ttf"
+        if not donor_path.is_file():
+            print(f"Script font {donor_path.name} not found, skipping {style}")
+            return False
 
+    print(f"Processing {source_path.name}: {style}")
+    source_font = fontforge.open(str(source_path))
+    font = source_font
+    try:
+        if donor_path is not None:
+            font = fontforge.open(str(donor_path))
+        copy_metadata(font, source_font)
+        if donor_path is not None:
             font.em = source_font.em
-
-            # cleanup
             font.selection.all()
-
-            # todo: we need to fix clipping
-            font.transform(psMat.scale(scale))
-            #print("box before = " + str(box) + " after = " + str(font.boundingBox()))
-
+            font.transform(psMat.scale(config["scale"]))
             font.removeOverlap()
             font.round()
             font.addExtrema()
             font.correctDirection()
-
-        output_path = os.path.join(output_font_dir, "IosemkaScript-" + style + ".ttf")
-
         add_extra_glyphs(font)
-        font.generate(output_path)
-        font.close()
-
+        font.generate(str(output_directory / f"{output_prefix}{style}.ttf"))
+        return True
+    finally:
         if font != source_font:
-            source_font.close()
+            font.close()
+        source_font.close()
 
-if skipped_styles:
-    print("Skipped styles without a cursive donor: " + ", ".join(skipped_styles))
-publish_output(output_font_dir, final_font_dir)
-print("done: " + final_font_dir)
+
+def main(argv=None):
+    args = parse_arguments(argv)
+    config = script_fonts[args.donor]
+    fonts = collect_fonts(args.input_dir)
+    if not args.donor_dir.is_dir():
+        raise FileNotFoundError(f"Script font directory not found: {args.donor_dir}")
+    for directory in (args.input_dir, args.donor_dir):
+        if args.output_dir.is_relative_to(directory) or directory.is_relative_to(args.output_dir):
+            raise ValueError(f"Output directory must not overlap an input directory: {directory}")
+
+    args.output_dir.parent.mkdir(parents=True, exist_ok=True)
+    staging_directory = Path(tempfile.mkdtemp(prefix=".script-glyphs-", dir=args.output_dir.parent))
+    skipped_styles = []
+    try:
+        copy_donor_notices(staging_directory)
+        for source_path, style in fonts:
+            if not process_font(source_path, style, args.donor_dir, config, staging_directory):
+                skipped_styles.append(style)
+        publish_output(staging_directory, args.output_dir)
+    except Exception:
+        print(f"Generation failed; staging directory retained at {staging_directory}")
+        raise
+
+    if skipped_styles:
+        print("Skipped styles without a cursive donor: " + ", ".join(skipped_styles))
+    print(f"Done: {args.output_dir}")
+
+
+if __name__ == "__main__":
+    main()

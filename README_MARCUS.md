@@ -20,7 +20,7 @@ Usual worflow is:
 Various scripts:
 
 - opentype_freeze.py: freezes the ss01 feature set into the font (for freezing Cascadia's cursive)
-- create_italic_script_font.py: supports either monaspace Radon or Cascadia, replaces the italic fonts with their cursive variants
+- create_italic_script_font.py: supports Cascadia, Monaspace Radon, or Victor Mono, replacing the italic fonts with their cursive variants
 
 
 Update to latest upstreams:
@@ -28,6 +28,41 @@ Update to latest upstreams:
 1. Fetch the relevant tag from the Iosevka remote and merge.
 1. Update the nerd-fonts repository (outside of this one, not contained), checkout the relevant tag.
 1. Update donor fonts
+
+## Script font generation
+
+The active `marcus-custom/create_italic_script_font.py` resolves its default
+paths from its own location, not the working directory. Moving the repository
+does not require editing drive letters or absolute paths. Keep the neighboring
+`extra_glyphs.py` helper and donor folders with it.
+
+From the repository root:
+
+```powershell
+fontforge -lang=py -script .\marcus-custom\create_italic_script_font.py
+fontforge -lang=py -script .\marcus-custom\create_italic_script_font.py --donor Monaspace
+fontforge -lang=py -script .\marcus-custom\create_italic_script_font.py --help
+```
+
+The first two commands generate fonts; `--help` does not. To run from another
+working directory, supply the appropriate path to the script. Optional
+`--input-dir`, `--donor-dir`, and `--output-dir` override the defaults; relative
+overrides are resolved from your current working directory.
+
+`script_font_name` remains the editable default donor. `script_fonts` groups
+each donor's directory, filename prefix, scale, and style overrides. Cascadia
+still maps regular Italic to SemiLightItalic at scale 1.0; Monaspace uses 1.1
+and Victor Mono uses 1.0. Upright and oblique fonts are not donor-scaled.
+The default input remains `dist/iosevka-marcus-cond/ttf.patched`, and output
+remains `dist/iosemka-script-<donor>.final`. Non-font files are ignored;
+unexpected font names, duplicate styles, and overlapping output/input
+directories are rejected before generation.
+
+Run the focused script tests without generating real fonts:
+
+```powershell
+fontforge -lang=py -script .\marcus-custom\test_create_italic_script_font.py
+```
 
 ## Extra Japanese glyphs
 
