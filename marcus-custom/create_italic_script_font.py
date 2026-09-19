@@ -40,12 +40,14 @@ def parse_arguments(argv=None):
     parser.add_argument("--donor-dir", type=Path)
     parser.add_argument("--input-dir", type=Path)
     parser.add_argument("--output-dir", type=Path)
+    parser.add_argument("--defer-extra-glyphs", action="store_true", help="Generate intermediate fonts for Nerd patching before adding extra glyphs")
     args = parser.parse_args(argv)
     config = script_fonts[args.donor]
     dist_directory = script_directory.parent / "dist"
     args.donor_dir = (args.donor_dir or script_directory / config["directory"]).expanduser().resolve()
     args.input_dir = (args.input_dir or dist_directory / "iosevka-marcus-cond" / "ttf.patched").expanduser().resolve()
-    args.output_dir = (args.output_dir or dist_directory / f"iosemka-script-{args.donor}.final").expanduser().resolve()
+    output_stage = "unpatched" if args.defer_extra_glyphs else "final"
+    args.output_dir = (args.output_dir or dist_directory / f"iosemka-script-{args.donor}.{output_stage}").expanduser().resolve()
     return args
 
 
@@ -80,7 +82,7 @@ def copy_metadata(font, source_font):
         setattr(font, attribute, getattr(source_font, attribute))
 
 
-def process_font(source_path, style, donor_directory, config, output_directory):
+def process_font(source_path, style, donor_directory, config, output_directory, include_extra_glyphs=True):
     donor_path = None
     if style.endswith("Italic"):
         donor_style = config["style_overrides"].get(style, style)
@@ -104,7 +106,8 @@ def process_font(source_path, style, donor_directory, config, output_directory):
             font.round()
             font.addExtrema()
             font.correctDirection()
-        add_extra_glyphs(font)
+        if include_extra_glyphs:
+            add_extra_glyphs(font)
         font.generate(str(output_directory / f"{output_prefix}{style}.ttf"))
         return True
     finally:
@@ -127,9 +130,10 @@ def main(argv=None):
     staging_directory = Path(tempfile.mkdtemp(prefix=".script-glyphs-", dir=args.output_dir.parent))
     skipped_styles = []
     try:
-        copy_donor_notices(staging_directory)
+        if not args.defer_extra_glyphs:
+            copy_donor_notices(staging_directory)
         for source_path, style in fonts:
-            if not process_font(source_path, style, args.donor_dir, config, staging_directory):
+            if not process_font(source_path, style, args.donor_dir, config, staging_directory, include_extra_glyphs=not args.defer_extra_glyphs):
                 skipped_styles.append(style)
         publish_output(staging_directory, args.output_dir)
     except Exception:

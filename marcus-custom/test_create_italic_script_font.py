@@ -36,6 +36,11 @@ class PathTests(unittest.TestCase):
         self.assertEqual(args.donor_dir, (Path.cwd() / "donor fonts").resolve())
         self.assertEqual(args.output_dir, (Path.cwd() / "output fonts").resolve())
 
+    def test_deferred_glyphs_default_to_intermediate_output(self):
+        args = script.parse_arguments(["--defer-extra-glyphs"])
+        self.assertEqual(args.output_dir.name, "iosemka-script-CascadiaCode.unpatched")
+        self.assertTrue(args.defer_extra_glyphs)
+
     def test_collection_ignores_notices_and_rejects_duplicate_styles(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
@@ -107,6 +112,17 @@ class ProcessingTests(unittest.TestCase):
         donor.close.assert_called_once()
         self.source.close.assert_called_once()
 
+    def test_intermediate_fonts_defer_extra_glyphs(self):
+        with patch.object(script.fontforge, "open", return_value=self.source):
+            with patch.object(script, "add_extra_glyphs") as add_glyphs:
+                self.assertTrue(script.process_font(
+                    self.root / "source.ttf", "Regular", self.root,
+                    script.script_fonts["CascadiaCode"], self.root, include_extra_glyphs=False,
+                ))
+        add_glyphs.assert_not_called()
+        self.source.generate.assert_called_once_with(str(self.root / "IosemkaScript-Regular.ttf"))
+        self.source.close.assert_called_once()
+
     def test_missing_italic_is_skipped_before_opening_source(self):
         with patch.object(script.fontforge, "open") as open_font:
             self.assertFalse(script.process_font(self.root / "input.ttf", "HeavyItalic", self.root, script.script_fonts["CascadiaCode"], self.root))
@@ -125,6 +141,25 @@ class ProcessingTests(unittest.TestCase):
 
 
 class WorkflowTests(unittest.TestCase):
+    def test_intermediate_workflow_defers_glyphs_and_notices(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            inputs = root / "inputs"
+            donors = root / "donors"
+            inputs.mkdir()
+            donors.mkdir()
+            (inputs / "IosemkaCondensed-Regular.ttf").touch()
+            with patch.object(script, "copy_donor_notices") as notices:
+                with patch.object(script, "process_font", return_value=True) as process:
+                    with patch.object(script, "publish_output") as publish:
+                        script.main([
+                            "--input-dir", str(inputs), "--donor-dir", str(donors),
+                            "--output-dir", str(root / "unpatched"), "--defer-extra-glyphs",
+                        ])
+            notices.assert_not_called()
+            self.assertFalse(process.call_args.kwargs["include_extra_glyphs"])
+            publish.assert_called_once()
+
     def test_failed_batch_does_not_publish(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

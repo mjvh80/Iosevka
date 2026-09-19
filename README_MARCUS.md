@@ -15,7 +15,42 @@ Usual worflow is:
 
 1. build the Iosevka font from the given plans
 2. patch using nerdfont
-3. patch to create script font (only for condensed)
+3. add extra Japanese glyphs to the normal families
+4. create Script fonts from condensed, patch their Nerd icons after donor substitution, then add extra Japanese glyphs
+
+For glyph-source customization, see the [Patel, Spiro, and Bezier tutorial](doc/glyph-tutorial.md).
+
+## Complete build
+
+Run `marcus-custom/build_all.ps1` with PowerShell 7 or later. Nerd Fonts patching
+uses four concurrent FontForge processes by default; `-patchJobs` controls the
+limit, with `1` selecting serial patching. Plans remain sequential. The script
+uses the sibling `nerd-fonts` checkout, not the bundled copy.
+
+```powershell
+.\marcus-custom\build_all.ps1 -patchJobs 4
+.\marcus-custom\build_all.ps1 -skipIoBuild -nameFilter Condensed -patchJobs 8 -scriptDonor Monaspace
+```
+
+When the condensed plan is selected, the build also generates the Script family.
+`-scriptDonor` selects `CascadiaCode` (the build default), `Monaspace`, or
+`VictorMono`. `-skipScript` disables this branch; `-nameFilter` excluding the
+condensed plan also skips it. `-skipIoBuild` skips only the Iosevka build, not
+Nerd Fonts, Script generation, or extra glyphs.
+
+Script output proceeds through `dist/iosemka-script-<donor>.unpatched`, then
+`.patched`, then `.final`. Install only the final fonts. This ordering restores
+Nerd icons after the italic donor has replaced the original font. Each Nerd
+worker has its own output directory and log; failed batches retain their
+`.nerd-fonts-*` work directory, preserve the previous patched output, and stop
+the build before downstream stages.
+
+Run the isolated worker and pipeline tests without rebuilding fonts:
+
+```powershell
+.\marcus-custom\test_patch_nerd_fonts.ps1
+.\marcus-custom\test_build_all.ps1
+```
 
 Various scripts:
 
@@ -48,6 +83,12 @@ The first two commands generate fonts; `--help` does not. To run from another
 working directory, supply the appropriate path to the script. Optional
 `--input-dir`, `--donor-dir`, and `--output-dir` override the defaults; relative
 overrides are resolved from your current working directory.
+
+These standalone commands retain the original behavior: donor italics do not
+gain missing Nerd icons. Use the complete build above for Nerd-patched Script
+fonts. Its `--defer-extra-glyphs` generator mode omits Japanese glyphs and their
+notices until the final stage, and defaults to `.unpatched` output instead of
+`.final` when no output directory is supplied.
 
 `script_font_name` remains the editable default donor. `script_fonts` groups
 each donor's directory, filename prefix, scale, and style overrides. Cascadia
@@ -87,17 +128,18 @@ The output flow is now:
 
 1. `build_all.ps1`: Iosevka -> Nerd Fonts in `dist/<plan>/ttf.patched` -> extra
 	glyphs in `dist/<plan>/ttf.final`. Install from `ttf.final` for these families.
-2. `create_italic_script_font.py`: reads the condensed `ttf.patched` directory,
-	substitutes and scales cursive donors, then adds the Japanese glyphs before
-	generation. Output goes to `dist/iosemka-script-<donor>.final`.
+2. The Script branch of `build_all.ps1`: reads condensed `ttf.patched`, runs
+	`create_italic_script_font.py --defer-extra-glyphs` to substitute and scale
+	cursive donors, patches Nerd icons in the resulting Script fonts, then adds
+	the Japanese glyphs. Output goes to `dist/iosemka-script-<donor>.final`.
 
 Final output directories are staged, then published. Previous final directories
 are retained with a `.previous-<timestamp>` suffix. Missing cursive styles are
 reported and excluded from the new Script output, not inherited from old runs.
 A failed Script run leaves its `.script-glyphs-*` staging directory for inspection
 but does not replace the previous final directory. Keep donor license notices
-with distributed fonts. The extra-glyph stage does not restore Nerd icons missing
-from cursive donor fonts.
+with distributed fonts. The extra-glyph stage only adds Japanese glyphs; the
+Script branch's preceding Nerd patching stage restores the donor's missing icons.
 
 Patch existing fonts without building Iosevka or running Nerd Fonts, from the
 repository root:
